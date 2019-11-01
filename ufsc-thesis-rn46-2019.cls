@@ -1004,7 +1004,7 @@
     \chapter*{\listadesimbolosname}%
     \label{\listadesimboloslabel}%
     \noindent
-    \begin{tabular}{p{#1}p{\dimexpr 16cm-\tabcolsep-#1\relax}}%
+    \begin{tabular}{p{#1}p{\dimexpr 12cm-\tabcolsep-#1\relax}}%
   }%
   {\end{tabular}}
 
