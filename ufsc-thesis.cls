@@ -722,7 +722,7 @@
     {ufsc-thesis/}%
     {../ufsc-thesis/}%
   }
-  \newcommand{\ufscthesis@logo}{tex/pre_tex/logo-ufsc.pdf}
+  \newcommand{\ufscthesis@logo}{logo-ufsc.pdf}
 \fi
 
 % alterando a capa
