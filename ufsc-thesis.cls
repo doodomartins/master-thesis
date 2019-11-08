@@ -1,6 +1,6 @@
 % vim:et:sw=2
 
-%% ufsc-thesis-rn46-2019.cls, a template that abides to changes introduced by RN 46/2019/CPG.
+%% ufsc-thesis.cls, a template that abides to changes introduced by RN 46/2019/CPG.
 %%
 %% Original authors and maintainers:
 %% Alexis Huf <alexishuf@gmail.com>
@@ -19,7 +19,7 @@
 \NeedsTeXFormat{LaTeX2e}
 
 % Prove acesso a classe 'ufsc-thesis'
-\ProvidesClass{ufsc-thesis-rn46-2019}[2019/08/02 v0.2snapshot ufsc-thesis-rn46-2019]
+\ProvidesClass{ufsc-thesis}[2019/08/02 v0.2snapshot ufsc-thesis]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Declarações e tratamento inicial de opções                     %%%
@@ -717,12 +717,12 @@
   % isso esse trabalho em volta. Quem ler o README não deveria sofre (muito)
   \graphicspath{%
     {.}%
-    {ufsc-thesis-rn46-2019/}%
-    {../ufsc-thesis-rn46-2019/}%
+    {ufsc-thesis/}%
+    {../ufsc-thesis/}%
     {ufsc-thesis/}%
     {../ufsc-thesis/}%
   }
-  \newcommand{\ufscthesis@logo}{logo-ufsc.pdf}
+  \newcommand{\ufscthesis@logo}{tex/pre_tex/logo-ufsc.pdf}
 \fi
 
 % alterando a capa
