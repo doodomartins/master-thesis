@@ -34,21 +34,14 @@
 %%% Principais elementos pré-textuais                            %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% capa, BU e etc
 \input{tex/pre_tex/pre.tex}
 
-\begin{dedicatoria}
-  Este trabalho é dedicado à wikipedia e ao stackoverflow. 
-\end{dedicatoria}
+% dedicatoria, agradecimentos e epigrafe
+\input{tex/pre_tex/thanks.tex}
 
-\begin{agradecimentos}
-  O presente trabalho foi realizado com apoio da Coordenação de Aperfeiçoamento de Pessoal de Nível Superior -- Brasil (CAPES) -- Código de Financiamento 001.
-\end{agradecimentos}
-
-\begin{epigrafe}
-  For a number of years I have been familiar with the observation that the quality of programmers is a decreasing function of the density of go to statements in the programs they produce \\
-  \cite{dijkstra1968}
-\end{epigrafe}
-
+% resumo e abstract
+\input{tex/pre_tex/pre.tex}
 
 \begin{resumo}[Resumo]
   Aqui deve ser inserido um resumo de 150 a 500 palavras (limitação de tamanho dada pela BU). A linguagem deve ser português e a hifenização já foi alterada. O resumo em português deve preceder o resumo em inglês, mesmo que o trabalho seja escrito em inglês. A BU também diz que deve ser usada a voz ativa e o discurso deve ser na 3ª pessoa. A estrutura do resumo pode ser similar a estrutura usada em artigos: Contexto -- Problema -- Estado da arte -- Solução proposta  -- Resultados.
@@ -76,7 +69,6 @@
   \vspace{\baselineskip}  % Atenção! manter igual ao resumo
   \textbf{Palavras-chave:} Palavra-chave. Outra Palavra-chave composta. Bla.
 \end{resumo}
-
 
 \begin{abstract}
   Enlish version of the plain ``resumo'' above. Done with environment
