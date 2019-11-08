@@ -8,8 +8,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Configurações da classe (dados do trabalho)                  %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Preâmbulo
 \titulo{Constant time root finding techniques in binary finite fields}
 \autor{Douglas Marcelino Beppler Martins}
 \data{1 de Agosto de 2019}
@@ -29,22 +27,13 @@
 \coordenadora{Prof. Vania Bogorny, Dr}
 
 \begin{document}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Principais elementos pré-textuais                            %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% capa, BU e etc
-\input{tex/pre_tex/pre.tex}
-
-% dedicatoria, agradecimentos e epigrafe
-\input{tex/pre_tex/thanks.tex}
-
-% resumo e abstract
-\input{tex/pre_tex/abstract.tex}
-
-% lists and table of contents
-\input{tex/pre_tex/lists.tex}
+\input{tex/pre_tex/pre.tex} % capa, BU e etc
+\input{tex/pre_tex/thanks.tex} % dedicatoria, agradecimentos e epigrafe
+\input{tex/pre_tex/abstract.tex} % resumo e abstract
+\input{tex/pre_tex/lists.tex} % lists and table of contents
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -58,24 +47,27 @@
 
 \chapter{Mathematical Background}
 \label{ch:math}
+\input{tex/intro}
 
 \chapter{Code-based cryptography}
 \label{ch:code-based}
+\input{tex/intro}
 
 \chapter{Root finding methods}
 \label{ch:roots}
+\input{tex/intro}
 
 \chapter{Time variance analysis}
 \label{ch:analysis}
+\input{tex/intro}
 
 \chapter{Final Considerations}
 \label{ch:final}
+\input{tex/intro}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Elementos pós-textuais                                       %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \postextual
 \bibliography{main}
-
 \end{document}
