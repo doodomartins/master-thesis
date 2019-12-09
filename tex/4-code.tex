@@ -3,7 +3,7 @@ The rising of quantum computing in the last few year became the attention of res
 In this Chapter, we will explain the first cryptosystem based on coding theory. Furthermore, we will show an Round One code-based submission to the NIST standardization process, the BIGQUAKE, and we show the timing side-channel attack performed in the reference implementation of the scheme.
 
 \section{McEliece Cryptosystem}
-Robert J. McEliece proposes in 1978 the first cryptosystem based on coding theory, the McEliece cryptosystem was based on the Goppa codes and uses them to achieve three main algorithms, i. e. Key Generation, Encryption and Decryption \cite{mceliece1978public}. The Figure \ref{fig:code-idea} shows the main of the McEliece Cryptosystem and most of schemes based in coding theory. 
+Robert J. McEliece proposes in 1978 the first cryptosystem based on coding theory, the McEliece cryptosystem was based on the Goppa codes and uses them to achieve three main algorithms, i. e. Key Generation, Encryption and Decryption \cite{mceliece1978public}. The Figure \ref{fig:code-idea} shows the main of the McEliece Cryptosystem and most of schemes based in coding theory. Given a plaintext and a public encoding function, anyone can generate a codeword and intentionally add some errors to obtain a ciphertext. From this ciphertext, only who has knoledge from the code structure are able to perfom a decoding function and recover the plaintext.
 
 % \begin{figure}[t]
 %   \centering
@@ -28,7 +28,7 @@ Robert J. McEliece proposes in 1978 the first cryptosystem based on coding theor
     \end{tikzpicture}
     \label{fig:code-idea}
     \fonte{the author.}
-    \caption{Logotipo da Universidade Federal de Santa Catarina.}
+    \caption{Code-based cryptography main idea.}
 \end{figure}
 
 \subsection{Definitions}
