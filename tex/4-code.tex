@@ -27,11 +27,10 @@ Based on two well know problems, the security of McEliece has remained stable. T
 
 The original parameters were designed for $2^{64}$ security bits, but it easily scales up to provided an ample security margin against attackers. Furthermore, the McEliece Cryptosystem suffer many structural attacks, and until today the original proposal remains consider secure. It is important note that many of the attacks are based on the same strategy, the information set-decoding, this kind of attack does not affect schemes based on Goppa codes, however, many others families of codes suffer several drawbacks with this attack. 
 
-As proposed on NIST standardization process by \cite{classial, bigquake, others} the McEliece cryptosystem, using binary Goppa codes, could be applied to concept an KEM, like defined in Chapter \ref{ch:math}. 
-
-Summary that how we use the mceliece to provide an generic KEM and linking with the definitions and decryption
+As proposed on NIST standardization process by \cite{classial, bigquake, others} the McEliece cryptosystem, using binary Goppa codes, could be applied to concept an KEM, like defined in Chapter \ref{ch:math}. Based on this fact, we can generalized the cryptosystem in three algorithms, the Key generation and Encryption will be explained in Section \ref{sub:mc-def} and Decryption in Section \ref{sub:mc-dec}.
 
 \subsection{Definitions}
+\label{sub:mc-def}
 Code definitions
 
 Key generation algorithm
@@ -39,6 +38,7 @@ Key generation algorithm
 Encryption algorithm
 
 \subsection{Decryption}
+\label{sub:mc-dec}
 Decryption algorithm
 
 Patterson algorithm
