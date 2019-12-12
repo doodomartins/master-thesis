@@ -42,12 +42,20 @@ Code definitions
  Bring $H$ to systematic form: $H_{sys} = [I_{k-n}|H']$\;
  Compute generator matrix $G$ from $H_{sys}$\;
  \Return $\quad sk = (L, g(z)) \quad pk = (G)$\;
-
  \caption{McEliece key generation.}
  \label{alg:1}
 \end{algorithm}
 
 Encryption algorithm
+\begin{algorithm}[!ht]
+ \KwData{Public key $pk = G $, message $m \in \mathbb{F}^{k}_{2}$.}
+ \KwResult{$c$ as ciphertext of length $n$.}
+Choose randomly an error vector $e$ of length $n$ with $w_h(e)\leq t$\;
+Compute $c = (m\cdot G) \oplus e$\;
+\Return $c$\;
+
+ \caption{McEliece encryption.}\label{alg:2}
+\end{algorithm}
 
 \subsection{Decryption}
 \label{sub:mc-dec}
