@@ -36,8 +36,12 @@ Code definitions
 \begin{algorithm}[!ht]
  \KwData{$t, k, n, m$ as integers.}
  \KwResult{pk as public key, sk as secret key.}
+ Select a random binary Goppa polynomial $g(z)$ of degree $t$ over $\mathbb{F}_{2^{m}}$\;
+ Randomly choose $n$ distinct elements of $\mathbb{F}_{2^m}$ that are not roots of $g(z)$ as the support $L$\;
+ Compute the $k \times n$ parity check matrix $\hat{H}$ according to $L$ and $g(z)$\;
+ Bring $H$ to systematic form: $H_{sys} = [I_{k-n}|H']$\;
  Compute generator matrix $G$ from $H_{sys}$\;
- \Return $\;sk = (L, g(z)) \quad pk = (G)$\;
+ \Return $\quad sk = (L, g(z)) \quad pk = (G)$\;
 
  \caption{McEliece key generation.}
  \label{alg:1}
