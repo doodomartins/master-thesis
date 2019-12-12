@@ -33,7 +33,15 @@ As proposed on NIST standardization process by \cite{bernstein2017classic, barde
 \label{sub:mc-def}
 Code definitions
 
-Key generation algorithm
+\begin{algorithm}[!ht]
+ \KwData{$t, k, n, m$ as integers.}
+ \KwResult{pk as public key, sk as secret key.}
+ Compute generator matrix $G$ from $H_{sys}$\;
+ \Return $\;sk = (L, g(z)) \quad pk = (G)$\;
+
+ \caption{McEliece key generation.}
+ \label{alg:1}
+\end{algorithm}
 
 Encryption algorithm
 
