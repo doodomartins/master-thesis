@@ -61,6 +61,19 @@ Compute $c = (m\cdot G) \oplus e$\;
 \label{sub:mc-dec}
 Decryption algorithm
 
+\begin{algorithm}[H]
+ \KwData{$c$ as ciphertext of length $n$, secret key $sk= (L, g(z))$.}
+ \KwResult{Message $m$}
+ Compute the syndrome $S_c(z) = \sum{\frac{c_i}{z+\alpha_i}} \mod g(z)$\;
+ Compute $\tau(z) = \sqrt{S^{-1}_{c}(z)+z}$\;
+ Compute $b(z)$ and $a(z)$, so that $b(z)\tau(z) = a(z) \mod g(z)$, such that deg($a$)$\leq \lfloor \frac{t}{2} \rfloor$ and deg($b$)$\leq \lfloor \frac{t-1}{2} \rfloor$\;
+ Compute the error locator polynomial $\sigma(z) = a^2(z) + zb^2(z)$ and deg($\sigma$) $\leq t$\;
+ The position in $L$ of the roots of $\sigma(z)$ define the error vector $e$\;
+ Compute the plaintext $m = c \oplus e$\;
+ \Return $m$\;
+ \caption{McEliece decryption.}\label{alg:3}
+\end{algorithm}
+
 Patterson algorithm
 
 Root finding method
