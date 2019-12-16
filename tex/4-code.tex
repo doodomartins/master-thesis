@@ -34,8 +34,12 @@ As proposed in \cite{bernstein2017classic, bardet2017big} on the NIST standardiz
 \label{sub:mc-def}
 In this Section we describe the three main algorithms of the McEliece the McEliece cryptosystem based on irreducible binary Goppa code. 
 
-Algorithm~\ref{alg:1} is the key generation of McEliece. First, it starts by generating a binary Goppa polynomial $g(z)$ of degree $t$, which can be an irreducible Goppa polynomial. Second, it generates the support $L$ as an ordered subset of $\mathbb{F}_{2^m}$ satisfying the root condition. Third, it is the computation of the systematic form of $\hat{H}$ is done using the Gauss-Jordan elimination algorithm. Steps four, five, and six compute the generator matrix from the previous systematic matrix and return secret and public key.
+Algorithm~\ref{alg:1} is the key generation of McEliece. First, it starts by generating a binary irreducible Goppa polynomial $g(z)$ of degree $t$. This randon selection was maded by generating a random polynomial and testing if we generated a irreducible polynomial.  Second, it generates the support $L$ as an ordered subset of $\mathbb{F}_{2^m}$ satisfying the root condition. Third, it is the computation of the systematic form of $\hat{H}$ is done using the Gauss-Jordan elimination algorithm. Steps four, five, and six compute the generator matrix from the previous systematic matrix and return secret and public key.
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% McEliece Key gen %%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{algorithm}[!ht]
  \KwData{$t, k, n, m$ as integers.}
  \KwResult{pk as public key, sk as secret key.}
