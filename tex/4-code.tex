@@ -83,12 +83,9 @@ Algorithm~\ref{alg:3} gives the decryption part of McEliece. This algorithm cons
 
 In the decryption algorithm, steps $2$-$5$ are the description of Patterson's algorithm~\cite{patterson1975algebraic}. This same strategy can be used in schemes that make use of the Niederreiter cryptosystem~\cite{niederreiter}. As shortly described in Chapter \ref{ch:math}, these schemes differ in their public-key structure, encryption, and decryption step, but both of them, in the decryption steps, decode the message from the syndrome.
 
+One of the most important 
+
 The roots of the ELP can be acquired with different methods. Although these methods can be implemented with different forms, it is essential that the implementations do not leak any timing information about their execution. This leakage can lead to a side-channel attack using time differences in the decryption algorithm, as we explore in a scheme in Section~\ref{sec:attack}.
-
-Patterson algorithm
-
-Root finding method
-
 
 \section{BIGQUAKE}
 \label{sec:attack}
