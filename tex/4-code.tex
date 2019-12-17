@@ -81,9 +81,7 @@ Algorithm~\ref{alg:3} gives the decryption part of McEliece. This algorithm cons
  \caption{McEliece decryption.}\label{alg:3}
 \end{algorithm}
 
-In the decryption algorithm, steps $2$-$5$ are the description of Patterson's algorithm~\cite{patterson1975algebraic}. This same strategy can be used in schemes that make use of the Niederreiter cryptosystem~\cite{niederreiter}. As shortly described in Chapter \ref{ch:math}, these schemes differ in their public-key structure, encryption, and decryption step, but both of them, in the decryption steps, decode the message from the syndrome. Others decoding algorithm could be applied to decoding an message with error, but the main focus of this works relies in algorithm with 
-
-
+In the decryption algorithm, steps $2$-$5$ are the description of Patterson's algorithm~\cite{patterson1975algebraic}. This same strategy can be used in schemes that make use of the Niederreiter cryptosystem~\cite{niederreiter}. As shortly described in Chapter \ref{ch:math}, these schemes differ in their public-key structure, encryption, and decryption step, but both of them, in the decryption steps, decode the message from the syndrome. Others decoding algorithm could be applied to decoding an message with error, but the main focus of this works relies on the Patterson's algorithm because of they are the most used on literature. 
 
 The roots of the ELP can be acquired with different methods. Although these methods can be implemented with different forms, it is essential that the implementations do not leak any timing information about their execution. This leakage can lead to a side-channel attack using time differences in the decryption algorithm, as we explore in a scheme in Section~\ref{sec:attack}.
 
