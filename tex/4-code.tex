@@ -68,18 +68,22 @@ Compute $c = (m\cdot G) \oplus e$\;
 \label{sub:mc-dec}
 Algorithm~\ref{alg:3} gives the decryption part of McEliece. This algorithm consists of the removal of the applied errors using a decoding algorithm. First, we compute the syndrome polynomial $S_c(z)$. Second, we recover the error vector $e$ from the syndrome polynomial. Finally, we can recover the plaintext $m$ computing $c \oplus e$, i.e., the exclusive-or of the ciphertext and the error vector. Note that in modern KEM versions of McEliece, $m\in \mathbb{F}^n_{2}$ is a random bit string used to compute a session key using a hash function. Hence, there is no intelligible information in seeing the first $k$ positions of $m$ with almost no error.
 
-\begin{algorithm}[H]
- \KwData{$c$ as ciphertext of length $n$, secret key $sk= (L, g(z))$.}
- \KwResult{Message $m$}
- Compute the syndrome $S_c(z) = \sum{\frac{c_i}{z+\alpha_i}} \mod g(z)$\;
- Compute $\tau(z) = \sqrt{S^{-1}_{c}(z)+z}$\;
- Compute $b(z)$ and $a(z)$, so that $b(z)\tau(z) = a(z) \mod g(z)$, such that deg($a$)$\leq \lfloor \frac{t}{2} \rfloor$ and deg($b$)$\leq \lfloor \frac{t-1}{2} \rfloor$\;
- Compute the error locator polynomial $\sigma(z) = a^2(z) + zb^2(z)$ and deg($\sigma$) $\leq t$\;
- The position in $L$ of the roots of $\sigma(z)$ define the error vector $e$\;
- Compute the plaintext $m = c \oplus e$\;
- \Return $m$\;
- \caption{McEliece decryption.}\label{alg:3}
-\end{algorithm}
+\begin{figure}
+    \centering
+    \begin{algorithm}[H]
+     \KwData{$c$ as ciphertext of length $n$, secret key $sk= (L, g(z))$.}
+     \KwResult{Message $m$}
+     Compute the syndrome $S_c(z) = \sum{\frac{c_i}{z+\alpha_i}} \mod g(z)$\;
+     Compute $\tau(z) = \sqrt{S^{-1}_{c}(z)+z}$\;
+     Compute $b(z)$ and $a(z)$, so that $b(z)\tau(z) = a(z) \mod g(z)$, such that deg($a$)$\leq \lfloor \frac{t}{2} \rfloor$ and deg($b$)$\leq \lfloor \frac{t-1}{2} \rfloor$\;
+     Compute the error locator polynomial $\sigma(z) = a^2(z) + zb^2(z)$ and deg($\sigma$) $\leq t$\;
+     The position in $L$ of the roots of $\sigma(z)$ define the error vector $e$\;
+     Compute the plaintext $m = c \oplus e$\;
+     \Return $m$\;
+     \caption{McEliece decryption.}\label{alg:3}
+    \end{algorithm}
+\end{figure}
+
 
 In the decryption algorithm, steps $2$-$5$ are the description of Patterson's algorithm~\cite{patterson1975algebraic}. This same strategy can be used in schemes that make use of the Niederreiter cryptosystem~\cite{niederreiter}. As shortly described in Chapter \ref{ch:math}, these schemes differ in their public-key structure, encryption, and decryption step, but both of them, in the decryption steps, decode the message from the syndrome. Others decoding algorithm could be applied to decoding an message with error, but the main focus of this works relies on the Patterson's algorithm because of they are the most used on literature. 
 
@@ -88,5 +92,26 @@ The roots of the ELP can be acquired with different methods. Although these meth
 \section{BIGQUAKE}
 \label{sec:attack}
 \subsection{Submission overview}
+Let us suppose that Alice and Bob ($A$ and $B$ respectively) want to share a session secret key $K$ using BIGQUAKE. Then Bob needs to publishes his public key and Alice needs to follow the encapsulation mechanism. $\mathcal{F}$ is a function that maps an arbitrary binary string as input and returns a word of weight $t$, i.e $\mathcal{F}: \{0,1\}^* \to \{x \in \mathbb{F}^n_2 | w_h(x) = t\}$. The detailed construction of the function $\mathcal{F}$ can be found at subsection $3.4.4$ in \cite{bardet2017big}. $\mathcal{H} : \{0,1\}^k \to \{0,1\}^s$ is a hash function. The function $\mathcal{H}$ in the original implementation is SHA-3. The encapsulation mechanism can be described as:
+
+\begin{enumerate}
+    \item $A$ generates a random $m \in \mathbb{F}^s_2$;
+    \item Generate $e \gets \mathcal{F}(m)$;
+    \item $A$ sends $c \gets (m\oplus\mathcal{H}(e), H\cdot e^T, \mathcal{H}(m))$ to $B$;
+    \item The session key is defined as: $K\gets \mathcal{H}(m,c)$.
+\end{enumerate}
+
+After Bob receives $c$ from Alice, he initiates the decapsulation process:
+
+\begin{enumerate}
+    \item $B$ receives $c = (c_1,c_2,c_3)$;
+    \item Using the secret key, Bob decodes $c_2$ to $e'$ with $w_h(e') \leq t$ such that $c_2 = H\cdot e'^T$;
+    \item $B$ computes $m' \gets c_1\oplus\mathcal{H}(e')$;
+    \item $B$ computes $e'' \gets \mathcal{F}(m')$;
+    \item If $e'' \neq e'$ or $\mathcal{H}(m') \neq c_3$ then $B$ aborts.
+    \item Else, $B$ computes the session key: $K\gets \mathcal{H}(m',c)$.
+\end{enumerate}
+
+After Bob executes the decapsulation process successfully, both parties of the protocol agree on the same session secret key $K$.
 
 \subsection{Timing side-channel attack}
