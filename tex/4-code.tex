@@ -96,10 +96,12 @@ In the decryption algorithm, steps $2$-$5$ are the description of Patterson's al
 The roots of the ELP can be acquired with different methods. Although these methods can be implemented with different forms, it is essential that the implementations do not leak any timing information about their execution. This leakage can lead to a side-channel attack using time differences in the decryption algorithm, as we explore in a scheme in Section~\ref{sec:attack}.
 
 \section{BIGQUAKE}
-In this Section we will describe the BIGQUAKE submission, the usage of the McEliece in their protocol and after that, we present an timing side-channel attack against the decapsulation process. The attack was original proposal in \cite{shoufan2009timing}, we use the fact that BIGQUAKE clain to be IND
+In this Section we will describe the BIGQUAKE submission, the usage of the McEliece in their protocol and after that, we present an timing side-channel attack against the decapsulation process. The attack was original proposal in \cite{shoufan2009timing}, we use the fact that BIGQUAKE claim to be IND-CAA to create our attack scenario and perform the attack proposal.
 
 \label{sec:attack}
 \subsection{Submission overview}
+BIGQUAKE~\cite{bardet2017big} uses binary Quasi-cyclic (QC) Goppa codes in order to accomplish a KEM between two distinct parts. Instead of using binary Goppa codes, BIGQUAKE uses QC Goppa codes, which have the same properties as Goppa codes but allow smaller keys.
+
 Let us suppose that Alice and Bob ($A$ and $B$ respectively) want to share a session secret key $K$ using BIGQUAKE. Then Bob needs to publishes his public key and Alice needs to follow the encapsulation mechanism. $\mathcal{F}$ is a function that maps an arbitrary binary string as input and returns a word of weight $t$, i.e $\mathcal{F}: \{0,1\}^* \to \{x \in \mathbb{F}^n_2 | w_h(x) = t\}$. The detailed construction of the function $\mathcal{F}$ can be found at subsection $3.4.4$ in \cite{bardet2017big}. $\mathcal{H} : \{0,1\}^k \to \{0,1\}^s$ is a hash function. The function $\mathcal{H}$ in the original implementation is SHA-3. The encapsulation mechanism can be described as:
 
 \begin{enumerate}
