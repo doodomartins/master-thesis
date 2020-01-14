@@ -127,7 +127,7 @@ After Bob executes the decapsulation process successfully, both parties of the p
 \subsection{Timing side-channel attack}
 In \cite{shoufan2009timing}, the attack exploits the fact that flipping a bit of the error $e$ changes the Hamming weight $w$ and per consequence the timing for its decryption. If we flip a position that contains an error ($e_i = 1$) then the error will be removed and the time of computation will be shorter. However, if we flip a bit in a wrong position ($e_i = 0$) then it will add another error, and it will increase the decryption time. The attack described in~\cite{bucerzan2017improved} exploits the root finding in the polynomial ELP. It takes advantage of sending ciphertexts with fewer errors than expected, which generate an ELP with degree less than $t$, resulting in less time for finding roots. We explore both ideas applied to the implementation of BIGQUAKE.
 
-Algorithm~\ref{alg:attack:1} is the direct implementation of the attack proposed in~\cite{shoufan2009timing}. We reused the attack presented to show that the attack still works in current implementations such as BIGQUAKE when the root finding procedure is vulnerable to remote timing attacks.
+Algorithm~\ref{alg:attack:1} is the direct implementation of the attack proposed in~\cite{shoufan2009timing}. We reused the attack presented to show that the attack still works in current implementations such as BIGQUAKE when the root finding procedure is vulnerable to remote timing attacks. The source of BIGQUAKE the 
 
 \begin{figure}
 \centering
