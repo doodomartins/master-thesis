@@ -44,16 +44,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcounter{protocol}
 \newenvironment{protocol}[1]
-  {\par\addvspace{\topsep}
-   \noindent
+  {\noindent
    \tabularx{\linewidth}{@{} X @{}}
     \hline
     \refstepcounter{protocol}\textbf{Protocol \theprotocol} #1 \\
     \hline}
-    { \\
-    \hline
-   \end{tabularx}
-   \par\addvspace{\topsep}}
+    {\endtabularx}
 
 \newcommand{\sbline}{\\[.5\normalbaselineskip]}% small blank line
 
