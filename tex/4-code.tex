@@ -75,7 +75,6 @@ Compute $c = (m\cdot G) \oplus e$\;
 Algorithm~\ref{alg:3} gives the decryption part of McEliece. This algorithm consists of the removal of the applied errors using a decoding algorithm. First, we compute the syndrome polynomial $S_c(z)$. Second, we recover the error vector $e$ from the syndrome polynomial. Finally, we can recover the plaintext $m$ computing $c \oplus e$, i.e., the exclusive-or of the ciphertext and the error vector. Note that in modern KEM versions of McEliece, $m\in \mathbb{F}^n_{2}$ is a random bit string used to compute a session key using a hash function. Hence, there is no intelligible information in seeing the first $k$ positions of $m$ with almost no error.
 
 \begin{figure}
-    \centering
     \begin{algorithm}[H]
      \KwData{$c$ as ciphertext of length $n$, secret key $sk= (L, g(z))$.}
      \KwResult{Message $m$}
@@ -96,7 +95,7 @@ In the decryption algorithm, steps $2$-$5$ are the description of Patterson's al
 The roots of the ELP can be acquired with different methods. Although these methods can be implemented with different forms, it is essential that the implementations do not leak any timing information about their execution. This leakage can lead to a side-channel attack using time differences in the decryption algorithm, as we explore in a scheme in Section~\ref{sec:attack}.
 
 \section{BIGQUAKE}
-In this Section we will describe the BIGQUAKE submission, the usage of the McEliece in their protocol and after that, we present an timing side-channel attack against the decapsulation process. The attack was original proposal in \cite{shoufan2009timing}, we use the fact that BIGQUAKE claim to be IND-CAA to create our attack scenario and perform the attack proposal.
+In this Section we will describe the BIGQUAKE submission, the usage of the McEliece in their protocol and after that, we present an timing side-channel attack against the decapsulation process. The attack was original proposal in \cite{shoufan2009timing}, we use the fact that BIGQUAKE claim to be IND-CAA to create our attack scenario and perform the attack proposal. Our attack was implemented based on BIGQUAKE implementation available in \url{oi.com}.
 
 \label{sec:attack}
 \subsection{Submission overview}
@@ -181,4 +180,4 @@ Sort $T$ in descending order of $A$\;
 
 After finding the position of the errors, one needs to verify if the error $e'$ found is the correct one, and then recover the message $m$. In order to verify for correctness, one can check $e'$ by computing $\mathcal{H}(e) \oplus \mathcal{H}(e') \oplus m = m'$ and if $c_3$ is equal to $\mathcal{H}(m')$. As mentioned early in this Section, the ciphertext is composed by $c = (m\oplus\mathcal{H}(e), H\cdot e^T, \mathcal{H}(m))$ or $c = (c_1, c_2, c_3)$.
 
-In our attack, we selected the precision parameter M as 500 since it was the one that showed the more precise results without taking a long time of computation.  In our tests, it took≈17 minutes for recovering one correct messagem.  \url{https://git.dags-project.org/gustavo/roots_finding/src/master/attack_bigquake}.
+In our attack, we selected the precision parameter M as 500 since it was the one that showed the more precise results without taking a long time of computation.  In our tests, it took $\approx17$ minutes for recovering one correct message $m$.
