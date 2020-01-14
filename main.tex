@@ -8,6 +8,8 @@
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage[ruled,linesnumbered]{algorithm2e} % algorithms
+\usepackage{tabularx} % protocol
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Configurações da classe (dados do trabalho)                  %%%
@@ -36,6 +38,24 @@
 
 \DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Protocol environment                                         %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcounter{protocol}
+\newenvironment{protocol}[1]
+  {\par\addvspace{\topsep}
+   \noindent
+   \tabularx{\linewidth}{@{} X @{}}
+    \hline
+    \refstepcounter{protocol}\textbf{Protocol \theprotocol} #1 \\
+    \hline}
+  { \\
+    \hline
+   \endtabularx
+   \par\addvspace{\topsep}}
+
+\newcommand{\sbline}{\\[.5\normalbaselineskip]}% small blank line
 
 \begin{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
