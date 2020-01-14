@@ -107,11 +107,11 @@ Let us suppose that Alice and Bob ($A$ and $B$ respectively) want to share a ses
 
 \begin{figure}
 \centering
-\begin{protocol}{BIGQUAKE Key Encapsulation Mechanism}
+\begin{protocol}{BIGQUAKE Key Encapsulation Mechanism between Alice and Bob}
     \textit{Inputs.} For all $i \in [n]$, party~$P_i$ holds an input~$x_i$. 
       Let~$C$ denote the probabilistic sorting network of~[LP90] and~$d$ denote its depth.
     \sbline
-    \textit{Goal.} Parties jointly compute a random shuffle of their inputs.
+    \textit{Goal.} Parties jointly agree the same session key $K$
     \sbline
     \textit{The protocol:}
     \begin{enumerate}
