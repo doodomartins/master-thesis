@@ -117,3 +117,36 @@ After Bob receives $c$ from Alice, he initiates the decapsulation process:
 After Bob executes the decapsulation process successfully, both parties of the protocol agree on the same session secret key $K$.
 
 \subsection{Timing side-channel attack}
+In \cite{shoufan2009timing}, the attack exploits the fact that flipping a bit of the error $e$ changes the Hamming weight $w$ and per consequence the timing for its decryption. If we flip a position that contains an error ($e_i = 1$) then the error will be removed and the time of computation will be shorter. However, if we flip a bit in a wrong position ($e_i = 0$) then it will add another error, and it will increase the decryption time. The attack described in~\cite{bucerzan2017improved} exploits the root finding in the polynomial ELP. It takes advantage of sending ciphertexts with fewer errors than expected, which generate an ELP with degree less than $t$, resulting in less time for finding roots. We explore both ideas applied to the implementation of BIGQUAKE.
+
+Algorithm~\ref{alg:attack:1} is the direct implementation of the attack proposed in~\cite{shoufan2009timing}. We reused the attack presented to show that the attack still works in current implementations such as BIGQUAKE when the root finding procedure is vulnerable to remote timing attacks.
+
+\begin{algorithm}[!ht]
+ \KwData{$n$-bit ciphertext $c$, $t$ as the number of errors and precision parameter $M$}
+ \KwResult{Attempt to obtain an error vector $e$ hidden in $c$.}
+ $e \gets [0,\ldots,0]$\;
+\For{$i\gets0$ \KwTo $n-1$}{
+    $T \gets 0$\;
+    $c' \gets c \oplus \text{setBit}(n,i)$\;
+    $time_m \gets 0$\;
+    \For{$j\gets0$ \KwTo $M$}{
+        $time_s \gets time()$\;
+        decrypt($c'$)\;
+        $time_e \gets time()$\;
+        $time_m \gets time_m + (time_e - time_s)$\;
+    }
+    $T \gets time_m / M$\;
+    $L \gets (T, i)$\;
+}
+Sort $L$ in descending order of $T$\;
+\For{$k\gets0$ \KwTo $t-1$}{
+    $index \gets L[k].i$\;
+    $e[index] \gets 1$\;
+}
+\Return $e$\;
+ \caption{Attack on ELP.}
+  \label{alg:attack:1}
+
+\end{algorithm}
+
+After finding the position of the errors, one needs to verify if the error $e'$ found is the correct one, and then recover the message $m$. In order to verify for correctness, one can check $e'$ by computing $\mathcal{H}(e) \oplus \mathcal{H}(e') \oplus m = m'$ and if $c_3$ is equal to $\mathcal{H}(m')$. As mentioned in Subsection~\ref{subsec:bigquake}, the ciphertext is composed by $c = (m\oplus\mathcal{H}(e), H\cdot e^T, \mathcal{H}(m))$ or $c = (c_1, c_2, c_3)$.
