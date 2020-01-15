@@ -19,7 +19,7 @@ As can be seen in Algorithm~\ref{alg:exhaustive}, this method leaks information.
 \end{algorithm}
 \end{figure}
 
-One solution to avoid this leakage is to permute the elements of vector $A$. Using this technique, an attacker can identify the extra operation, but without learning any secret information. In our case, we use the Fisher-Yates shuffle~\cite{wang2018fpga} for shuffling the elements of vector $A$. In~\cite{wang2018fpga}, the authors show an implementation of the shuffling algorithm safe against timing attacks. Algorithm~\ref{alg:exhaustive_permuted} shows the permutation of the elements and the computation of the roots.
+One solution to avoid this leakage is to permute the elements of vector $A$. Using this technique, an attacker can identify the extra operation, but without learning any secret information. In our case, we use the Fisher-Yates shuffle~\cite{black2005fisher} for shuffling the elements of vector $A$. In~\cite{wang2018fpga}, the authors show an implementation of the shuffling algorithm safe against timing attacks. Algorithm~\ref{alg:exhaustive_permuted} shows the permutation of the elements and the computation of the roots.
 
 \begin{algorithm}[ht]
  \KwData{$p(x)$ as a univariate polynomial over $\mathbb{F}_{2^m}$ with $d$ roots, $A = [a_0, \ldots, a_{n-1}]$ as all elements in $\mathbb{F}_{2^m}$, $n$ as the length of $A$.}
