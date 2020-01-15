@@ -140,7 +140,9 @@ Let us suppose that Alice and Bob ($A$ and $B$ respectively) want to share a ses
 \end{protocol}
 \end{figure}
 
-After Bob executes the decapsulation process successfully, both parties of the protocol agree on the same session secret key $K$. The core of the protocol are the steps which involves the McEliece encryption and decryption steps. the implementations needs to blind time variances 
+After Bob executes the decapsulation process successfully, both parties achieve the same session secret key $K$. The core of the protocol is the steps that involve the McEliece encryption, performed by Alice, and the McEliece decryption performed by Bob. 
+
+When Alice computes $c_2$, she is encrypting the message $m$, with error $t$ and the Bob's public key $G$. Additionally, Alice needs to compute the hash of the error added plus the message and the hash of the message. These last two values will be used on Bob's side to verify if both sides are computing the same session key. 
 
 
 
