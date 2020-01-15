@@ -75,6 +75,7 @@ Compute $c = (m\cdot G) \oplus e$\;
 Algorithm~\ref{alg:3} gives the decryption part of McEliece. This algorithm consists of the removal of the applied errors using a decoding algorithm. First, we compute the syndrome polynomial $S_c(z)$. Second, we recover the error vector $e$ from the syndrome polynomial. Finally, we can recover the plaintext $m$ computing $c \oplus e$, i.e., the exclusive-or of the ciphertext and the error vector. Note that in modern KEM versions of McEliece, $m\in \mathbb{F}^n_{2}$ is a random bit string used to compute a session key using a hash function. Hence, there is no intelligible information in seeing the first $k$ positions of $m$ with almost no error.
 
 \begin{figure}
+\centering
     \begin{algorithm}[H]
      \KwData{$c$ as ciphertext of length $n$, secret key $sk= (L, g(z))$.}
      \KwResult{Message $m$}
