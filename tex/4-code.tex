@@ -190,3 +190,6 @@ After finding the position of the errors, one needs to verify if the error $e'$ 
 In our attack, we selected the precision parameter $M$ as 500 since it was the one that showed the more precise results without taking a long time of computation.  In our tests, it took $\approx17$ minutes for recovering one correct message.
 
 \subsubsection{Implementation remarks}
+In our analysis, we noticed that the original implementation of BIGQUAKE uses log and antilog tables for computing multiplications and inversions. These look-up tables give a speedup in those operations. However, this approach is subject to cache attacks in a variation of~\cite{bruinderink2016flush}, where the attacker tries to induce cache misses and infer the data.
+
+Since we want to avoid the use of look-up tables, we made a constant time implementation for multiplication and inversion, using a similar approach as~\cite{chou2017mcbits}. In order to illustrate that, Listing~\ref{lst:label} shows the multiplication in constant-time between two elements over $\mathbf{F}_{2^{12}}$ followed by the reduction of the result by the irreducible polynomial $f(x) = x^{12} + x^6 +x^4 +x + 1$. The inversion in finite fields can be computed by raising an element $a$ to the power $2^{m}-2$, i.e., $a^{2^{m}-2}$, as shown in Listing~\ref{lst:label}.
