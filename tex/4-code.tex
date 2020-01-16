@@ -105,7 +105,7 @@ BIGQUAKE~\cite{bardet2017big} uses binary Quasi-cyclic (QC) Goppa codes in order
 Let us suppose that Alice and Bob ($A$ and $B$ respectively) want to share a session secret key $K$ using BIGQUAKE. Then Bob needs to publishes his public key and Alice needs to follow the encapsulation mechanism. After receive the vector $c$ from Alice,  Bob executes the decapsulation process. If Bob succeeds, both parties achieve the same session secret key $K$. The core of the protocol is the steps that involve the McEliece encryption, performed by Alice, and the McEliece decryption performed by Bob. The BIGQUAKE description are presented in Protocol \ref{prot_bigquake}.
 
 
-The protocol made usage of $\mathcal{F}$, which is a function that maps an arbitrary binary string as input and returns a word of weight $t$, i.e $\mathcal{F}: \{0,1\}^* \to \{x \in \mathbb{F}^n_2 | w_h(x) = t\}$. The detailed construction of the function $\mathcal{F}$ can be found at subsection $3.4.4$ in \cite{bardet2017big}. $\mathcal{H} : \{0,1\}^k \to \{0,1\}^s$ is a hash function. The function $\mathcal{H}$ in the original implementation is SHA-3. 
+The function $\mathcal{F}$ maps an arbitrary binary string as input and returns a word of weight $t$, i.e $\mathcal{F}: \{0,1\}^* \to \{x \in \mathbb{F}^n_2 | w_h(x) = t\}$. The detailed construction of the function $\mathcal{F}$ can be found at subsection $3.4.4$ in \cite{bardet2017big}. $\mathcal{H} : \{0,1\}^k \to \{0,1\}^s$ is a hash function. The function $\mathcal{H}$ in the original implementation is SHA-3. 
 
 
 \begin{figure}
