@@ -161,10 +161,12 @@ Algorithm~\ref{alg:attack:1} is the direct implementation of the attack proposed
  \KwData{$n$-bit ciphertext $c$, $t$ as the number of errors and precision parameter $M$}
  \KwResult{Attempt to obtain an error vector $e$ hidden in $c$.}
  $e \gets [0,\ldots,0]$\;
+\tcc{iterate over all bits on the ciphertext}
 \For{$i\gets0$ \KwTo $n-1$}{
     $A \gets 0$\;
     $c' \gets c \oplus \text{setBit}(n,i)$\;
     $time_m \gets 0$\;
+    \tcc{perform $M$ decryptions operatins meassuring the execution time}
     \For{$j\gets0$ \KwTo $M$}{
         $time_s \gets time()$\;
         decrypt($c'$)\;
@@ -187,7 +189,7 @@ Sort $T$ in descending order of $A$\;
 
 After finding the position of the errors, one needs to verify if the error $e'$ found is the correct one, and then recover the message $m$. In order to verify for correctness, one can check $e'$ by computing $\mathcal{H}(e) \oplus \mathcal{H}(e') \oplus m = m'$ and if $c_3$ is equal to $\mathcal{H}(m')$. As mentioned early in this Section, the ciphertext is composed by $c = (m\oplus\mathcal{H}(e), H\cdot e^T, \mathcal{H}(m))$ or $c = (c_1, c_2, c_3)$.
 
-In our attack, we selected the precision parameter $M$ as 500 since it was the one that showed the more precise results without taking a long time of computation.  In our tests, it took $\approx17$ minutes for recovering one correct message. The attack was performed on Intel\textsuperscript{\tiny\textregistered} Core(TM) i$7$-$4500$U CPU @ $1.80$GHz.
+In our attack, we selected the precision parameter $M$ as 500 since it was the one that showed the more precise results without taking a long time of computation.  In our tests, it took $\approx17$ minutes for recovering one correct message. The attack was performed on a locally Intel\textsuperscript{\tiny\textregistered} Core(TM) i$7$-$4500$U CPU @ $1.80$GHz.
 
 \subsubsection{Implementation remarks}
 Some small corrections on the BIGQUAKE reference implementation where made to perform correctly the attack. First of then was the correct initialization of the error vector. With zeros in all positions. The original implementation does not fill all errors positions with zero because the \texttt{malloc} function does not fill the positions with zero~\cite{c++2014iso}. We also has made an modification on the decryption failure condition, the original algorithm failure when an addition error was inserted, we remove the part that causes this failure on attack implementation.
