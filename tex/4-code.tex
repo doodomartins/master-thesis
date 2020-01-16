@@ -47,8 +47,8 @@ Algorithm~\ref{alg:keygen} is the key generation of McEliece. First, it starts b
  \KwResult{pk as public key, sk as secret key.}
  Select a random binary Goppa polynomial $g(z)$ of degree $t$ over $\mathbb{F}_{2^{m}}$\;
  Randomly choose $n$ distinct elements of $\mathbb{F}_{2^m}$ that are not roots of $g(z)$ as the support $L$\;
- Compute the $k \times n$ parity check matrix $\hat{H}$ according to $L$ and $g(z)$\;
- Bring $H$ to systematic form: $H_{sys} = [I_{k}|H']$\;
+ Compute the $k \times n$ parity check matrix $H'$ according to $L$ and $g(z)$\;
+ Bring $H$ to systematic form: $H_{sys} = [I_{n-k}|H']$\;
  Compute generator matrix $G$ from $H_{sys}$\;
  \Return $\quad sk = (L, g(z)) \quad pk = (G)$\;
  \caption{McEliece key generation.}
