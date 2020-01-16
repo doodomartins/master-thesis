@@ -141,12 +141,12 @@ The function $\mathcal{F}$ maps an arbitrary binary string as input and returns 
     \hline
 \end{protocol}
 \end{figure}
-
  
-
 When Alice computes $c_2$, she is encrypting a message $m$, with error $t$ and the Bob's public key $G$. Additionally, Alice needs to compute the hash of the error added plus the message and the hash of the message. These last two values will be used on Bob's side to verify if both sides are computing the same session key. 
 
-On Bob's side, after receives $c$, Bob starts to decoding process on $c2$, and only him are able to perform this correctly for the reason that Alice uses the Bob public key on Encapsulation process. To complete the key encapsulation mechanism, Bob uses the 
+On Bob's side, after receives $c$, Bob starts to decoding process on $c2$, and only him are able to perform this correctly for the reason that Alice uses the Bob public key on Encapsulation process. To complete the key encapsulation mechanism, Bob uses the decoded $e'$ to check against $c_1$ and $c_2$ if both sides are agreeing in the same session key.
+
+The security of BIGQUAKE relies on the same security as the McEliece 
 
 \subsection{Timing side-channel attack}
 In \cite{shoufan2009timing}, the attack exploits the fact that flipping a bit of the error $e$ changes the Hamming weight $w$ and per consequence the timing for its decryption. If we flip a position that contains an error ($e_i = 1$) then the error will be removed and the time of computation will be shorter. However, if we flip a bit in a wrong position ($e_i = 0$) then it will add another error, and it will increase the decryption time. The attack described in~\cite{bucerzan2017improved} exploits the root finding in the polynomial ELP. It takes advantage of sending ciphertexts with fewer errors than expected, which generate an ELP with degree less than $t$, resulting in less time for finding roots. We explore both ideas applied to the implementation of BIGQUAKE.
