@@ -102,7 +102,7 @@ In this Section we will describe the BIGQUAKE submission, the usage of the McEli
 \subsection{Submission overview}
 BIGQUAKE~\cite{bardet2017big} uses binary Quasi-cyclic (QC) Goppa codes in order to accomplish a KEM between two distinct parts. Instead of using binary Goppa codes, BIGQUAKE uses QC Goppa codes, which have the same properties as Goppa codes but allow smaller keys.
 
-Let us suppose that Alice and Bob ($A$ and $B$ respectively) want to share a session secret key $K$ using BIGQUAKE. Then Bob needs to publishes his public key and Alice needs to follow the encapsulation mechanism. After receive the vector $c$ from Alice, Bob executes the decapsulation process. If Bob succeeds, both parties achieve the same session secret key $K$. The security of the protocol was based on steps that involve the McEliece encryption performed by Alice, and the McEliece decryption performed by Bob. The BIGQUAKE description are presented in Protocol \ref{prot_bigquake}.
+Let us suppose that Alice and Bob ($A$ and $B$ respectively) want to share a session secret key $K$ using BIGQUAKE. Then Bob needs to publishes his public key and Alice needs to follow the encapsulation mechanism. After receive the vector $c$ from Alice, Bob executes the decapsulation process. If Bob succeeds, both parties achieve the same session secret key $K$. The security of the protocol was based on steps that involve the McEliece encryption performed by Alice, and the McEliece decryption performed by Bob. The BIGQUAKE description are presented in Protocol~\ref{prot_bigquake}.
 
 The function $\mathcal{F}$ maps an arbitrary binary string as input and returns a word of weight $t$, i.e $\mathcal{F}: \{0,1\}^* \to \{x \in \mathbb{F}^n_2 | w_h(x) = t\}$. The detailed construction of the function $\mathcal{F}$ can be found at subsection $3.4.4$ in \cite{bardet2017big}. $\mathcal{H} : \{0,1\}^k \to \{0,1\}^s$ is a hash function. The function $\mathcal{H}$ in the original implementation is SHA-3. 
 
@@ -188,3 +188,5 @@ Sort $T$ in descending order of $A$\;
 After finding the position of the errors, one needs to verify if the error $e'$ found is the correct one, and then recover the message $m$. In order to verify for correctness, one can check $e'$ by computing $\mathcal{H}(e) \oplus \mathcal{H}(e') \oplus m = m'$ and if $c_3$ is equal to $\mathcal{H}(m')$. As mentioned early in this Section, the ciphertext is composed by $c = (m\oplus\mathcal{H}(e), H\cdot e^T, \mathcal{H}(m))$ or $c = (c_1, c_2, c_3)$.
 
 In our attack, we selected the precision parameter $M$ as 500 since it was the one that showed the more precise results without taking a long time of computation.  In our tests, it took $\approx17$ minutes for recovering one correct message.
+
+\subsubsection{Implementation remarks}
