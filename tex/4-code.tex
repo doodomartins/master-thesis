@@ -166,7 +166,7 @@ Algorithm~\ref{alg:attack:1} is the direct implementation of the attack proposed
     $A \gets 0$\;
     $c' \gets c \oplus \text{setBit}(n,i)$\;
     $time_m \gets 0$\;
-    \tcc{perform $M$ decryptions operatins meassuring the execution time}
+    \tcc{perform $M$ decryption operations measuring the average execution time}
     \For{$j\gets0$ \KwTo $M$}{
         $time_s \gets time()$\;
         decrypt($c'$)\;
@@ -176,6 +176,7 @@ Algorithm~\ref{alg:attack:1} is the direct implementation of the attack proposed
     $A \gets time_m / M$\;
     $T \gets (A, i)$\;
 }
+\tcc{select the errors position according whose small average execution time}
 Sort $T$ in descending order of $A$\;
 \For{$k\gets0$ \KwTo $t-1$}{
     $index \gets T[k].i$\;
