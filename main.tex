@@ -114,7 +114,7 @@
 
 \appendix
 \chapter{Implementation remarks on BIGQUAKE attack}\label{ch:imp-remarks}
-\begin{lstlisting}[caption={Code snippet of BIGQUAKE error attribution },label={lst:label},language=C]
+\begin{lstlisting}[caption={Code snippet of BIGQUAKE error attribution },label={lst:error_original},language=C]
 //Construct an error e from m
 int error = (int *) malloc(NB_ERRORS*sizeof(int));
 m2errir(m, error);
@@ -125,7 +125,7 @@ unsigned char* syndrome =
 decrypt_nied(syndrome, error, (unsigned char*) sk);
 \end{lstlisting}
 
-\begin{lstlisting}[caption={Code snippet of BIGQUAKE error attribution with the fix. },label={lst:label},language=C]
+\begin{lstlisting}[caption={Code snippet of BIGQUAKE error attribution with the fix. },label={lst:error_fix},language=C]
 //Construct an error e from m
 int error = {0};
 m2errir(m, error);
@@ -136,7 +136,7 @@ unsigned char* syndrome =
 decrypt_nied(syndrome, error, (unsigned char*) sk);
 \end{lstlisting}
 
-\begin{lstlisting}[caption={Multiplication of two elements in $\mathbb{F}_{2^{12}}$ and inversion of an element in $\mathbb{F}_{2^{12}}$},label={lst:label},language=C]
+\begin{lstlisting}[caption={Multiplication of two elements in $\mathbb{F}_{2^{12}}$ and inversion of an element in $\mathbb{F}_{2^{12}}$},label={lst:mult},language=C]
 #include <stdint.h>
 typedef uint16_t gf;
 
@@ -165,6 +165,11 @@ gf gf_q_m_mult(gf in0, gf in1) {
     tmp = tmp & 0xFFF;
     return tmp;
 }
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Inversion of an element in $\mathbb{F}_{2^{12}}$},label={lst:mult-inv},language=C]
+#include <stdint.h>
+typedef uint16_t gf;
 
 // Multiplicative inverse of in
 gf gf_inv(gf in) {
