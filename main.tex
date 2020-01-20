@@ -10,6 +10,7 @@
 \usepackage[ruled,linesnumbered]{algorithm2e} % algorithms
 \usepackage{tabularx} % protocol
 \usepackage{hyperref}
+\usepackage{listings}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -112,10 +113,8 @@
 \bibliography{main}
 
 \appendix
-\section{Implementation Code}
-
-\begin{center}
-\begin{adjustbox}{width=\textwidth,height=\someheight,keepaspectratio}
+\chapter{Implementation Code}
+\begin{figure}
 \begin{lstlisting}[caption={Multiplication of two elements in $\mathbb{F}_{2^{12}}$ and inversion of an element in $\mathbb{F}_{2^{12}}$},label={lst:label},language=C]
 #include <stdint.h>
 typedef uint16_t gf;
@@ -166,8 +165,6 @@ gf gf_inv(gf in) {
     return out;
 }
 \end{lstlisting}
-\end{adjustbox}
-\end{center}
-
+\end{figure}
 
 \end{document}
