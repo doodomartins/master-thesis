@@ -114,10 +114,12 @@
 
 \appendix
 \chapter{Implementation Code}
-\begin{figure}
 \begin{lstlisting}[caption={Multiplication of two elements in $\mathbb{F}_{2^{12}}$ and inversion of an element in $\mathbb{F}_{2^{12}}$},label={lst:label},language=C]
+
 #include <stdint.h>
 typedef uint16_t gf;
+
+//Multiplication between in0 and in1
 gf gf_q_m_mult(gf in0, gf in1) {
     uint64_t i, tmp, t0 = in0, t1 = in1;
     //Multiplication
@@ -142,6 +144,8 @@ gf gf_q_m_mult(gf in0, gf in1) {
     tmp = tmp & 0xFFF;
     return tmp;
 }
+
+// Multiplicative inverse of in
 gf gf_inv(gf in) {
     gf tmp_11 = 0;
     gf tmp_1111 = 0;
@@ -165,6 +169,5 @@ gf gf_inv(gf in) {
     return out;
 }
 \end{lstlisting}
-\end{figure}
 
 \end{document}

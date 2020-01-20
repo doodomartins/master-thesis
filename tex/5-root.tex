@@ -167,11 +167,10 @@ Fortunately, the authors in \cite{fedorenko2002finding} provide a generic decomp
 \label{eq:f_y}
     F(y) = f_3y^3 + \sum_{i=0}^{\lceil (t-4)/5 \rceil} y^{5i}(f_{5i} + \sum_{j=0}^{3} f_{5i+2^j}y^{2^j})
 \end{equation}
-After that, we can summarize all the steps as Algorithm~\ref{alg:linearized}. The function ``generate($m$)'' refers to the generation of the elements in $\mathbb{F}_{2^m}$ using Gray codes, see \cite{savage1997survey} for more details about Gray codes.
+After that, we can summarize all the steps as Algorithm~\ref{alg:linearized}. The function ``generate($m$)'' refers to the generation of the elements in $\mathbb{F}_{2^m}$ using Gray codes, see \cite{savage1997survey} for more details about Gray codes. Algorithm~\ref{alg:linearized} presents a countermeasure in the last steps of the algorithm, i.e., we added a dummy operation for blinding if $X[j]$ is a root of polynomial $F(x)$.
 
-Algorithm~\ref{alg:linearized} presents a countermeasure in the last steps of the algorithm, i.e., we added a dummy operation for blinding if $X[j]$ is a root of polynomial $F(x)$.
-
-\begin{algorithm}[!ht]
+\begin{figure}[ht]
+\begin{algorithm}[H]
  \KwData{$F(x)$ as a univariate polynomial over $\mathbb{F}_{2^m}$ with degree $t$ and $m$ as the extension field degree.}
  \KwResult{$R$ as a set of roots of $p(x)$.}
  $\ell^k_i \gets \emptyset$; $\ell_{is} \gets \emptyset$; $A^j_k \gets \emptyset$; $R \gets \emptyset$; $dummy \gets \emptyset$\;
@@ -222,6 +221,7 @@ Algorithm~\ref{alg:linearized} presents a countermeasure in the last steps of th
  \caption{Linearized polynomials for finding roots over $\mathbb{F}_{2^m}$.}
   \label{alg:linearized}
 \end{algorithm}
+\end{figure}
 
 \section{Successive Resultant Algorithm}
 \section{Cantor-Zassenhaus Algorithm}
