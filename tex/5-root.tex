@@ -95,5 +95,138 @@ This new approach allows us to define a fixed number of iterations for our versi
 Algorithm~\ref{alg:ibta} extracts a root of the polynomial when the variable $current$ has a polynomial with degree equal to one. If this degree is greater than one, then the algorithm needs to continue dividing the polynomial until it finds a root. The algorithm does that by adding the polynomial in a stack and reusing this polynomial in a division. 
 
 \section{Linearized Polynomials}
+The second countermeasure proposed is based on linearized polynomials. The authors in \cite{fedorenko2002finding} propose a method to compute the roots of a polynomial over $\mathbb{F}_{2^m}$, using a particular class of polynomials, called linearized polynomials. In \cite{strenzke2012fast}, this approach is a recursive algorithm which the author calls ``dcmp-rf''. In our solution, however, we present an iterative algorithm. We define linearized polynomials as follows:
+
+\begin{definition}
+A polynomial $\ell(y)$ over $\mathbb{F}_{2^m}$ is called a linearized polynomial if
+\begin{equation}
+    \ell(y) = \sum_i c_iy^{2^i},
+\end{equation}
+where $c_i \in \mathbb{F}_{2^m}$.
+\end{definition}
+In addition, from~\cite{truong2001fast}, we have Lemma~\ref{lemma:lin} that describes the main property of linearized polynomials for finding roots.
+\begin{lemma}
+\label{lemma:lin}
+    Let $y \in \mathbb{F}_{2^m}$ and let $\alpha^0, \alpha^1, \ldots, \alpha^{m-1}$ be a standard basis over $\mathbb{F}_2$. If
+    \begin{equation}
+        y = \sum_{k=0}^{m-1} y_k\alpha^k, y_k \in \mathbb{F}_2
+    \end{equation}
+    and $\ell(y) =\sum_j c_jy^{2^j}$, then
+      \begin{equation}
+        \ell(y) = \sum_{k=0}^{m-1} y_k\ell(\alpha^k).
+    \end{equation}
+\end{lemma}
+
+We call $A(y)$ over $\mathbb{F}_{2^m}$ as an affine polynomial if $A(y) = \ell(y) + \beta$ for $\beta \in \mathbb{F}_{2^m}$, where $\ell(y)$ is a linearized polynomial.
+
+We can illustrate a toy example to understand the idea behind finding roots using linearized polynomials.
+\begin{example}\label{ex:1}
+Let us consider the polynomial $f(y) = y^2 + (\alpha^2+1)y + (\alpha^2 +\alpha +1)y^0$ over $\mathbb{F}_{2^3}$ and $\alpha$ are elements in $\mathbb{F}_2[x]/ x^3+x^2+1$. Since we are trying to find roots, we can write $f(y)$ as
+ $$ y^2 + (\alpha^2+1)y + (\alpha^2 +\alpha +1)y^0 = 0$$
+ or
+\begin{equation}\label{eq:example_1}
+    y^2 + (\alpha^2+1)y   = (\alpha^2 +\alpha +1)y^0
+\end{equation}
+We can point that on the left hand side of Equation~\ref{eq:example_1}, $\ell(y) = y^2 + (\alpha^2+1)y$ is a linearized polynomial over $\mathbb{F}_{2^3}$ and Equation~\ref{eq:example_1} can be expressed just as
+\begin{equation}\label{eq:example_1_2}
+    \ell(y) = \alpha^2 +\alpha +1
+\end{equation}
+If $y = y_2\alpha^2 + y_1\alpha + y_0 \in \mathbb{F}_{2^3}$ then, according to Lemma~\ref{lemma:lin}, Equation~\ref{eq:example_1_2} becomes
+\begin{equation}\label{eq:example_1_3}
+    y_2\ell(\alpha^2) + y_1\ell(\alpha) + y_0\ell(\alpha^0) = \alpha^2 +\alpha +1
+\end{equation}
+We can compute $\ell(\alpha^0),\ell(\alpha)$ and $\ell(\alpha^2)$ using the left hand side of Equation~\ref{eq:example_1} and we have the following values
+\begin{equation}\label{eq:example_1_4}
+    \begin{split}
+        \ell(\alpha^0) & = (\alpha^0)^2 + (\alpha^2+1)(\alpha^0) = \alpha^2+1 + 1 = \alpha^2 \\
+        \ell(\alpha) & = (\alpha)^2 + (\alpha^2+1)(\alpha) = \alpha^2 + \alpha^2+ \alpha + 1 = \alpha + 1 \\
+        \ell(\alpha^2) & = (\alpha^2)^2 + (\alpha^2+1)(\alpha^2) = \alpha^4 +\alpha^4 +  \alpha^2 = \alpha^2.
+    \end{split}
+\end{equation}
+A substitution of Equation~\ref{eq:example_1_4} into Equation~\ref{eq:example_1_3} gives us
+\begin{equation}\label{eq:example_1_5}
+     (y_2+y_0)\alpha^2 + (y_1)\alpha + (y_1)\alpha^0 = \alpha^2 +\alpha +1
+\end{equation}
+Equation~\ref{eq:example_1_5} can be expressed as a matrix in the form
+\begin{equation}\label{eq:example_1_6}
+    \begin{bmatrix} y_2 & y_1 & y_0 \end{bmatrix}
+    \begin{bmatrix}
+    1 & 0 & 0 \\
+    0 & 1 & 1 \\
+    1 & 0 & 0
+    \end{bmatrix}
+    =
+    \begin{bmatrix} 1 & 1 & 1 \end{bmatrix}.
+\end{equation}
+If one solves simultaneously the linear system in Equation~\ref{eq:example_1_6} then the results are the roots of the polynomial given in Equation~\ref{eq:example_1}. From Equation~\ref{eq:example_1_5}, one observes that the solutions are $y=110$ and $y=011$, which can be translated to $\alpha + 1$ and $\alpha^2 + \alpha$.
+\end{example}
+
+
+Fortunately, the authors in \cite{fedorenko2002finding} provide a generic decomposition for finding affine polynomials. In their work, each polynomial in the form $F(y) = \sum_{j=0}^{t} f_jy^j$ for $f_j \in \mathbb{F}_{2^m}$ can be represented as
+\begin{equation}
+\label{eq:f_y}
+    F(y) = f_3y^3 + \sum_{i=0}^{\lceil (t-4)/5 \rceil} y^{5i}(f_{5i} + \sum_{j=0}^{3} f_{5i+2^j}y^{2^j})
+\end{equation}
+After that, we can summarize all the steps as Algorithm~\ref{alg:linearized}. The function ``generate($m$)'' refers to the generation of the elements in $\mathbb{F}_{2^m}$ using Gray codes, see \cite{savage1997survey} for more details about Gray codes.
+
+Algorithm~\ref{alg:linearized} presents a countermeasure in the last steps of the algorithm, i.e., we added a dummy operation for blinding if $X[j]$ is a root of polynomial $F(x)$.
+
+Using Algorithm~\ref{alg:linearized}, the predominant cost for its implementation is:
+\begin{equation}
+C_{lin} = m(C_{gf\_pow} + C_{pol\_eval}) + 2^m(C_{gf\_pow} + 2C_{gf\_mul})
+\end{equation}
+
+\begin{algorithm}[!ht]
+ \KwData{$F(x)$ as a univariate polynomial over $\mathbb{F}_{2^m}$ with degree $t$ and $m$ as the extension field degree.}
+ \KwResult{$R$ as a set of roots of $p(x)$.}
+ $\ell^k_i \gets \emptyset$; $\ell_{is} \gets \emptyset$; $A^j_k \gets \emptyset$; $R \gets \emptyset$; $dummy \gets \emptyset$\;
+ \If{$f_0  == 0$}{
+ $R.append(0)$\;
+ }
+ \For{$i\leftarrow 0$ \KwTo $\lceil (t-4)/5 \rceil$}
+ {
+    $\ell_i(x) \gets 0$\;
+    \For{$j\gets 0$ \KwTo $3$}{
+      $\ell_i(x) \gets \ell_i(x) + f_{5i+2^j}x^{2^j}$\;
+      }
+    $\ell_{is}[i] \gets \ell_i(x)$\;
+ }
+ \For{$k\gets 0$ \KwTo $m-1$}{
+    \For{$i\leftarrow 0$ \KwTo $\lceil (t-4)/5 \rceil$}
+    {
+        $\ell^k_i \gets \ell_{is}(\alpha^k)$\;
+    }
+
+ }
+ $A^0_i \gets \emptyset$\;
+ \For{$i\gets 0$ \KwTo $\lceil (t-4)/5 \rceil$}{
+  $A^0_i \gets f_{5i}$\;
+ }
+
+ $X \gets \text{generate}(m)$\;
+ \For{$j\gets 1$ \KwTo $2^m - 1$}{
+    \For{$i\gets 0$ \KwTo $\lceil (t-4)/5 \rceil$}{
+        $A \gets A^{j-1}_i$\;
+        $A \gets A + \ell^{\delta(X[j], X[j-1])}_i$\;
+        $A^j_i \gets A$\;
+    }
+ }
+\For{$j\gets 1$ \KwTo $2^m - 1$}{
+    $result \gets 0$\;
+    \For{$i\gets 0$ \KwTo $\lceil (t-4)/5 \rceil$}{
+        $result = result + (X[j])^{5i}A^j_i$\;
+    }
+    $eval = result + f_3(X[j])^{3}$\;
+    \eIf{$eval == 0$}{
+        $R.append(X[j])$\;
+    }{
+        $dummy.append(X[j])$\;
+    }
+}
+\Return $R$\;
+ \caption{Linearized polynomials for finding roots over $\mathbb{F}_{2^m}$.}
+  \label{alg:linearized}
+\end{algorithm}
+
 \section{Successive Resultant Algorithm}
 \section{Cantor-Zassenhaus Algorithm}
