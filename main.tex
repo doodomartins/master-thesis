@@ -56,7 +56,6 @@
 \newcommand{\sbline}{\\[.5\normalbaselineskip]}% small blank line
 
 
-\newtheorem{theorem}{Theorem}[chapter]
 \newtheorem{definition}{Definition}[chapter]
 \newtheorem{lemma}{Lemma}[chapter]
 \newtheorem{example}{Example}[chapter]
@@ -112,8 +111,63 @@
 \postextual
 \bibliography{main}
 
-% \anexo
-% \chapter{Código da implementação}\label{imp-attack}
-% % \input{tex/}
+\appendix
+\section{Implementation Code}
+
+\begin{center}
+\begin{adjustbox}{width=\textwidth,height=\someheight,keepaspectratio}
+\begin{lstlisting}[caption={Multiplication of two elements in $\mathbb{F}_{2^{12}}$ and inversion of an element in $\mathbb{F}_{2^{12}}$},label={lst:label},language=C]
+#include <stdint.h>
+typedef uint16_t gf;
+gf gf_q_m_mult(gf in0, gf in1) {
+    uint64_t i, tmp, t0 = in0, t1 = in1;
+    //Multiplication
+    tmp = t0 * (t1 & 1);
+    for (i = 1; i < 12; i++)
+        tmp ^= (t0 * (t1 & (1 << i)));
+    //reduction
+    tmp = tmp & 0x7FFFFF;
+    //first step of reduction
+    gf reduction = (tmp >> 12);
+    tmp = tmp & 0xFFF;
+    tmp = tmp ^ (reduction << 6);
+    tmp = tmp ^ (reduction << 4);
+    tmp = tmp ^ reduction << 1;
+    tmp = tmp ^ reduction;
+    //second step of reduction
+    reduction = (tmp >> 12);
+    tmp = tmp ^ (reduction << 6);
+    tmp = tmp ^ (reduction << 4);
+    tmp = tmp ^ reduction << 1;
+    tmp = tmp ^ reduction;
+    tmp = tmp & 0xFFF;
+    return tmp;
+}
+gf gf_inv(gf in) {
+    gf tmp_11 = 0;
+    gf tmp_1111 = 0;
+    gf out = in;
+    out = gf_sq(out); //a^2
+    tmp_11 = gf_mult(out, in); //a^2*a = a^3
+    out = gf_sq(tmp_11); //(a^3)^2 = a^6
+    out = gf_sq(out); // (a^6)^2 = a^12
+    tmp_1111 = gf_mult(out, tmp_11); //a^12*a^3 = a^15
+    out = gf_sq(tmp_1111); //(a^15)^2 = a^30
+    out = gf_sq(out); //(a^30)^2 = a^60
+    out = gf_sq(out); //(a^60)^2 = a^120
+    out = gf_sq(out); //(a^120)^2 = a^240
+    out = gf_mult(out, tmp_1111); //a^240*a^15 = a^255
+    out = gf_sq(out); // (a^255)^2 = 510
+    out = gf_sq(out); //(a^510)^2 =  1020
+    out = gf_mult(out, tmp_11); //a^1020*a^3 = 1023
+    out = gf_sq(out); //(a^1023)^2 = 2046
+    out = gf_mult(out, in); //a^2046*a = 2047
+    out = gf_sq(out); //(a^2047)^2 = 4094
+    return out;
+}
+\end{lstlisting}
+\end{adjustbox}
+\end{center}
+
 
 \end{document}

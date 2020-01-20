@@ -171,11 +171,6 @@ After that, we can summarize all the steps as Algorithm~\ref{alg:linearized}. Th
 
 Algorithm~\ref{alg:linearized} presents a countermeasure in the last steps of the algorithm, i.e., we added a dummy operation for blinding if $X[j]$ is a root of polynomial $F(x)$.
 
-Using Algorithm~\ref{alg:linearized}, the predominant cost for its implementation is:
-\begin{equation}
-C_{lin} = m(C_{gf\_pow} + C_{pol\_eval}) + 2^m(C_{gf\_pow} + 2C_{gf\_mul})
-\end{equation}
-
 \begin{algorithm}[!ht]
  \KwData{$F(x)$ as a univariate polynomial over $\mathbb{F}_{2^m}$ with degree $t$ and $m$ as the extension field degree.}
  \KwResult{$R$ as a set of roots of $p(x)$.}
