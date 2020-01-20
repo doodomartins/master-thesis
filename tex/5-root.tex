@@ -173,7 +173,7 @@ Fortunately, the authors in \cite{fedorenko2002finding} provide a generic decomp
 \end{equation}
 After that, we can summarize all the steps as Algorithm~\ref{alg:linearized}. The function ``generate($m$)'' refers to the generation of the elements in $\mathbb{F}_{2^m}$ using Gray codes, see \cite{savage1997survey} for more details about Gray codes. Algorithm~\ref{alg:linearized} presents a countermeasure in the last steps of the algorithm, i.e., we added a dummy operation for blinding if $X[j]$ is a root of polynomial $F(x)$.
 
-\begin{figure}[ht]
+\begin{figure}
 \begin{algorithm}[H]
  \KwData{$F(x)$ as a univariate polynomial over $\mathbb{F}_{2^m}$ with degree $t$ and $m$ as the extension field degree.}
  \KwResult{$R$ as a set of roots of $p(x)$.}
