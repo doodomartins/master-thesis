@@ -25,9 +25,7 @@ Algorithm~\ref{alg:exhaustive} describes the exhaustive search. For every elemen
 \end{algorithm}
 \end{figure}
 
-One solution to avoid this leakage is to permute the elements of vector $A$ before start the evaluation. 
-
-Using this technique, an attacker can identify the extra operation, but without learning any secret information. In our case, we use the Fisher-Yates shuffle~\cite{black2005fisher} for shuffling the elements of vector $A$. In~\cite{wang2018fpga}, the authors show an implementation of the shuffling algorithm safe against timing attacks. Algorithm~\ref{alg:exhaustive_permuted} shows the permutation of the elements and the computation of the roots.
+One solution to avoid this leakage is to permute the elements of vector $A$ before start the evaluation. Using this technique, an attacker can identify the extra operation, but without learning any secret information. In our case, we use the Fisher-Yates shuffle~\cite{black2005fisher} for shuffling the elements of vector $A$. In~\cite{wang2018fpga}, the authors show an implementation of the shuffling algorithm safe against timing attacks. Algorithm~\ref{alg:exhaustive_permuted} shows the permutation of the elements and the computation of the roots.
 
 \begin{figure}[ht]
 \begin{algorithm}[H]
