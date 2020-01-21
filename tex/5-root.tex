@@ -7,7 +7,7 @@ The adjustments were made in the following algorithms to find roots: exhaustive 
 \section{Exhaustive search}
 The exhaustive search, also called Chien Search~\cite{chien1964cyclic}, is a direct method, in which the evaluation of $f$ for all the elements in $\mathbb{F}_{2^m}$ is performed. A root is found whenever the evaluation result is zero. This method is acceptable for small fields and can be made efficient with a parallel implementation. The greatest drawback of this method it was the complexity of this algorithm, and this is the reason because their are not widely used. However, we consider that their are still relevant, it is because some NIST proposals are based on a small finite field, enabling their usage. 
 
-Algorithm~\ref{alg:exhaustive} describes the exhaustive search. As can be seen in Algorithm~\ref{alg:exhaustive}, this method leaks information. This is because whenever a root is found, i.e., $dummy = 0$, an extra operation is performed. In this way, the attacker can infer from this additional time that a root was found, thus providing ways to obtain data that should be secret.
+Algorithm~\ref{alg:exhaustive} describes the exhaustive search. For every element in $\mathbb{F}_{2^m}$ we evaluate the polynomial and check if it was a root or not, and this method leaks information when we found a root. This is because whenever we found, i.e., $dummy = 0$, an extra operation is performed by adding the root founded on the returning list $R$. In this way, the attacker can infer from this additional time that a root was found, thus providing ways to obtain data that should be secret.
 
 \begin{figure}[ht]
 \begin{algorithm}[H]
@@ -25,7 +25,9 @@ Algorithm~\ref{alg:exhaustive} describes the exhaustive search. As can be seen i
 \end{algorithm}
 \end{figure}
 
-One solution to avoid this leakage is to permute the elements of vector $A$. Using this technique, an attacker can identify the extra operation, but without learning any secret information. In our case, we use the Fisher-Yates shuffle~\cite{black2005fisher} for shuffling the elements of vector $A$. In~\cite{wang2018fpga}, the authors show an implementation of the shuffling algorithm safe against timing attacks. Algorithm~\ref{alg:exhaustive_permuted} shows the permutation of the elements and the computation of the roots.
+One solution to avoid this leakage is to permute the elements of vector $A$ before start the evaluation. 
+
+Using this technique, an attacker can identify the extra operation, but without learning any secret information. In our case, we use the Fisher-Yates shuffle~\cite{black2005fisher} for shuffling the elements of vector $A$. In~\cite{wang2018fpga}, the authors show an implementation of the shuffling algorithm safe against timing attacks. Algorithm~\ref{alg:exhaustive_permuted} shows the permutation of the elements and the computation of the roots.
 
 \begin{figure}[ht]
 \begin{algorithm}[H]
