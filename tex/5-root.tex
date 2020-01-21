@@ -7,7 +7,7 @@ The adjustments were made in the following algorithms to find roots: exhaustive 
 \section{Exhaustive search}
 The exhaustive search, also called Chien Search~\cite{chien1964cyclic}, is a direct method, in which the evaluation of $f$ for all the elements in $\mathbb{F}_{2^m}$ is performed. A root is found whenever the evaluation result is zero. This method is acceptable for small fields and can be made efficient with a parallel implementation. The greatest drawback of this method it was the complexity of this algorithm, and this is the reason because their are not widely used. However, we consider that their are still relevant, it is because some NIST proposals are based on a small finite field, enabling their usage. 
 
-As can be seen in Algorithm~\ref{alg:exhaustive}, this method leaks information. This is because whenever a root is found, i.e., $dummy = 0$, an extra operation is performed. In this way, the attacker can infer from this additional time that a root was found, thus providing ways to obtain data that should be secret.
+Algorithm~\ref{alg:exhaustive} describes the exhaustive search. As can be seen in Algorithm~\ref{alg:exhaustive}, this method leaks information. This is because whenever a root is found, i.e., $dummy = 0$, an extra operation is performed. In this way, the attacker can infer from this additional time that a root was found, thus providing ways to obtain data that should be secret.
 
 \begin{figure}[ht]
 \begin{algorithm}[H]
