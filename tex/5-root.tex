@@ -25,7 +25,7 @@ Algorithm~\ref{alg:exhaustive} describes the exhaustive search. For every elemen
 \end{algorithm}
 \end{figure}
 
-One solution to avoid this leakage is to permute the elements of vector $A$ before start the evaluation. Using this technique, an attacker can identify the extra operation, but without learning any secret information. In our case, we use the Fisher-Yates shuffle~\cite{black2005fisher} for shuffling the elements of vector $A$. In~\cite{wang2018fpga}, the authors show an implementation of the shuffling algorithm safe against timing attacks. Algorithm~\ref{alg:exhaustive_permuted} shows the permutation of the elements and the computation of the roots.
+One solution to avoid this leakage is to permute the elements of vector $A$ before start the evaluation. Using this technique, an attacker can identify the extra operation, but without learning any secret information. In our case, we use the Fisher-Yates shuffle~\cite{black2005fisher} for shuffling the elements of vector $A$. In~\cite{wang2018fpga}, the authors show an implementation of the shuffling algorithm safe against timing attacks, thus we can build and exhaustive search without leak information against a side-channel attack. Algorithm~\ref{alg:exhaustive_permuted} shows the permutation of the elements and the computation of the roots.
 
 \begin{figure}[ht]
 \begin{algorithm}[H]
@@ -45,7 +45,7 @@ One solution to avoid this leakage is to permute the elements of vector $A$ befo
 \end{algorithm}
 \end{figure}
 
-Using this approach, we add one extra step to the algorithm. However, this permutation blurs the sensitive information of the algorithm, making the usage of Algorithm~\ref{alg:exhaustive_permuted} slightly harder for the attacker to acquire timing leakage.
+Using this approach, we add one extra step to the algorithm. However, this permutation blurs the sensitive information of the algorithm, making the usage of Algorithm~\ref{alg:exhaustive_permuted} slightly harder for the attacker to acquire timing leakage. For this case, we want to avoid the addition of an \texttt{else} clausure adding the elements that are not a root in other l
 
 
 \section{Berlekamp Trace Algorithm}
