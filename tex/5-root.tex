@@ -45,7 +45,7 @@ One solution to avoid this leakage is to permute the elements of vector $A$ befo
 \end{algorithm}
 \end{figure}
 
-Using this approach, we add one extra step to the algorithm. However, this permutation blurs the sensitive information of the algorithm, making the usage of Algorithm~\ref{alg:exhaustive_permuted} slightly harder for the attacker to acquire timing leakage. For this case, we want to avoid the addition of an \texttt{else} clausure adding the elements that are not a root in other l
+Using this approach, we add one extra step to the algorithm. However, this permutation blurs the sensitive information of the algorithm, making the usage of Algorithm~\ref{alg:exhaustive_permuted} slightly harder for the attacker to acquire timing leakage. For this case, we want to avoid the addition of an \texttt{else} clause adding the elements that are not a root in other list. This addition will absolutely reduce the time variance on the execution of the algorithm, but it will open a lack for cache attacks~\cite{dan2005}.
 
 
 \section{Berlekamp Trace Algorithm}
