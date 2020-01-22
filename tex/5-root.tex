@@ -111,7 +111,7 @@ Algorithm~\ref{alg:ibta} extracts a root of the polynomial when the variable $cu
 The third countermeasure proposed is based on linearized polynomials. The authors in \cite{fedorenko2002finding} propose a method to compute the roots of a polynomial over $\mathbb{F}_{2^m}$, using a particular class of polynomials, called linearized polynomials. In \cite{strenzke2012fast}, this approach is a recursive algorithm which the author calls ``dcmp-rf''. In our solution, however, we present an iterative algorithm. First, we define linearized polynomials as follows:
 
 \begin{definition}
-A polynomial $\ell(y)$ over $\mathbb{F}_{2^m}$ is called a linearized polynomial if
+A polynomial $\ell(y)$ over $\mathbb{F}_{2^m}$ is a linearized polynomial if
 \begin{equation}
     \ell(y) = \sum_i c_iy^{2^i},
 \end{equation}
@@ -122,7 +122,7 @@ In addition, from~\cite{truong2001fast}, we have Lemma~\ref{lemma:lin} that desc
 \label{lemma:lin}
     Let $y \in \mathbb{F}_{2^m}$ and let $\alpha^0, \alpha^1, \ldots, \alpha^{m-1}$ be a standard basis over $\mathbb{F}_2$. If
     \begin{equation}
-        y = \sum_{k=0}^{m-1} y_k\alpha^k, y_k \in \mathbb{F}_2
+        y = \sum_{k=0}^{m-1} y_k\alpha^k,\quad y_k \in \mathbb{F}_2
     \end{equation}
     and $\ell(y) =\sum_j c_jy^{2^j}$, then
       \begin{equation}
@@ -130,7 +130,7 @@ In addition, from~\cite{truong2001fast}, we have Lemma~\ref{lemma:lin} that desc
     \end{equation}
 \end{lemma}
 
-We call $A(y)$ over $\mathbb{F}_{2^m}$ as an affine polynomial if $A(y) = \ell(y) + \beta$ for $\beta \in \mathbb{F}_{2^m}$, where $\ell(y)$ is a linearized polynomial.
+We call $A(y)$ over $\mathbb{F}_{2^m}$ an affine polynomial if $A(y) = \ell(y) + \beta$ for $\beta \in \mathbb{F}_{2^m}$, where $\ell(y)$ is a linearized polynomial.
 
 We can illustrate a toy example to understand the idea behind finding roots using linearized polynomials.
 \begin{example}\label{ex:1}
