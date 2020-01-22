@@ -130,11 +130,10 @@ In addition, from~\cite{truong2001fast}, we have Lemma~\ref{lemma:lin} that desc
     \end{equation}
 \end{lemma}
 
-We call $A(y)$ over $\mathbb{F}_{2^m}$ an affine polynomial if $A(y) = \ell(y) + \beta$ for $\beta \in \mathbb{F}_{2^m}$, where $\ell(y)$ is a linearized polynomial.
+We call $A(y)$ over $\mathbb{F}_{2^m}$ an affine polynomial if $A(y) = \ell(y) + \beta$ for $\beta \in \mathbb{F}_{2^m}$, where $\ell(y)$ is a linearized polynomial. Using this definitions, we present a toy example to understand the idea behind finding roots using linearized polynomials.
 
-We can illustrate a toy example to understand the idea behind finding roots using linearized polynomials.
 \begin{example}\label{ex:1}
-Let us consider the polynomial $f(y) = y^2 + (\alpha^2+1)y + (\alpha^2 +\alpha +1)y^0$ over $\mathbb{F}_{2^3}$ and $\alpha$ are elements in $\mathbb{F}_2[x]/ x^3+x^2+1$. Since we are trying to find roots, we can write $f(y)$ as
+Let us consider the polynomial $f(y) = y^2 + (\alpha^2+1)y + (\alpha^2 +\alpha +1)y^0$ over $\mathbb{F}_{2^3}$ and $\alpha$ a primitive element in $\mathbb{F}_2[x]/ x^3+x^2+1$. Since we are trying to find roots, we can write $f(y)$ as
  $$ y^2 + (\alpha^2+1)y + (\alpha^2 +\alpha +1)y^0 = 0$$
  or
 \begin{equation}\label{eq:example_1}
@@ -178,8 +177,9 @@ If one solves simultaneously the linear system in Equation~\ref{eq:example_1_6} 
 Fortunately, the authors in \cite{fedorenko2002finding} provide a generic decomposition for finding affine polynomials. In their work, each polynomial in the form $F(y) = \sum_{j=0}^{t} f_jy^j$ for $f_j \in \mathbb{F}_{2^m}$ can be represented as
 \begin{equation}
 \label{eq:f_y}
-    F(y) = f_3y^3 + \sum_{i=0}^{\lceil (t-4)/5 \rceil} y^{5i}(f_{5i} + \sum_{j=0}^{3} f_{5i+2^j}y^{2^j})
+    F(y) = f_3y^3 + \sum_{i=0}^{\lceil (t-4)/5 \rceil} y^{5i}(f_{5i} + \sum_{j=0}^{3} f_{5i+2^j}y^{2^j}).
 \end{equation}
+
 After that, we can summarize all the steps as Algorithm~\ref{alg:linearized}. The function ``generate($m$)'' refers to the generation of the elements in $\mathbb{F}_{2^m}$ using Gray codes, see \cite{savage1997survey} for more details about Gray codes. The linearized method differ from the exhaustive search on the evaluation process, here, it is much more efficiency compute this evaluation because of the polynomial are in an linearized form. Algorithm~\ref{alg:linearized} presents our countermeasure in the last steps of the algorithm, i.e., we added a dummy operation for blinding if $X[j]$ is a root of polynomial $F(x)$.
 
 \begin{figure}
