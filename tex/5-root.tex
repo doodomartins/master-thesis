@@ -180,7 +180,7 @@ Fortunately, the authors in \cite{fedorenko2002finding} provide a generic decomp
 \label{eq:f_y}
     F(y) = f_3y^3 + \sum_{i=0}^{\lceil (t-4)/5 \rceil} y^{5i}(f_{5i} + \sum_{j=0}^{3} f_{5i+2^j}y^{2^j})
 \end{equation}
-After that, we can summarize all the steps as Algorithm~\ref{alg:linearized}. The function ``generate($m$)'' refers to the generation of the elements in $\mathbb{F}_{2^m}$ using Gray codes, see \cite{savage1997survey} for more details about Gray codes. The difference here from the exhaustive search was on the evaluation process, here, it is much more efficiency compute this evaluation because of the polynomial are in an linearized form. Algorithm~\ref{alg:linearized} presents our countermeasure in the last steps of the algorithm, i.e., we added a dummy operation for blinding if $X[j]$ is a root of polynomial $F(x)$.
+After that, we can summarize all the steps as Algorithm~\ref{alg:linearized}. The function ``generate($m$)'' refers to the generation of the elements in $\mathbb{F}_{2^m}$ using Gray codes, see \cite{savage1997survey} for more details about Gray codes. The linearized method differ from the exhaustive search on the evaluation process, here, it is much more efficiency compute this evaluation because of the polynomial are in an linearized form. Algorithm~\ref{alg:linearized} presents our countermeasure in the last steps of the algorithm, i.e., we added a dummy operation for blinding if $X[j]$ is a root of polynomial $F(x)$.
 
 \begin{figure}
 \begin{algorithm}[H]
@@ -280,3 +280,4 @@ In \cite{petit2014finding}, the authors present an algorithm for solving the sys
 
 
 \section{Cantor-Zassenhaus Algorithm}
+\cite{cantor1981new}
