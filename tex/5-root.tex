@@ -49,7 +49,7 @@ Using this approach, we add one extra step to the algorithm. However, this permu
 
 
 \section{Berlekamp Trace Algorithm}
-Our second strategy was the classical Berlekamp factoring algorithm~\cite{berlekamp1970factoring}. Berlekamp presents an efficient algorithm to factor a polynomial, which can be used to find its roots. We call this algorithm \emph{Berlekamp trace algorithm} since it is relies on the trace function properties to split a polynomial into two small polynomials. This classical algorithm is one of the most used on code-based cryptosystems for the reason that the Berlekamp it is one of the most e
+Our second strategy was the classical Berlekamp factoring algorithm~\cite{berlekamp1970factoring}. Berlekamp presents an efficient algorithm to factor a polynomial, which can be used to find its roots. We call this algorithm \emph{Berlekamp trace algorithm} since it is relies on the trace function properties to split a polynomial into two small polynomials. This classical algorithm is one of the most used on code-based cryptosystems for the reason that the Berlekamp has lower complexity when compared with exhaustive search~\cite{biswas2009efficient}. 
 
 The trace function defined as $Tr(x) = x + x^{2} + x^{2^{2}} + \dots + x^{2^{m-1}}$. It is possible to change BTA for finding roots of a polynomial $p(x)$ using $\beta = \{\beta_1, \beta_2, \ldots, \beta_m\}$ as a standard basis of $\mathbb{F}_{2^{m}}$, and then computing the greatest common divisor between $p(x)$ and $Tr(\beta_0 \cdot x)$. After that, it starts a recursion where BTA performs two recursive calls; one with the result of gcd algorithm and the other with the remainder of the division $p(x) / \gcd(p(x), Tr(\beta_i \cdot x))$. 
 
