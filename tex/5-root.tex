@@ -76,9 +76,8 @@ As we can see, a direct implementation of Algorithm~\ref{alg:bta} has no constan
 In order to avoid the nonconstant number of executions and avoid timing side-channel attacks, here referred as $BTA-it$, we propose an iterative implementation of Algorithm~\ref{alg:bta}. In this way, our proposal iterates in a fixed number of iterations instead of calling itself until the base case. The main idea is not changed; we still divide the task of computing the roots of a polynomial $p(x)$ into two smaller instances. However, we change the approach of the division of the polynomial. Since we want to compute the same number of operations independent of the degree of the polynomial, we perform the gcd with a trace function for all basis in $\beta$, and choose a division that results in two new polynomials with approximate degree.
 
 This new approach allows us to define a fixed number of iterations for our version of BTA. Since we always divide into two small instances, we need $t-1$ iterations to split a polynomial of degree $t$ in $t$ polynomials of degree $1$.
-This computation of can be ea
-
-Algorithm~\ref{alg:ibta} presents our new approach.
+Then we just need to add an stack to controlling the polynomials to be divided.
+Algorithm~\ref{alg:ibta} presents our new approach of the iterative BTA -- $i-BTA$.
 
 
 \begin{algorithm}[ht]
