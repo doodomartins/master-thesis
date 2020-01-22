@@ -174,7 +174,7 @@ If one solves simultaneously the linear system in Equation~\ref{eq:example_1_6} 
 \end{example}
 
 
-Fortunately, the authors in \cite{fedorenko2002finding} provide a generic decomposition for finding affine polynomials. In their work, each polynomial in the form $F(y) = \sum_{j=0}^{t} f_jy^j$ for $f_j \in \mathbb{F}_{2^m}$ can be represented as
+Fortunately, the authors in \cite{fedorenko2002finding} provide a generic decomposition for finding affine polynomials. Thus we can transform the error locator polynomial in an affine polynomial. In their work, each polynomial in the form $F(y) = \sum_{j=0}^{t} f_jy^j$ for $f_j \in \mathbb{F}_{2^m}$ can be represented as
 \begin{equation}
 \label{eq:f_y}
     F(y) = f_3y^3 + \sum_{i=0}^{\lceil (t-4)/5 \rceil} y^{5i}(f_{5i} + \sum_{j=0}^{3} f_{5i+2^j}y^{2^j}).
