@@ -103,7 +103,7 @@ This new approach allows us to define a fixed number of iterations for our versi
   \label{alg:ibta}
 \end{algorithm}
 
-Algorithm~\ref{alg:ibta} extracts a root of the polynomial when the variable $current$ has a polynomial with degree equal to one. If this degree is greater than one, then the algorithm needs to continue dividing the polynomial until it finds a root. The algorithm does that by adding the polynomial in a stack and reusing this polynomial in a division. 
+Algorithm~\ref{alg:ibta} extracts a root of the polynomial when the variable $current$ has a polynomial with degree equal to one. If this degree is greater than one, then the algorithm needs to continue dividing the polynomial until it finds a root. The algorithm does that by adding the polynomial in a stack and reusing this polynomial in a future division. The iterative BTA has a higher complexity when compare to the original BTA. Nevertheless, with our new approach, we achieve a more constant time execution on the root finding task, consequentily avoiding 
 
 \section{Linearized Polynomials}
 The second countermeasure proposed is based on linearized polynomials. The authors in \cite{fedorenko2002finding} propose a method to compute the roots of a polynomial over $\mathbb{F}_{2^m}$, using a particular class of polynomials, called linearized polynomials. In \cite{strenzke2012fast}, this approach is a recursive algorithm which the author calls ``dcmp-rf''. In our solution, however, we present an iterative algorithm. We define linearized polynomials as follows:
