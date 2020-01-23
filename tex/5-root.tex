@@ -170,10 +170,10 @@ Equation~\ref{eq:example_1_5} can be expressed as a matrix in the form
     =
     \begin{bmatrix} 1 & 1 & 1 \end{bmatrix}.
 \end{equation}
-If one solves simultaneously the linear system in Equation~\ref{eq:example_1_6} then the results are the roots of the original polynomial given in Equation~\ref{eq:example_1}. From Equation~\ref{eq:example_1_5}, one observes that the solutions are $y=110$ and $y=011$. Furthermore, we can translate $110$ and $011$ to $\alpha + 1$ and $\alpha^2 + \alpha$. After all this steps, we can check if we got the correct roots by checking $f(\alpha + 1)$ and $f(\alpha^2 + \alpha)$
+If one solves simultaneously the linear system in Equation~\ref{eq:example_1_6} then the results are the roots of the original polynomial given in Equation~\ref{eq:example_1}. From Equation~\ref{eq:example_1_5}, one observes that the solutions are $y=110$ and $y=011$. Furthermore, we can translate $110$ and $011$ to $\alpha + 1$ and $\alpha^2 + \alpha$. After all this steps, is easy to check if we found the factors of $f(y)$, we just need to multiply $y - \alpha + 1$ and $y- \alpha^2 + \alpha$, thus we get
 
-\begin{equation}\label{eq:example_1_6}
-    f(\alpha + 1) = (\alpha + 1)^2 + (\alpha^2 + 1)(\alpha + 1) + 
+\begin{equation}\label{eq:example_1_7}
+    (y - \alpha + 1) (y - \alpha^2 + \alpha) = y^2 + (\alpha^2+1)y + (\alpha^2 +\alpha +1) = f(y).
 \end{equation}
 
 
