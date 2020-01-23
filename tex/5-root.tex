@@ -172,9 +172,9 @@ Equation~\ref{eq:example_1_5} can be expressed as a matrix in the form
 \end{equation}
 If one solves simultaneously the linear system in Equation~\ref{eq:example_1_6} then the results are the roots of the original polynomial given in Equation~\ref{eq:example_1}. From Equation~\ref{eq:example_1_5}, one observes that the solutions are $y=110$ and $y=011$. Furthermore, we can translate $110$ and $011$ to $\alpha + 1$ and $\alpha^2 + \alpha$. After all this steps, is easy to check if we found the factors of $f(y)$, we just need to multiply $y - \alpha + 1$ and $y- \alpha^2 + \alpha$, thus we get
 
-\begin{equation}\label{eq:example_1_7}
+\begin{equation*}\label{eq:example_1_7}
     (y - \alpha + 1) (y - \alpha^2 + \alpha) = y^2 + (\alpha^2+1)y + (\alpha^2 +\alpha +1) = f(y).
-\end{equation}
+\end{equation*}
 \end{example}
 
 Fortunately, the authors in \cite{fedorenko2002finding} provide a generic decomposition for finding affine polynomials. Thus we can transform the error locator polynomial in an affine polynomial. In their work, each polynomial in the form $F(y) = \sum_{j=0}^{t} f_jy^j$ for $f_j \in \mathbb{F}_{2^m}$ can be represented as
@@ -183,7 +183,7 @@ Fortunately, the authors in \cite{fedorenko2002finding} provide a generic decomp
     F(y) = f_3y^3 + \sum_{i=0}^{\lceil (t-4)/5 \rceil} y^{5i}(f_{5i} + \sum_{j=0}^{3} f_{5i+2^j}y^{2^j}).
 \end{equation}
 
-After that, we can summarize all the steps on Algorithm~\ref{alg:linearized}. The function ``generate($m$)'' refers to the generation of the elements in $\mathbb{F}_{2^m}$ using Gray codes, see \cite{savage1997survey} for more details about Gray codes. The linearized method differ from the exhaustive search on the evaluation process, here, it is much more efficiency compute this evaluation because of the polynomial are in an linearized form. Algorithm~\ref{alg:linearized} presents our countermeasure in the last steps of the algorithm, i.e., we added a dummy operation for blinding if $X[j]$ is a root of polynomial $F(x)$.
+After that, we can summarize all the steps on Algorithm~\ref{alg:linearized}. The function ``generate($m$)'' refers to the generation of the elements in $\mathbb{F}_{2^m}$ using Gray codes, see \cite{savage1997survey} for more details about Gray codes. The linearized method differ from the exhaustive search on the evaluation process, here, it is much more efficiency compute this evaluation because of the polynomial are in an linearized form. Algorithm~\ref{alg:linearized} presents our countermeasure in the last steps of the algorithm, i.e., we added a dummy operation for blinding if $X[j]$ is a root of polynomial $F(x)$. The analysis of linearized method and its countermeasure are presented in Chapter~\ref{ch:comparison}.
 
 \begin{figure}
 \begin{algorithm}[H]
