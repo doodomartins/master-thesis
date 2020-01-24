@@ -79,8 +79,8 @@ This new approach allows us to define a fixed number of iterations for our versi
 Then we just need to add an stack to controlling the polynomials to be divided.
 Algorithm~\ref{alg:ibta} presents our new approach of the iterative BTA -- $i-BTA$.
 
-
-\begin{algorithm}[ht]
+\begin{figure}[ht]
+\begin{algorithm}[H]
  \KwData{$p(x)$ as an univariate polynomial over $\mathbb{F}_{2^m}$, $t$ as number of expected roots.}
  \KwResult{The set of roots of $p(x)$.}
     $g \gets \{p(x)\};$ \tcp{The set of polynomials to be computed}
@@ -104,7 +104,7 @@ Algorithm~\ref{alg:ibta} presents our new approach of the iterative BTA -- $i-BT
  \caption{Iterative Berlekamp Trace Algorithm -- $BTA(p(x))-it$.}
   \label{alg:ibta}
 \end{algorithm}
-
+\end{figure}
 Algorithm~\ref{alg:ibta} extracts a root of the polynomial when the variable $current$ has a polynomial with degree equal to one. If this degree is greater than one, then the algorithm needs to continue dividing the polynomial until it finds a root. The algorithm does that by adding the polynomial in a stack and reusing this polynomial in a future division. The iterative BTA has a higher complexity when compare to the original BTA. Nevertheless, with our new approach, we achieve a more constant time execution on the root finding task, consequently reducing the knowledge obtained by an attacker. On Chapter~\ref{ch:comparison} we analyse and compare our iterative BTA with the others approach.
 
 \section{Linearized Polynomials}
@@ -281,40 +281,12 @@ Let $(x_1,x_2,\ldots,x_m)$ be a solution of the equations in Equation~\ref{eq:sy
 
 In \cite{petit2014finding}, the authors present an algorithm for solving the system in Equation~\ref{eq:system_1} using resultants. The solutions of the system are the roots of polynomial $f(x)$. It is worth remarking that this algorithm is almost constant-time and hence we just need to protect the branches presented on it.
 
-\begin{algorithm}[ht]
- \KwData{$f(x)$ as an univariate polynomial over $\mathbb{F}_{2^m}$, $t$ as number of expected roots.}
- \KwResult{The set of roots of $p(x)$.}
-    $g \gets \{p(x)\};$ \tcp{The set of polynomials to be computed}
-    \For{$k \gets 0$ \KwTo $t$}{
-        $current = g.pop()$\;
-        Compute $candidates$ $=$ $gcd(current, Tr(\beta_{i}\cdot x))$ $\forall$ $\beta_{i}$ $\in$ $\beta$\;
-        Select $p_{0}$ $\in$ $candidates$ such as $p_{0}.degree$ $\simeq$ $\frac{current}{2}$\;
-        $p_{1}(x) \gets current / p_{0}(x)$ \;
-        \If{$p_{0}.degree == 1$}{
-            $R.add($root of $p_{0})$
-        } \Else{
-            $g.add(p_{0})$\;
-        }
-        \If{$p_{1}.degree == 1$}{
-            $R.add($root of $p_{1})$
-        } \Else{
-            $g.add(p_{1})$\;
-        }
-    }
-    \Return{$R\;$}
- \caption{Successive Resultant Algorithm -- $SCA(p(x))$.}
-  \label{alg:sca}
-\end{algorithm}
-
-
 
 \section{Cantor-Zassenhaus Algorithm}
-Our last countermeasure for finding roots of the error locator polynomial was the classical Cantor-Zassenhaus algorithm~\cite{cantor1981new}. This classical method is more general then the others algorithms, and it enables to be used in polynomials over binary finite fields. Their are used to factor huge polynomials, with higher degree and over larger fields. 
-
-This adaptation introduces an trace computation and slight decrease their performance but it is one of the fastest method to finding roots over a finite field~\cite{von2001factoring}.
+Our last countermeasure for finding roots of the error locator polynomial was the classical Cantor-Zassenhaus algorithm~\cite{cantor1981new}. This classical method is more general then the others algorithms, and it enables to be used in polynomials over binary finite fields. Their are used to factor huge polynomials, with higher degree and over larger fields. Although the main focus of this works relies on polynomials with no more then 200 roots and fields of size at most $2^16$, we consider this algorithm because of its efficiency.
 
 
-The main difference between Cantor-Zassenhaus method and the others methods presented in this chapter was the insertion of an randomness in the algorithm. The computation of the roots depends was given by the choice of an random element in $\mathbb{F}_{2^{m}}$, this random selection was used with an trace function and an gcd to find an nontrivial factorization of the original polynomial. 
+This adaptation introduces an trace computation and slight decrease their performance but it is one of the fastest method to finding roots over a finite field~\cite{von2001factoring}. The main difference between Cantor-Zassenhaus method and the others methods presented in this chapter was the insertion of an randomness in the algorithm. The computation of the roots depends was given by the choice of an random element in $\mathbb{F}_{2^{m}}$, this random selection was used with an trace function and an gcd to find an nontrivial factorization of the original polynomial. 
 
 This algorithm is an probabilistic algorithm because this random behaviour. and it has and prob
 	
@@ -345,5 +317,5 @@ This algorithm is an probabilistic algorithm because this random behaviour. and 
     }
     \Return{$Factors\;$}
  \caption{Successive Resultant Algorithm -- $SCA(p(x))$.}
-  \label{alg:sca}
+  \label{alg:new}
 \end{algorithm}
