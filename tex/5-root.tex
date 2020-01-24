@@ -316,12 +316,14 @@ The main difference between Cantor-Zassenhaus method and the others methods pres
 
 
 
+
 \begin{algorithm}[ht]
  \KwData{$f(x)$ as an univariate polynomial over $\mathbb{F}_{2^m}$, $t$ as number of expected roots.}
  \KwResult{The set of roots of $p(x)$.}
     $factors \gets \{f\};$ \tcp{The set of polynomials to be computed}
     $k \gets 1$\;
-    \While{$k < t$}{
+    $it_{max} \gets 2 \lceil\log{\frac{t^2}{\epsilon}}\rceil$\;
+    \While{$k < it_{max}$}{
         $h \xleftarrow{\$} \mathbb{F}_{2^m}$ \tcp{}
         $current = g.pop()$\;
         Compute $candidates$ $=$ $gcd(current, Tr(\beta_{i}\cdot x))$ $\forall$ $\beta_{i}$ $\in$ $\beta$\;
