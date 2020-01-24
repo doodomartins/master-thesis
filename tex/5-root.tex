@@ -314,7 +314,8 @@ Our last countermeasure for finding roots of the error locator polynomial was th
 
 The main difference between Cantor-Zassenhaus method and the others methods presented in this chapter was the insertion of an randomness in the algorithm. The computation of the roots depends was given by the choice of an random element in $\mathbb{F}_{2^{m}}$, this random selection was used with an trace function and an gcd to find an nontrivial factorization of the original polynomial. 
 
-
+This algorithm is an probabilistic algorithm because this random behaviour, and it has and prob
+	
 
 
 \begin{algorithm}[ht]
@@ -329,20 +330,18 @@ The main difference between Cantor-Zassenhaus method and the others methods pres
         \If{$g = 1$}{
             $g \gets Tr(h)$
         }
-        \For{$fact \in Factors \and fact.degree > d$}{
+        \For{$fact \in Factors \quad$and$\quad fact.degree > d$}{
             \If{$p_{0}.degree == 1$}{
-                $R.add($root of $p_{0})$
-            } \Else{
-                $g.add(p_{0})$\;
+                $Factors.remove(u)$\;
+                $Factors.insert(gcd(g,u))$\;
+                $Factors.insert(u/gcd(g,u))$\;
             }
         }
         \If{$p_{1}.degree == 1$}{
             $R.add($root of $p_{1})$
-        } \Else{
-            $g.add(p_{1})$\;
         }
     }
-    \Return{$R\;$}
+    \Return{$Factors\;$}
  \caption{Successive Resultant Algorithm -- $SCA(p(x))$.}
   \label{alg:sca}
 \end{algorithm}
