@@ -287,9 +287,9 @@ Our last countermeasure for finding roots of the error locator polynomial was th
 
 This adaptation introduces an trace computation and slight decrease their performance but it is one of the fastest method to finding roots over a finite field~\cite{von2001factoring}. The main difference between Cantor-Zassenhaus method and the others methods presented in this chapter was the insertion of an randomness choice of an element in the algorithm. The computation of the roots depends was given by the choice of an random element in $\mathbb{F}_{2^{m}}$, this random selection was used with an trace function and an gcd to find an nontrivial factorization of the original polynomial. 
 
-Cantor-Zassenhaus is an probabilistic algorithm because this random behaviour, and the parameter $\epsilon$ was used to define the maximum number of iterations on the algorithm. The probability of failure of the algorithm was on the fact that a random selection could not result in a nontrivial factor of the input polynomial. However, Ben-Or prove that this probability is $1 - 1/2^{t-1}$, where $t$ are the degree of the polynomial.
+Cantor-Zassenhaus is an probabilistic algorithm because this random behaviour, and the parameter $\epsilon$ was used to define the maximum number of iterations on the algorithm. The probability of failure of the algorithm was on the fact that a random selection could not result in a nontrivial factor of the input polynomial. However, Ben-Or prove that this probability is $1 - 1/2^{t-1}$, where $t$ are the degree of the polynomial~\cite{prob}.
 
-To the best of our knowledge, any code-based cryptosystem made uses of an probabilistic algorithm as method for root finding.
+To the best of our knowledge, any code-based cryptosystem made uses of an probabilistic algorithm as method for root finding. 
 
 
 \begin{algorithm}[ht]
