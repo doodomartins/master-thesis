@@ -291,7 +291,7 @@ This adaptation introduces an trace computation and slight decrease their perfor
 
 Cantor-Zassenhaus is an probabilistic algorithm because this random behaviour, and the parameter $\epsilon$ was used to define the maximum number of iterations on the algorithm. The probability of failure of the algorithm was on the fact that a random selection could not result in a nontrivial factor of the input polynomial. However, Ben-Or prove that this probability is $1 - 1/2^{t-1}$, where $t$ are the degree of the polynomial~\cite{ben1981probabilistic}.
 
-To the best of our knowledge, any code-based cryptosystem made uses of an probabilistic algorithm as method for root finding. The original proposal was designed as an recursive algorithm, here we present an iterative version, as presented in~\cite{von2001factoring}. Algorithm \ref{alg:new} shows all steps to compute the roots. 
+To the best of our knowledge, any code-based cryptosystem made uses of an probabilistic algorithm as method for root finding. The original proposal was designed as an recursive algorithm, here we present an iterative version, as presented in~\cite{von2001factoring}. Algorithm \ref{alg:new} shows all steps to compute the roots. We do not propose any change on the Rabin's algorithm, since it uses an random selection 
 
 \begin{figure}[ht]
 \begin{algorithm}[H]
