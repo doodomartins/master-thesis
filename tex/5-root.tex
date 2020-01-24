@@ -324,7 +324,7 @@ The main difference between Cantor-Zassenhaus method and the others methods pres
     $k \gets 1$\;
     $it_{max} \gets 2 \lceil\log{\frac{t^2}{\epsilon}}\rceil$\;
     \While{$k < it_{max}$}{
-        $h \xleftarrow{\$} \mathbb{F}_{2^m}$ \tcp{}
+        $h \xleftarrow{\$} \mathbb{F}_{2^m}$ \tcp{choose $h$ with degree $< t$ at random}
         $current = g.pop()$\;
         Compute $candidates$ $=$ $gcd(current, Tr(\beta_{i}\cdot x))$ $\forall$ $\beta_{i}$ $\in$ $\beta$\;
         Select $p_{0}$ $\in$ $candidates$ such as $p_{0}.degree$ $\simeq$ $\frac{current}{2}$\;
