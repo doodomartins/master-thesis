@@ -326,10 +326,10 @@ The main difference between Cantor-Zassenhaus method and the others methods pres
     \While{$k < it_{max}$}{
         $h \xleftarrow{\$} \mathbb{F}_{2^m}$ \tcp{choose $h$ with degree $< t$ at random}
         $g \gets gcd(h, f)$\;
-        \If{$p_{1}.degree == 1$}{
-            $R.add($root of $p_{1})$
+        \If{$g = 1$}{
+            $g \gets Tr(h)$
         }
-        \For{$fact \in Factors \quad\text{and}\quad fact.degree > d$}{
+        \For{$fact \in Factors \and fact.degree > d$}{
             \If{$p_{0}.degree == 1$}{
                 $R.add($root of $p_{0})$
             } \Else{
