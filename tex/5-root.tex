@@ -320,19 +320,21 @@ The main difference between Cantor-Zassenhaus method and the others methods pres
 \begin{algorithm}[ht]
  \KwData{$f(x)$ as an univariate polynomial over $\mathbb{F}_{2^m}$, $t$ as number of expected roots.}
  \KwResult{The set of roots of $p(x)$.}
-    $factors \gets \{f\};$ \tcp{The set of polynomials to be computed}
+    $Factors \gets \{f\};$ \tcp{The set of polynomials to be computed}
     $k \gets 1$\;
     $it_{max} \gets 2 \lceil\log{\frac{t^2}{\epsilon}}\rceil$\;
     \While{$k < it_{max}$}{
         $h \xleftarrow{\$} \mathbb{F}_{2^m}$ \tcp{choose $h$ with degree $< t$ at random}
-        $current = g.pop()$\;
-        Compute $candidates$ $=$ $gcd(current, Tr(\beta_{i}\cdot x))$ $\forall$ $\beta_{i}$ $\in$ $\beta$\;
-        Select $p_{0}$ $\in$ $candidates$ such as $p_{0}.degree$ $\simeq$ $\frac{current}{2}$\;
-        $p_{1}(x) \gets current / p_{0}(x)$ \;
-        \If{$p_{0}.degree == 1$}{
-            $R.add($root of $p_{0})$
-        } \Else{
-            $g.add(p_{0})$\;
+        $g \gets gcd(h, f)$\;
+        \If{$p_{1}.degree == 1$}{
+            $R.add($root of $p_{1})$
+        }
+        \For{$fact \in Factors \quad\text{and}\quad fact.degree > d$}{
+            \If{$p_{0}.degree == 1$}{
+                $R.add($root of $p_{0})$
+            } \Else{
+                $g.add(p_{0})$\;
+            }
         }
         \If{$p_{1}.degree == 1$}{
             $R.add($root of $p_{1})$
