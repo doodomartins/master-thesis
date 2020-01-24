@@ -283,13 +283,13 @@ In \cite{petit2014finding}, the authors present an algorithm for solving the sys
 
 
 \section{Cantor-Zassenhaus Algorithm}
-Our last countermeasure for finding roots of the error locator polynomial was the classical Cantor-Zassenhaus algorithm~\cite{cantor1981new}. This classical method is more general then the others algorithms, and it enables to be used in polynomials over binary finite fields. Their are used to factor huge polynomials, with higher degree and over larger fields. Although the main focus of this works relies on polynomials with no more then 200 roots and fields of size at most $2^16$, we consider this algorithm because of its efficiency.
+Our last countermeasure for finding roots of the error locator polynomial was the classical Cantor-Zassenhaus algorithm~\cite{cantor1981new}. This classical method is more general then the others algorithms, and it enables to be used in polynomials over binary finite fields. Their are used to factor huge polynomials, with higher degree and over larger fields. Although the main focus of this works relies on polynomials with no more then 200 roots and fields of size at most $2^{16}$, we consider this algorithm because of its efficiency.
 
 This adaptation introduces an trace computation and slight decrease their performance but it is one of the fastest method to finding roots over a finite field~\cite{von2001factoring}. The main difference between Cantor-Zassenhaus method and the others methods presented in this chapter was the insertion of an randomness choice of an element in the algorithm. The computation of the roots depends was given by the choice of an random element in $\mathbb{F}_{2^{m}}$, this random selection was used with an trace function and an gcd to find an nontrivial factorization of the original polynomial. 
 
 Cantor-Zassenhaus is an probabilistic algorithm because this random behaviour, and the parameter $\epsilon$ was used to define the maximum number of iterations on the algorithm. The probability of failure of the algorithm was on the fact that a random selection could not result in a nontrivial factor of the input polynomial. However, Ben-Or prove that this probability is $1 - 1/2^{t-1}$, where $t$ are the degree of the polynomial~\cite{ben1981probabilistic}.
 
-To the best of our knowledge, any code-based cryptosystem made uses of an probabilistic algorithm as method for root finding. ALgorithm 
+To the best of our knowledge, any code-based cryptosystem made uses of an probabilistic algorithm as method for root finding. The original proposal was designed as an recursive algorithm, here we present an iterative version, as presented in~\cite{von2001factoring}. Algorithm \ref{alg:new} shows all steps to compute the roots. 
 
 \begin{figure}[ht]
 \begin{algorithm}[H]
@@ -316,7 +316,7 @@ To the best of our knowledge, any code-based cryptosystem made uses of an probab
         }
     }
     \Return{$Factors\;$}
- \caption{Probabilistic root finding -- $SCA(p(x))$.}
+ \caption{Probabilistic root finding -- $Rabin(p(x))$.}
   \label{alg:new}
 \end{algorithm}
 \end{figure}
