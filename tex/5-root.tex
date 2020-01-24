@@ -309,12 +309,14 @@ In \cite{petit2014finding}, the authors present an algorithm for solving the sys
 
 
 \section{Cantor-Zassenhaus Algorithm}
-Our last countermeasure for finding roots of the error locator polynomial was the classical Cantor-Zassenhaus algorithm~\cite{cantor1981new}. This classical method is more general then the others algorithms, and it enables to be used in polynomials over binary finite fields. This adaptation introduces an trace computation and slight decrease their performance but it is one of the fastest method to finding roots over a finite field~\cite{von2001factoring}.
+Our last countermeasure for finding roots of the error locator polynomial was the classical Cantor-Zassenhaus algorithm~\cite{cantor1981new}. This classical method is more general then the others algorithms, and it enables to be used in polynomials over binary finite fields. Their are used to factor huge polynomials, with higher degree and over larger fields. 
+
+This adaptation introduces an trace computation and slight decrease their performance but it is one of the fastest method to finding roots over a finite field~\cite{von2001factoring}.
 
 
 The main difference between Cantor-Zassenhaus method and the others methods presented in this chapter was the insertion of an randomness in the algorithm. The computation of the roots depends was given by the choice of an random element in $\mathbb{F}_{2^{m}}$, this random selection was used with an trace function and an gcd to find an nontrivial factorization of the original polynomial. 
 
-This algorithm is an probabilistic algorithm because this random behaviour, and it has and prob
+This algorithm is an probabilistic algorithm because this random behaviour. and it has and prob
 	
 
 
