@@ -281,6 +281,32 @@ Let $(x_1,x_2,\ldots,x_m)$ be a solution of the equations in Equation~\ref{eq:sy
 
 In \cite{petit2014finding}, the authors present an algorithm for solving the system in Equation~\ref{eq:system_1} using resultants. The solutions of the system are the roots of polynomial $f(x)$. It is worth remarking that this algorithm is almost constant-time and hence we just need to protect the branches presented on it.
 
+\begin{algorithm}[ht]
+ \KwData{$f(x)$ as an univariate polynomial over $\mathbb{F}_{2^m}$, $t$ as number of expected roots.}
+ \KwResult{The set of roots of $p(x)$.}
+    $g \gets \{p(x)\};$ \tcp{The set of polynomials to be computed}
+    \For{$k \gets 0$ \KwTo $t$}{
+        $current = g.pop()$\;
+        Compute $candidates$ $=$ $gcd(current, Tr(\beta_{i}\cdot x))$ $\forall$ $\beta_{i}$ $\in$ $\beta$\;
+        Select $p_{0}$ $\in$ $candidates$ such as $p_{0}.degree$ $\simeq$ $\frac{current}{2}$\;
+        $p_{1}(x) \gets current / p_{0}(x)$ \;
+        \If{$p_{0}.degree == 1$}{
+            $R.add($root of $p_{0})$
+        } \Else{
+            $g.add(p_{0})$\;
+        }
+        \If{$p_{1}.degree == 1$}{
+            $R.add($root of $p_{1})$
+        } \Else{
+            $g.add(p_{1})$\;
+        }
+    }
+    \Return{$R\;$}
+ \caption{Successive Resultant Algorithm -- $SCA(p(x))$.}
+  \label{alg:sca}
+\end{algorithm}
+
+
 
 \section{Cantor-Zassenhaus Algorithm}
 \cite{cantor1981new}
