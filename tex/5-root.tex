@@ -309,7 +309,7 @@ To the best of our knowledge, any code-based cryptosystem made uses of an probab
             $g \gets tr(h)$
         }
         \For{$fact \in Factors \quad$and$\quad fact.degree > d$}{
-            \If{$p_{0}.degree == 1$}{
+            \If{$gcd(g, fact) \neq 1 \quad$ and $\quad gcd(g, u) \neq u$}{
                 $Factors.remove(u)$\;
                 $Factors.insert(gcd(g,u))$\;
                 $Factors.insert(u/gcd(g,u))$\;
@@ -319,7 +319,7 @@ To the best of our knowledge, any code-based cryptosystem made uses of an probab
             $R.add($root of $p_{1})$
         }
     }
-    \Return{$Factors\;$}
+    \Return{$Factors$}
  \caption{Probabilistic root finding -- $Rabin(p(x))$.}
   \label{alg:new}
 \end{algorithm}
