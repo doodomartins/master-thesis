@@ -284,6 +284,38 @@ Let $(x_1,x_2,\ldots,x_m)$ be a solution of the equations in Equation~\ref{eq:sy
 In \cite{petit2014finding}, the authors present an algorithm for solving the system in Equation~\ref{eq:system_1} using resultants. The solutions of the system are the roots of polynomial $f(x)$. It is worth remarking that this algorithm is almost constant-time and hence we just need to protect the branches presented on it.
 
 
+
+\begin{figure}[ht]
+\begin{algorithm}[H]
+ \KwData{$f(x)$ as an univariate polynomial over $\mathbb{F}_{2^m}$, $t$ as number of expected roots.}
+ \KwResult{The set of roots of $p(x)$.}
+    $Factors \gets \{f\};$ \tcp{The set of polynomials to be computed}
+    $k \gets 1$\;
+    $it_{max} \gets 2 \lceil\log{\frac{t^2}{\epsilon}}\rceil$\;
+    \While{$k < it_{max}$}{
+        $h \xleftarrow{\$} \mathbb{F}_{2^m}$ \tcp{choose $h$ with degree $< t$ at random}
+        $g \gets gcd(h, f)$\;
+        \If{$g = 1$}{
+            $g \gets tr(h)$
+        }
+        \For{$fact \in Factors \quad$and$\quad fact.degree > d$}{
+            \If{$gcd(g, fact) \neq 1 \quad$ and $\quad gcd(g, u) \neq u$}{
+                $Factors.remove(u)$\;
+                $Factors.insert(gcd(g,u))$\;
+                $Factors.insert(u/gcd(g,u))$\;
+            }
+        }
+        \If{$p_{1}.degree == 1$}{
+            $R.add($root of $p_{1})$
+        }
+    }
+    \Return{$Factors$}
+ \caption{Successive Resultant Algorithm -- $SRA(p(x))$.}
+  \label{alg:sra}
+\end{algorithm}
+\end{figure}
+
+
 \section{Rabin Algorithm}
 Our last proposal for finding roots of the error locator polynomial was the classical method proposed by Rabin~\cite{rabin1980probabilistic}. This classical method is an probabilistic algorithm and has running time similar to the Cantor-Zassenhaus algorithm~\cite{cantor1981new}. Their are used to factor huge polynomials, with higher degree and over larger fields. Although the main focus of this works relies on polynomials with no more then 200 roots and fields of size at most $2^{18}$, we consider this algorithm because of its efficiency.
 
@@ -294,11 +326,6 @@ The main difference between Cantor-Zassenhaus and Rabin methods to the others me
 Rabin method is an probabilistic algorithm because of its random behaviour, and the parameter $\epsilon$ was used to define the maximum number of iterations on the algorithm. Since we always choose a random element to continue, the probability of failure of the algorithm was on the fact that a random selection could not result in a nontrivial factor of the input polynomial. However, Ben-Or prove that this probability is $1 - 1/2^{t-1}$, where $t$ are the degree of the polynomial~\cite{ben1981probabilistic}.
 
 To the best of our knowledge, any code-based cryptosystem made uses of an probabilistic algorithm as method for root finding. The original proposal was designed as an recursive algorithm, here we present an iterative version, as presented in~\cite{von2001factoring}. Algorithm \ref{alg:new} shows all steps to compute the roots. 
-
-The Rabin's algorithm is an equal degree factorization method. Hence we are computing the roots of an polynomial which is composed by linear factors, we simplified an step where the original method computes before the trace $g = \sum_{i=0}^{d-1} h^{q^{i}}$, where $d$ are equal to the degree of the factors of $f$. 
-
-
-We do not propose any change on the Rabin's algorithm, since it uses an random selection on their execution, we consider that this randomness does not permit an attacker to infer any information about the roots. Moreover, since we are using a random selection, if an attacker could not infer any information from the time variance of the algorithm. A more detailed analysis was presented in Chapter~\ref{ch:comparison}.
 
 \begin{figure}[ht]
 \begin{algorithm}[H]
@@ -329,3 +356,8 @@ We do not propose any change on the Rabin's algorithm, since it uses an random s
   \label{alg:new}
 \end{algorithm}
 \end{figure}
+
+The Rabin's algorithm is an equal degree factorization method. Hence we are computing the roots of an polynomial which is composed by linear factors, we simplified an step where the original method computes before the trace $g = \sum_{i=0}^{d-1} h^{q^{i}}$, where $d$ are equal to the degree of the factors of $f$. 
+
+We do not propose any change on the Rabin's algorithm, since it uses an random selection on their execution, we consider that this randomness does not permit an attacker to infer any information about the roots. Moreover, since we are using a random selection, if an attacker could not infer any information from the time variance of the algorithm. A more detailed analysis was presented in Chapter~\ref{ch:comparison}.
+
