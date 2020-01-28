@@ -306,7 +306,7 @@ To the best of our knowledge, any code-based cryptosystem made uses of an probab
         $h \xleftarrow{\$} \mathbb{F}_{2^m}$ \tcp{choose $h$ with degree $< t$ at random}
         $g \gets gcd(h, f)$\;
         \If{$g = 1$}{
-            $g \gets Tr(h)$
+            $g \gets tr(h)$
         }
         \For{$fact \in Factors \quad$and$\quad fact.degree > d$}{
             \If{$p_{0}.degree == 1$}{
