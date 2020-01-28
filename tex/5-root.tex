@@ -293,7 +293,10 @@ The main difference between Cantor-Zassenhaus and Rabin methods to the others me
 
 Rabin method is an probabilistic algorithm because of its random behaviour, and the parameter $\epsilon$ was used to define the maximum number of iterations on the algorithm. Since we always choose a random element to continue, the probability of failure of the algorithm was on the fact that a random selection could not result in a nontrivial factor of the input polynomial. However, Ben-Or prove that this probability is $1 - 1/2^{t-1}$, where $t$ are the degree of the polynomial~\cite{ben1981probabilistic}.
 
-To the best of our knowledge, any code-based cryptosystem made uses of an probabilistic algorithm as method for root finding. The original proposal was designed as an recursive algorithm, here we present an iterative version, as presented in~\cite{von2001factoring}. Algorithm \ref{alg:new} shows all steps to compute the roots. We do not propose any change on the Rabin's algorithm, since it uses an random selection on their execution, we consider that this randomness does not permit an attacker to infer any information about the roots. Moreover, since we are using a random selection, if an attacker could not infer any information from the time variance of the algorithm. A more detailed analysis was presented in Chapter~\ref{ch:comparison}.
+To the best of our knowledge, any code-based cryptosystem made uses of an probabilistic algorithm as method for root finding. The original proposal was designed as an recursive algorithm, here we present an iterative version, as presented in~\cite{von2001factoring}. Algorithm \ref{alg:new} shows all steps to compute the roots. We do not propose any change on the Rabin's algorithm, since it uses an random selection on their execution, we consider that this randomness does not permit an attacker to infer any information about the roots. 
+
+The Rabin's algorithm is an equal degree factorization method, and since we are computing the roots of an polynomial which is composed by linear factors, we simplified an step where the original method computes $\sum$
+Moreover, since we are using a random selection, if an attacker could not infer any information from the time variance of the algorithm. A more detailed analysis was presented in Chapter~\ref{ch:comparison}.
 
 \begin{figure}[ht]
 \begin{algorithm}[H]
