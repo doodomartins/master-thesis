@@ -1,11 +1,10 @@
 In this chapter we will present an analysis over the five presented method on previous section. The first two analysis has focus on the complexity and performance of the algorithms. However, we are not interested only in efficient methods, our main goal was achieve an method with no information leakage against a timing side-channel attack. Hence, we demonstrate an time-variance analysis for each proposed root-finding method. After that, we present an security analysis over the algorithm. Remarking that, $m$ are the extension, $n = 2^m$, and $t$ the degree of polynomial.
 
 \section{Complexity analysis}
-In order to compare the complexity of the algorithm, we use the Big $\mathcal{O}$ notation. This notation permits to us classify the algorithms 
+In order to compare the complexity of the algorithm, we use the Big $\mathcal{O}$ notation. This asymptotic notation permits to us classify the algorithms according to their behaviour when the inputs grows.
 
 
 
-% \begin{figure}[ht]
 
 \begin{table}[ht]
 \centering
@@ -24,11 +23,8 @@ Constant Successive resultant algorithm & $\mathcal{O}(n)$ \\
 Rabin root finding                      & $\mathcal{O}(n)$
 \end{tabular}
 \end{table}
-%     \caption{Caption}
-%     \label{fig:my_label}
-% \end{figure}
 
-
+As we can note, the most asymptotic efficient method was the Rabin root finding method.
 
 \section{Performance analysis}
 \section{Time variance analysis}
