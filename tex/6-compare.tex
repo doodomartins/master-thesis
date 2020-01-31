@@ -12,10 +12,10 @@ In order to compare the complexity of the algorithm, we use the Big $\mathcal{O}
 \caption{Complexity comparison}
 \begin{tabular}{ll}
 Method                                  &                \\ \hline
-Exhaustive search                       & $\mathcal{O}(2^m)$ \\
-Permuted exhaustive                     & $\mathcal{O}(2^m)$ \\
-Linearized Polynomials                  & $\mathcal{O}(n)$ \\
-Constant Linearized Polynomials         & $\mathcal{O}(n)$ \\
+Exhaustive search                       & $\mathcal{O}(n)$ \\
+Permuted exhaustive                     & $\mathcal{O}(n)$ \\
+Linearized Polynomials                  & $\mathcal{O}(n + )$ \\
+Constant Linearized Polynomials         & $\mathcal{O}(n + )$ \\
 Berlekamp trace algorithm               & $\mathcal{O}(mt^2)$ \\
 Iterative Berlekamp trace algorithm     & $\mathcal{O}(mt^2)$ \\
 Successive resultant algorithm          & $\mathcal{O}(t^2m^3)$ \\
@@ -24,7 +24,7 @@ Rabin root finding                      & $\mathcal{O}(t^2 \log{n})$
 \end{tabular}
 \end{table}
 
-As we can note, the most asymptotic efficient method was the Rabin root finding method. However, this asymptotic classification 
+As we can note, the most asymptotic efficient method was the Rabin root finding method. However, this asymptotic could not reflect the execution timing of the algorithm for cases 
 
 \section{Performance analysis}
 \section{Time variance analysis}
