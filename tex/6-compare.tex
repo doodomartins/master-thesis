@@ -12,14 +12,14 @@ In order to compare the complexity of the algorithm, we use the Big $\mathcal{O}
 \caption{Complexity comparison}
 \begin{tabular}{ll}
 Method                                  &                \\ \hline
-Exhaustive search                       & $\mathcal{O}(n)$ \\
-Permuted exhaustive                     & $\mathcal{O}(n)$ \\
+Exhaustive search                       & $\mathcal{O}(2^m)$ \\
+Permuted exhaustive                     & $\mathcal{O}(2^m)$ \\
 Linearized Polynomials                  & $\mathcal{O}(n)$ \\
 Constant Linearized Polynomials         & $\mathcal{O}(n)$ \\
 Berlekamp trace algorithm               & $\mathcal{O}(n)$ \\
 Iterative Berlekamp trace algorithm     & $\mathcal{O}(n)$ \\
-Successive resultant algorithm          & $\mathcal{O}(n)$ \\
-Constant Successive resultant algorithm & $\mathcal{O}(n)$ \\
+Successive resultant algorithm          & $\mathcal{O}(t^2m^3 + m^2)$ \\
+Constant Successive resultant algorithm & $\mathcal{O}(t^2m^3 + m^2)$ \\
 Rabin root finding                      & $\mathcal{O}(n)$
 \end{tabular}
 \end{table}
