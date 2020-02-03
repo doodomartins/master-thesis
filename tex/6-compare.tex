@@ -29,7 +29,7 @@ As we can note, the most asymptotic efficient method was the Rabin root finding 
 \section{Performance analysis}
 To present a more careful analysis, we present a execution time analysis of each presented algorithm. This comparison gives an idea of the real execution cost. All root finding method was performed over and random polynomial of degree $t$ over $\mathbb{F}_2^m$, for $t = 50$ until $t = 300$ and $n = 2^10$ to $n = 2^{18}$. For each polynomial, we take the average time of 10 executions.
  
-The performance analysis was implemented in Sage\cite{sage}, since we want to 
+The performance analysis was implemented in Sage\cite{sage}, since we want to measure the execution coast with different parameters, the Sage library permits to us change the field with facility to perform this analysis. We run all proposed methods in a locally Intel\textsuperscript{\tiny\textregistered} Core(TM) i$7$-$4500$U CPU @ $1.80$GHz. The source code of this attack are available on \url{https://github.com/doodomartins/root-finding/soft-factorization}. 
  
 \section{Time variance analysis}
 \section{Security analysis}
