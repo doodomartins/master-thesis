@@ -27,7 +27,9 @@ Rabin root finding                      & $\mathcal{O}(t^2m)$
 As we can note, the most asymptotic efficient method was the Rabin root finding method. However, this asymptotic could not reflect the execution timing of the algorithm for parameters used in code-based schemes. This happens because the big $\mathcal{O}$ notation does not consider constants and the asymptotic complexity was for all $m$ and $t$ grater then $m_0$ and $t_0$ respectively, and the parameters used on code-based cryptosystems could be smaller then the $m_0$ and $t_0$.
 
 \section{Performance analysis}
- To present a more careful analysis, we present a execution time analysis of each presented algorithm. This comparison gives an idea of the real execution cost. All root finding method was performed over and random polynomial of degree $t$ over $\mathbb{F}_2^m$, for $t = 50$ until $t = 300$ and $n = 2^10$ to $n = 2^{18}$. For each polynomial, we take the average time of 10 executions.
+To present a more careful analysis, we present a execution time analysis of each presented algorithm. This comparison gives an idea of the real execution cost. All root finding method was performed over and random polynomial of degree $t$ over $\mathbb{F}_2^m$, for $t = 50$ until $t = 300$ and $n = 2^10$ to $n = 2^{18}$. For each polynomial, we take the average time of 10 executions.
+ 
+The performance analysis was implemented in python, since we want to 
  
 \section{Time variance analysis}
 \section{Security analysis}
