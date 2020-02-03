@@ -1,0 +1,135 @@
+\begin{figure}[H]
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{axis}[ytick={1, 2}, scaled ticks=false,
+              yticklabels={Ours, Lin.}, xtick distance=0.02*10^8, height=2.25cm, width=12.5cm, font=\footnotesize]
+            \addplot [boxplot, pattern=crosshatch] table [row sep=\\, y index=0] {
+              Linearized-safe\\
+              643454389\\
+              641812711\\
+              643243833\\
+              643985300\\
+              642716437\\
+              643494567\\
+              642360914\\
+              643936361\\
+              643932136\\
+              642160584\\
+              642455944\\
+              642511315\\
+              642403850\\
+              642669434\\
+              641886269\\
+              641869418\\
+            };
+            \addplot [boxplot, pattern=crosshatch] table [row sep=\\, y index=0] {
+              Linearized\\
+              643080653\\
+              638901151\\
+              639266494\\
+              646118212\\
+              646052635\\
+              641544499\\
+              638760307\\
+              638836088\\
+              639331193\\
+              638806883\\
+              638780474\\
+              638838337\\
+              638734994\\
+              639526727\\
+              638980153\\
+              639198188\\
+            };
+            \end{axis}
+            \end{tikzpicture}
+            \begin{tikzpicture}
+            \begin{axis}[ytick={1, 2}, scaled ticks=false,
+              yticklabels={Ours, SCA}, xtick distance=0.4*10^8, height=2.25cm, width=12.5cm, font=\footnotesize]
+            \addplot [boxplot, pattern=crosshatch] table [row sep=\\, y index=0] {
+            SCA-safe\\
+            5292293088.0\\
+            5272533727.6\\
+            5306420372.2\\
+            5260064270.4\\
+            5285629441.6\\
+            5274107936.8\\
+            5274251024.8\\
+            5274578439.4\\
+            5334707320.0\\
+            5287271226.6\\
+            5313694696.7\\
+            5302101016.2\\
+            5284617776.4\\
+            5270965832.2\\
+            5278864183.8\\
+            5297324735.4\\
+            };
+            \addplot [boxplot, pattern=crosshatch] table [row sep=\\, y index=0] {
+            SCA\\
+            5297372333.6\\
+            5271971762.0\\
+            5271467723.2\\
+            5283444070.2\\
+            5259320176.2\\
+            5358116893.0\\
+            5287065142.0\\
+            5272115729.2\\
+            5345751302.4\\
+            5262051939.8\\
+            5280906466.0\\
+            5281913147.8\\
+            5246111488.4\\
+            5327509432.8\\
+            5254563087.8\\
+            5373563832.6\\
+            };
+            \end{axis}
+            \end{tikzpicture}
+            \begin{tikzpicture}
+            \begin{axis}[ytick={1, 2}, scaled ticks=false,
+              yticklabels={Ours, BTA}, xtick distance=0.4*10^8, height=2.25cm, width=12.5cm, font=\footnotesize]
+            \addplot [boxplot, pattern=crosshatch] table [row sep=\\, y index=0] {
+              bta-it\\
+              842631830\\
+              835676100\\
+              884884756\\
+              841658630\\
+              858505576\\
+              842583288\\
+              837178902\\
+              850477173\\
+              849176924\\
+              821761346\\
+              837699447\\
+              867205730\\
+              861543381\\
+              857139212\\
+              847351756\\
+              848925230\\
+            };
+            \addplot [boxplot, pattern=crosshatch] table [row sep=\\, y index=0] {
+              bta\\
+              858389431\\
+              834868155\\
+              865025829\\
+              855374334\\
+              771943408\\
+              816037413\\
+              823703582\\
+              817926859\\
+              848926579\\
+              802161278\\
+              785646740\\
+              833242398\\
+              774809605\\
+              912611693\\
+              852948653\\
+              805819768\\
+            };
+          \end{axis}
+        \end{tikzpicture}
+    \end{center}
+    \caption{Comparison of original implementation and our proposal for Linearized, Successive resultant algorithm and Berlekamp trace algorithm with $t = 100$.}
+    \label{fig:100_comp_new}
+\end{figure}
