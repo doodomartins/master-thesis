@@ -68,7 +68,7 @@ For each algorithm presented, we can observe the same behaviour on execution tim
 On the other hand, the degree of the polynomial affects linearly the execution time of the algorithm. Therefore, the execution time growth more slowly when we are increasing the degree of the polynomial. 
 
 \section{Time variance analysis}
-The main focus of our works relies on propose alternatives to compute roots of error locator polynomial without leak sensitive information against a timing side-channel attack. As previously presented, an naive implementation of the root finding process permits allows an attacker to recover the cihper text and compute an session key.
+The main focus of our works relies on propose alternatives to compute roots of error locator polynomial without leak sensitive information against a timing side-channel attack. As previously presented, an naive implementation of the root finding process allows an attacker to recover the cipher text and compute an session key of a code-based cryptosystem. In order to avoid this attack, we present five algorithms to compute the roots of an polynomial over a binary finite field. For three of these algorithms we propose countermeasures to reduce the time variance on its runtime. On this section we present an time variance analysis of this countermeasures.
 
 \input{fig/variance12.tex}
 \section{Security analysis}
