@@ -70,7 +70,9 @@ On the other hand, the degree of the polynomial affects linearly the execution t
 \section{Time variance analysis}
 The main focus of our works relies on propose alternatives to compute roots of error locator polynomial without leak sensitive information against a timing side-channel attack. As previously presented, a naive implementation of the root finding process allows an attacker to recover the cipher text and compute an session key of a code-based cryptosystem. In order to avoid this attack, we present five algorithms to compute the roots of an polynomial over binary finite fields. For three of these algorithms we propose countermeasures to reduce the time variance on its runtime. On this section we present a time variance analysis of this countermeasures.
 
-
+In order to measure the time variance, we perform root finding and measure the time variance between different executions. This variance are measure in CPU cycles.
 
 \input{fig/variance12.tex}
+
+In all methods, when we apply our countermeasure, we increase the average execution time. However, we can note that we considerably reduced the time variance of the algo
 \section{Security analysis}
