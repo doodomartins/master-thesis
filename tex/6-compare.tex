@@ -32,7 +32,7 @@ To present a more careful analysis, we present a execution time analysis of each
 The performance analysis was implemented in Sage\cite{sage}, since we want to measure the execution coast with different parameters, the Sage library permits to us change the field with facility to perform this analysis. We run all proposed methods in a locally Intel\textsuperscript{\tiny\textregistered} Core(TM) i$7$-$4500$U CPU @ $1.80$GHz. The source code of this attack are available on \url{https://github.com/doodomartins/root-finding/soft-factorization}. The Figure~\ref{fig:time-SRA} to Figure~\ref{fig:time-EXHA} presents the execution time for each root finding method.
 
 
-\begin{figure}[ht]\ContinuedFloat
+\begin{figure}[ht]
 \centering
 \begin{subfigure}{0.48\textwidth}
   \centering
@@ -46,6 +46,7 @@ The performance analysis was implemented in Sage\cite{sage}, since we want to me
   \caption{Execution time comparison between different $m$ and $t$ for Successive resultant algorithm.}
   \label{fig:time-BTA}
 \end{subfigure}
+
 \begin{subfigure}{0.48\textwidth}
   \centering
   \includegraphics[width=1\linewidth]{fig/charts_exha.pdf}
