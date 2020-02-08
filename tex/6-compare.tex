@@ -70,9 +70,10 @@ On the other hand, the degree of the polynomial affects linearly the execution t
 \section{Time variance analysis}
 The main focus of our works relies on propose alternatives to compute roots of error locator polynomial without leak sensitive information against a timing side-channel attack. As previously presented, a naive implementation of the root finding process allows an attacker to recover the cipher text and compute an session key of a code-based cryptosystem. In order to avoid this attack, we present five algorithms to compute the roots of an polynomial over binary finite fields. For three of these algorithms we propose countermeasures to reduce the time variance on its runtime. On this section we present a time variance analysis of this countermeasures.
 
-In order to measure the time variance, we perform root finding and measure the time variance between different executions. This variance are measure in CPU cycles. Figure \ref{fig:55-60-100} presents the time variance for BTA, Linearized Algorithm and Successive Resultant Algorithm for a polynomail with degree $t = \{55, 60, 100\}$ and $\mathbb{F_2^{16}}$.
+In order to measure the time variance, we perform root finding and measure the time variance between different executions. This variance are measure in CPU cycles. Figure \ref{fig:55-60-100} presents the time variance for BTA, Linearized Algorithm and Successive Resultant Algorithm for a polynomial with degree $t = \{55, 60, 100\}$ and $\mathbb{F_2^{16}}$.
+
+
 
 \input{fig/variance12.tex}
-
 In all methods, when we apply our countermeasure, we increase the average execution time. However, we can note that we considerably reduced the time variance of the algorithm. This variance can be observed on the quartiles on Figure~\ref{fig:100_comp_new}. Since the quartiles inside the box represents 50\% of all measured time, and the others quartiles represents the remained 50\%, ignoring the outliers, we can uphold that our countermeasures reduces the time variance of the root finding methods. 
 \section{Security analysis}
