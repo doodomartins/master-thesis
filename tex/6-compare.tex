@@ -69,9 +69,9 @@ The performance analysis was implemented in Sage\cite{sage}, since we want to me
 \label{fig:graph}
 \end{figure}
 
-For each algorithm presented, we can observe the same behaviour on execution time. Since one of the heavy terms in the complexity was the extension $m$, because they affect the algorithm exponentially, we can note that the algorithms has a different growth for each extension, and a greater $m$ will result in a fast growth of the runtime. Moreover, we can observe that 
+For each algorithm presented, we can observe the same behaviour on execution time. Since one of the heavy terms in the complexity was the extension $m$, because they affect the algorithm exponentially, we can note that the algorithms has a different growth for each extension, and a greater $m$ will result in a fast growth of the runtime. Moreover, we can observe the huge difference between the extension $2^15 to 2^16$ on the exhaustive search and on the linearized algoritgm. 
 
-On the other hand, the degree of the polynomial affects linearly the execution time of the algorithm. Therefore, the execution time growth more slowly when we are increasing the degree of the polynomial. 
+On the other hand, the degree of the polynomial affects linearly the execution time of the algorithm. Therefore, the execution time growth more slowly when we are increasing the degree of the polynomial. Additionally, we can note a sharp growth on the Succssive Resultant and on the Berlekamp Trace when compared to the Miller Algorithm.
 
 \section{Time variance analysis}
 The main focus of our works relies on propose alternatives to compute roots of error locator polynomial without leak sensitive information against a timing side-channel attack. As previously presented, a naive implementation of the root finding process allows an attacker to recover the cipher text and compute an session key of a code-based cryptosystem. In order to avoid this attack, we present five algorithms to compute the roots of an polynomial over binary finite fields. For three of these algorithms we propose countermeasures to reduce the time variance on its runtime. On this section we present a time variance analysis of this countermeasures.
