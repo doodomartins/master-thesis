@@ -29,9 +29,7 @@ As we can note, the most asymptotic efficient method was the Rabin root finding 
 To present a more careful analysis, we present a execution time analysis of each presented algorithm. This comparison gives an idea of the real execution cost. All root finding method was performed over and random polynomial of degree $t$ over $\mathbb{F}_2^m$, for $t = 50$ until $t = 300$ and $n = 2^10$ to $n = 2^{18}$. For each polynomial, we take the average time of 10 executions.
  
 
-
-
-\begin{figure}[!ht]
+\begin{figure}[ht]
 \centering
 \begin{subfigure}{0.48\textwidth}
   \centering
@@ -45,7 +43,6 @@ To present a more careful analysis, we present a execution time analysis of each
   \caption{Execution time comparison between different $m$ and $t$ for Successive resultant algorithm.}
   \label{fig:time-BTA}
 \end{subfigure}
-
 \begin{subfigure}{0.48\textwidth}
   \centering
   \includegraphics[width=1\linewidth]{fig/charts_exha.pdf}
@@ -80,26 +77,28 @@ The main focus of our works relies on propose alternatives to compute roots of e
 
 In order to measure the time variance, we perform root finding and measure the time variance between different executions. This variance are measure in CPU cycles. Figure \ref{fig:55-60-100} presents the time variance for BTA, Linearized Algorithm and Successive Resultant Algorithm for a polynomial with degree $t = \{55, 60, 100\}$ and $\mathbb{F_2^{16}}$.
 
-\begin{figure}[!ht]
-\begin{subfigure}{0.5\textwidth}
+\begin{figure}[ht]
+
+\begin{subfigure}{0.48\textwidth}
   \centering
   \includegraphics[width=1\linewidth]{fig/lin.png}
   \caption{Comparison between linearized polynomials with and without countermeasures.}
   \label{fig:slin}
 \end{subfigure}
-\begin{subfigure}{0.5\textwidth}
+
+\begin{subfigure}{0.48\textwidth}
   \centering
   \includegraphics[width=1\linewidth]{fig/bta.png}
   \caption{Comparison between BTA-rf and BTA-it executions.}
   \label{fig:sbta}
 \end{subfigure}
+
 \begin{subfigure}{0.48\textwidth}
-  \centering
   \includegraphics[width=1\linewidth]{fig/sra.png}
   \caption{Comparison between SRA and Safe SRA executions.}
   \label{fig:ssra}
-\end{subfigure}%
-\caption{Plots of measurements cycles for methods presented in Sections~\ref{sec:roots}. Our evaluation of SRA was made using a Python implementation and cycles measurement with C. In our tests, the drawback of calling a Python module from C has behavior bordering to constant.}
+\end{subfigure}
+\caption{Plots of measurements cycles for methods presented in Chapter~\ref{ch:roots}. Our evaluation of SRA was made using a Python implementation and cycles measurement with C. In our tests, the drawback of calling a Python module from C has behavior bordering to constant.}
 \label{fig:55-60-100}
 \end{figure}
 
