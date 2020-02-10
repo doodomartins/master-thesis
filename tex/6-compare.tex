@@ -91,7 +91,7 @@ The first countermeasure are based on the direct method, the Exhaustive Search. 
 
 Our second countermeasure was applied on the Berlekamp Trace Algorithm, on Linearized Algorithm and on the Successive Resultant Algorithm. The main idea of this countermeasures was present an protected implementation. First one, on the Berlekamp's method, we change the recursive classical implementation to an iterative one. Thus we apply the same techniques in all three methods in order to achieve a reduction on the time variance of each algorithm.
 
-This simple strategies was used to blind an timing side-channel attacker with a smaller time variance on the algorithm. 
+This simple strategies was used to blind an timing side-channel attacker with a smaller time variance on the algorithm. This three algorithm still has some time variance, this was leaked by operations naturally non-constants, like the Euclidean algorithm, used to compute the GCD. 
 
 The last one was the usage of an probabilistic algorithm. The Rabin's method execution it is related to a random choice of an polynomial. All iteration of the algorithm a different random selection was performed. This randomized behavior results in a different execution time for each different execution. Even more, we can't determinate if the time variance of the algorithm between two executions relies of the characteristics of the input polynomial or for the random selections. Since, an attacker measuring the time variance of this algorithm address any sensitive information of a code-based cryptosystem.
 
