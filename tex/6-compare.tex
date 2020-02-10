@@ -81,25 +81,25 @@ The main focus of our works relies on propose alternatives to compute roots of e
 In order to measure the time variance, we perform root finding and measure the time variance between different executions. This variance are measure in CPU cycles. Figure \ref{fig:55-60-100} presents the time variance for BTA, Linearized Algorithm and Successive Resultant Algorithm for a polynomial with degree $t = \{55, 60, 100\}$ and $\mathbb{F_2^{16}}$.
 
 \begin{figure}[!ht]
-\begin{subfigure}{0.48\textwidth}
+\begin{subfigure}{0.5\textwidth}
   \centering
-  \includegraphics[width=1\linewidth]{lin.png}
+  \includegraphics[width=1\linewidth]{fig/lin.png}
   \caption{Comparison between linearized polynomials with and without countermeasures.}
   \label{fig:slin}
 \end{subfigure}
-\begin{subfigure}{0.48\textwidth}
+\begin{subfigure}{0.5\textwidth}
   \centering
-  \includegraphics[width=1\linewidth]{bta.png}
-  \caption{Comparison between BTA-rf and \\BTA-it executions.}
+  \includegraphics[width=1\linewidth]{fig/bta.png}
+  \caption{Comparison between BTA-rf and BTA-it executions.}
   \label{fig:sbta}
-\end{subfigure}%
+\end{subfigure}
 \begin{subfigure}{0.48\textwidth}
   \centering
-  \includegraphics[width=1\linewidth]{sra.png}
+  \includegraphics[width=1\linewidth]{fig/sra.png}
   \caption{Comparison between SRA and Safe SRA executions.}
   \label{fig:ssra}
 \end{subfigure}%
-\caption{Plots of measurements cycles for methods presented in Section~\ref{sec:roots}. Our evaluation of SRA was made using a Python implementation and cycles measurement with C. In our tests, the drawback of calling a Python module from C has behavior bordering to constant.}
+\caption{Plots of measurements cycles for methods presented in Sections~\ref{sec:roots}. Our evaluation of SRA was made using a Python implementation and cycles measurement with C. In our tests, the drawback of calling a Python module from C has behavior bordering to constant.}
 \label{fig:55-60-100}
 \end{figure}
 
