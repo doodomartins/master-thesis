@@ -1,15 +1,18 @@
-Communications thought electronic devices require privacy. This privacy between two parts is made with key agreements and key encapsulation protocols or public-key algorithms. 
+In recent years, the area of post-quantum cryptography has received considerable attention, especially because of the call by the National Institute of Standards and Technology (NIST) for  standardization of post-quantum schemes. On this call, NIST did not give restrictions about specific hard problems. However, most schemes for the Key Encapsulation Mechanism (KEM) are lattice- and code-based. The latter type is centered around coding theory and includes one of the oldest unbroken cryptosystems, due to McEliece~\cite{mceliece1978public}.
 
-The context of this work relies on the fact that  Shor's algorithm opens a lack of security in all current cryptosystem. However, there exists a few class of the algorithm that is still secure, against a classical and a quantum computer. One of the most relevant classes of algorithm, called code-based algorithms, are based on the classical work proposed by Robert J. McEliece \cite{mceliece1978public}. 
+One of the requirements for those proposals is that they are resistant to all known cryptanalysis methods. However, even if a scheme is immune to such attacks, it may be subject to attacks related to its implementation. In particular, submissions need to avoid side-channel attacks.
 
-This classical algorithm uses an error-correcting code that able to recovery errors added to a message. This is made through the redundancy added to the original message. Using the idea behind the coding theory, and protecting some parts of the code, only who has knowledge of the code was able to recover the original message, we can construct a scheme that is secure in a quantum era.
+There are different ways to apply side-channel attacks to a cryptosystem. As an example, an attacker can measure the execution time of the operations performed by an algorithm and, based on these measurements, estimate some secret information of the scheme. This approach is successful even over the network. Daniel J. Bernstein, for instance, demonstrated how to recover AES keys by doing timing attacks on the cache ``access speed''~\cite{dan2005}.
+ 
+In code-based cryptography, timing attacks on the decryption process are essentially done during the retrieval of the Error Locator Polynomial (ELP), as is shown by~\cite{shoufan2009timing}. The attack is usually done in the process of evaluating the polynomials, performed to identify the roots. This attack was demonstrated first in~\cite{shoufan2009timing} and later in an improved version in~\cite{bucerzan2017improved}.
 
-Therefore we can construct schemes based on code secure. Their implementation could not be secure. Based on this fact, many cryptosystems are creating ways to blinding their implementations. 
+In~\cite{strenzke2012fast} the authors made a survey of algorithms and compared they performances to find roots efficiently in code-based cryptosystems. However, the author shows only timings in different types of implementations, and selects the one which has the least timing variability. In other words, the author does not present an algorithm to find the roots in constant time and therefore eliminate the attack, as remarked in~\cite[Section 6]{strenzke2013efficiency}.
 
-In case of schemes based on errors correcting codes, more specific on schemes that uses algebraic decoding, we has some time leakage on the computation of the roots. The main task was, how to compute the roots of an polynomial over finite fields without leak time information. 
+The algorithms presented in~\cite{strenzke2012fast} were not created with constant behavior of the implementations in mind. The authors present two optimizations in the exhaustive search method, but these do not affect time variations while the algorithms are in execution. Strenzke further proposes other improvements, some of them in the classical Berlekamp Trace Algorithm~\cite{berlekamp1967solution} and also in the algorithm proposed in~\cite{fedorenko2002finding}. However, none of these implementations focus on constant-time behaviors, and thus may leak sensitive information in the decoding process of the McEliece cryptosystem.
 
-We study, propose modifications, compare and analyze five algorithms that compute the roots of a polynomial.
+The root-finding implementations in~\cite{chou2017mcbits, bernstein2013mcbits} use Fast Fourier Transforms (FFT) and, while efficient, they are built and optimized for $\mathbb{F}_{2^{13}}$. We propose a more generic implementation that does not require specific optimizations on the underlying finite field arithmetic. Additionally, this approach takes advantage of a particular computer architecture and uses the fact that we can evaluate multiple points in parallel. We are also interested in approaches that could avoid side channel attacks in any architecture. 
 
+In this work, we propose strategies to make the execution time of the aforementioned algorithms constant. The first and most important strategy is to write the algorithms in an iterative way, eliminating all recursions. We also use permutations and simulated operations to uncouple possible measurements of side effects of the data being measured.
 
 \section{Objectives}
 
@@ -20,3 +23,30 @@ The attack
 The countermeasures
 The analysis
 \section{Organization}
+
+
+
+% % 
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
+
+
+
+
+
+
+
+
+% Communications thought electronic devices require privacy. This privacy between two parts is made with key agreements and key encapsulation protocols or public-key algorithms. 
+
+% The context of this work relies on the fact that  Shor's algorithm opens a lack of security in all current cryptosystem. However, there exists a few class of the algorithm that is still secure, against a classical and a quantum computer. One of the most relevant classes of algorithm, called code-based algorithms, are based on the classical work proposed by Robert J. McEliece \cite{mceliece1978public}. 
+
+% This classical algorithm uses an error-correcting code that able to recovery errors added to a message. This is made through the redundancy added to the original message. Using the idea behind the coding theory, and protecting some parts of the code, only who has knowledge of the code was able to recover the original message, we can construct a scheme that is secure in a quantum era.
+
+% Therefore we can construct schemes based on code secure. Their implementation could not be secure. Based on this fact, many cryptosystems are creating ways to blinding their implementations. 
+
+% In case of schemes based on errors correcting codes, more specific on schemes that uses algebraic decoding, we has some time leakage on the computation of the roots. The main task was, how to compute the roots of an polynomial over finite fields without leak time information. 
+
+% We study, propose modifications, compare and analyze five algorithms that compute the roots of a polynomial.
