@@ -33,12 +33,12 @@ A binary Goppa code can correct a codeword $c \in \mathbb{F}_{2}^n$, obscured by
 \section{Cryptography primitives}
 \subsection{Public-key cryptography}
 \subsection{Key encapsulation mechanisms}
+
 \section{Side-channel attacks}
+In summary, a side-channel attack is any type of attack when the attacker acquire sensitive information from the implementation of the cryptosystem. 
 \subsection{Timing side-channel attacks}
 
 \section{Literature review}
-In this section we will present the related works pres
-
 The decoding process of McEliece cryptosystem is the most sensitive part of the algorithm. The usage of the private key demands that this algorithm does not leak any information about the key, or even, any information about the error added to the message. The authors in \cite{bucerzan2017improved} shows that a time deviation on root finding process in the Patterson's decoding algorithm could open avenues for side-channel attacks. 
 
 The direct way to find all roots of a polynomial is called exhaustive search. In summary, it just tests all possible elements and checks if it is a root. The authors in~\cite{strenzke2012fast} show an optimization to this approach. They divide the original polynomial when a root is found. This reduces the size of the polynomial and speeds up the exhaustive search in about ~30\%. Although this algorithm is efficient, it does not prevent side-channel attacks.
