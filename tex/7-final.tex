@@ -2,7 +2,9 @@ In this thesis we propose countermeasures to be applied on root finding algorith
 
 Before present our countermeasures, we present a timing attack against a Round 1 NIST proposal. This attack use the fact that a naive implementation on the decoding process, more specifically, on the root finding method, leak information about the polynomial that has been factorized and consequently about the error added to the message. 
 
+The attack presented illustrate how insecure a naive implementation is. In our experiments we detect that the root finding method was the responsible for the major time variance on a root finding algorithm. Thus, we present five alternatives to construct a safe decoding. Our countermeasures are based on Exhaustive search, the Berlekamp Trace Algorithm, the Linearized Algorithm, the Successive Resultant Algorithm and in the Rabin Algorithm. The countermeasures proposed 
 
+This countermeasures were implemented in order tu measure the 
 
 \section{Future works}
 For future work, we 
