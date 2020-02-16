@@ -43,9 +43,9 @@ To better undestanting of how a timing side-channel attak works, we presents the
 
 \begin{lstlisting}[caption={Naive implementation of password check },label={lst:naive-pass},language=C]
 //C
-int passCheck(char * input_pass, int input_size) {
+int passCheck(char * input_pass) {
     int i = 0;
-    while (i < input_size) {
+    while (i < 4) {
         if (input_pass[i] == getPassAt(i)) {
             continue;
         } else {
@@ -56,7 +56,8 @@ int passCheck(char * input_pass, int input_size) {
 }
 \end{lstlisting}
 
-So, an attacker with knowledge of the implementation, with access to the time wastaded to verify a password could perform a simple attack where thei 
+So, an attacker with knowledge of the implementation, with access to the time wasted to verify a password could perform a simple attack by flipping the first char to all 
+
 }
 
 
