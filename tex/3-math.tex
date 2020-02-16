@@ -59,6 +59,9 @@ int passCheck(char * input_pass) {
 So, an attacker with knowledge of the implementation, with access to the time wasted to verify a password could perform a simple attack, first  flipping the first char to all possible chars, and assume that the correct was that with spent more time. After repeat this for the all characters, the attacker recover the secret password.
 \end{example}
 
+We this toy example to give an idea of how an attacker, who knows the implementation details are able to infer information about the execution time of an algorithm. In more complex cryptosystems this inference was not simple. However, it still possible to steel sensitive information measuring the decoding execution time.
+
+idea to infer information of 
 
 \section{Literature review}
 The decoding process of McEliece cryptosystem is the most sensitive part of the algorithm. The usage of the private key demands that this algorithm does not leak any information about the key, or even, any information about the error added to the message. The authors in \cite{bucerzan2017improved} shows that a time deviation on root finding process in the Patterson's decoding algorithm could open avenues for side-channel attacks. 
