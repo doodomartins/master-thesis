@@ -41,15 +41,22 @@ To better undestanting of how a timing side-channel attak works, we presents the
 
 \example{Let us suppose that an attacker has access to the time execution of a password validation. This validation was made through the naive implementation presented in the Listings~\ref{lst:naive-pass}
 
-\begin{lstlisting}[caption={Code snippet of BIGQUAKE error attribution },label={lst:naive-pass},language=C]
+\begin{lstlisting}[caption={Naive implementation of password check },label={lst:naive-pass},language=C]
 //C
 int passCheck(char * input_pass, int input_size) {
     int i = 0;
     while (i < input_size) {
-        if (input_pass[i] == getPassAt(i))
+        if (input_pass[i] == getPassAt(i)) {
+            continue;
+        } else {
+            return -1;
+        }
     }
+    return 0;
 }
 \end{lstlisting}
+
+So, an attacker with knowledge of the implementation, with access to the time wastaded to verify a password could perform a simple attack where thei 
 }
 
 
