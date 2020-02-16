@@ -35,8 +35,12 @@ A binary Goppa code can correct a codeword $c \in \mathbb{F}_{2}^n$, obscured by
 \subsection{Key encapsulation mechanisms}
 
 \section{Side-channel attacks}
-In summary, a side-channel attack is any type of attack when the attacker acquire sensitive information from the implementation of the cryptosystem. 
+In summary, a side-channel attack is any type of attack when the attacker acquire sensitive information from the implementation of the cryptosystem. There are a several types of side-channel attacks, of almost all kind of 
 \subsection{Timing side-channel attacks}
+To better undestanting of how a timing side-channel attak works, we presents the follow example. 
+
+\example{Let us suppose that an attacker has access to the time execution of a password validation.}
+
 
 \section{Literature review}
 The decoding process of McEliece cryptosystem is the most sensitive part of the algorithm. The usage of the private key demands that this algorithm does not leak any information about the key, or even, any information about the error added to the message. The authors in \cite{bucerzan2017improved} shows that a time deviation on root finding process in the Patterson's decoding algorithm could open avenues for side-channel attacks. 
