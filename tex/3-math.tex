@@ -39,7 +39,8 @@ In summary, a side-channel attack is any type of attack when the attacker acquir
 \subsection{Timing side-channel attacks}
 To better undestanting of how a timing side-channel attak works, we presents the follow example. 
 
-\example{Let us suppose that an attacker has access to the time execution of a password validation. This validation was made through the naive implementation presented in the Listings~\ref{lst:naive-pass}
+\begin{example}
+Let us suppose that an attacker has access to the time execution of a password validation (For instance we use an 4 digit password). This validation was made through the naive implementation presented in the Listings~\ref{lst:naive-pass}
 
 \begin{lstlisting}[caption={Naive implementation of password check },label={lst:naive-pass},language=C]
 //C
@@ -55,10 +56,8 @@ int passCheck(char * input_pass) {
     return 0;
 }
 \end{lstlisting}
-
-So, an attacker with knowledge of the implementation, with access to the time wasted to verify a password could perform a simple attack by flipping the first char to all 
-
-}
+So, an attacker with knowledge of the implementation, with access to the time wasted to verify a password could perform a simple attack, first  flipping the first char to all possible chars, and assume that the correct was that with spent more time. After repeat this for the all characters, the attacker recover the secret password.
+\end{example}
 
 
 \section{Literature review}
