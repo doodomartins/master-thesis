@@ -17,8 +17,10 @@ The root-finding implementations presented in~\cite{chou2017mcbits, bernstein201
 In this work, to evidence the power of a timing side-channel attack, we present a implementation of the Strenzke attack over a NIST Round 1 submission. And the main focus of this works was propose strategies to make the execution time of the aforementioned algorithms constant, additionally, we propose the use of probabilistic algorithms to achieve a safe root computation. One of the strategies is to write the algorithms in an iterative way, eliminating all recursions. We also use permutations and simulated operations to uncouple possible measurements of side effects of the data being measured. Also, 
 
 \section{Objectives}
-The main objective of this work is to find alternatives to perform the decoding process of McElice Cryptosystem in a safe way avoiding side-channel attacks using time differences. To achieve this, we are interested in building a constant way to compute roots of error locator polynomial. In summary, we can define the specific objectives as follows:
+The main goal of this work is to find alternatives to perform the decoding process of McEliece Cryptosystem in a safe way avoiding timing side-channel attacks. To achieve this, we are interested in building a constant way to compute roots of error locator polynomial, or remove the relation between the polynomial to be factorized and the execution time of the algorithm.
 
+
+\subsection{Specific objectives}
 \begin{enumerate}[label=\roman*., itemsep=1pt]
     \item Literature review over scientific works that compute roots in polynomials over $\mathbb{F}_2$;
     \item Time variation measurement of works selected in the previous item;
@@ -26,13 +28,6 @@ The main objective of this work is to find alternatives to perform the decoding 
     \item Implement these defined strategies;
     \item Evaluation of the new time variations of the algorithms;
 \end{enumerate}
-
-\subsection{General objectives}
-Our main objective was propose secure techniques for root find methods to be used in decodes on code-based cryptosystems. And something of the attack.
-\subsection{Specific objectives}
-The attack
-The countermeasures
-The analysis
 \section{Organization}
 
 
