@@ -8,7 +8,7 @@ This countermeasures were implemented analysed, in order to measure their time v
 
 Finally, we recommend the usage of three root finding methods presented in this works. First one, the use of the new iterative BTA, in our experiments their present a small time variance, however, their made use of the Euclidean algorithm to compute the $gcd$ in their execution, and it is well know in the literature that the classical implementation of the $gcd$ has no constant time. Second one, the usage of SCA approach, with out countermeasures, their also present an small time variance, however, their implementation it was more complexity because it made use of a multivariate polynomial systems.
 
-Lastly, we suggest the usage of the Rabin Algorithm, since it has a random behaviour, anyone can't infer information from the execution time. This it was observed on the 
+Lastly, we suggest the usage of the Rabin Algorithm, since it has a random behaviour, anyone can't infer information from the execution time. This it was observed on the time execution analysis presented in Figure~\ref{fig:time-rabin}. However, their execution made usage of the $gcd$ algorithm, as in BTA. This could be used to employ an timing attack, however, to the best of our knowledge, any existent timing attack existent on the literature are able to infer sufficient information of the $gcd$
 
 \section{Future works}
 For future work, we 
