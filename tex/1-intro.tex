@@ -14,7 +14,9 @@ The algorithms presented in~\cite{strenzke2012fast} were not created with consta
 
 The root-finding implementations in~\cite{chou2017mcbits, bernstein2013mcbits} use Fast Fourier Transforms (FFT) and, while efficient, they are built and optimized for $\mathbb{F}_{2^{13}}$. We propose a more generic implementation that does not require specific optimizations on the underlying finite field arithmetic. Additionally, this approach takes advantage of a particular computer architecture and uses the fact that we can evaluate multiple points in parallel. We are also interested in approaches that could avoid side channel attacks in any architecture. 
 
-In this work, we propose strategies to make the execution time of the aforementioned algorithms constant. The first and most important strategy is to write the algorithms in an iterative way, eliminating all recursions. We also use permutations and simulated operations to uncouple possible measurements of side effects of the data being measured.
+In this work, to evidence the power of a timing side-channel attack, we present a implementation of the Strenzke attack over a NIST Round 1 submission. And the main focus of this works was
+
+we propose strategies to make the execution time of the aforementioned algorithms constant, additionally, we propose the use of probabilistic algorithms to achieve a safe root computation. One of the strategies is to write the algorithms in an iterative way, eliminating all recursions. We also use permutations and simulated operations to uncouple possible measurements of side effects of the data being measured. Also, 
 
 \section{Objectives}
 The main objective of this work is to find alternatives to perform the decoding process of McElice Cryptosystem in a safe way avoiding side-channel attacks using time differences. To achieve this, we are interested in building a constant way to compute roots of error locator polynomial. In summary, we can define the specific objectives as follows:
