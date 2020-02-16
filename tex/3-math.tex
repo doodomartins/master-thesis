@@ -39,7 +39,18 @@ In summary, a side-channel attack is any type of attack when the attacker acquir
 \subsection{Timing side-channel attacks}
 To better undestanting of how a timing side-channel attak works, we presents the follow example. 
 
-\example{Let us suppose that an attacker has access to the time execution of a password validation.}
+\example{Let us suppose that an attacker has access to the time execution of a password validation. This validation was made through the naive implementation presented in the Listings~\ref{lst:naive-pass}
+
+\begin{lstlisting}[caption={Code snippet of BIGQUAKE error attribution },label={lst:naive-pass},language=C]
+//C
+int passCheck(char * input_pass, int input_size) {
+    int i = 0;
+    while (i < input_size) {
+        if (input_pass[i] == getPassAt(i))
+    }
+}
+\end{lstlisting}
+}
 
 
 \section{Literature review}
