@@ -6,7 +6,9 @@ The attack presented illustrate how insecure a naive implementation is. In our e
 
 This countermeasures were implemented analysed, in order to measure their time variance and their behaviour. In this analysis we observe that we reduce the time variance for all methods where we propose to reduce this variance. Also, in the probabilistic method, we note that the behaviour of the original method does not leak any information about the polynomial that has been factorized. This relies in the fact that the algorithm takes random selection in each iteration.
 
-Finally, we recommend the usage of three root finding methods presented in this works. First one, the use of the new iterative BTA, in our experiments their present a small time variance, however, their made use of the Euclidean algorithm to compute the $gcd$ in . Second one was the usage 
+Finally, we recommend the usage of three root finding methods presented in this works. First one, the use of the new iterative BTA, in our experiments their present a small time variance, however, their made use of the Euclidean algorithm to compute the $gcd$ in their execution, and it is well know in the literature that the classical implementation of the $gcd$ has no constant time. Second one, the usage of SCA approach, with out countermeasures, their also present an small time variance, however, their implementation it was more complexity because it made use of a multivariate polynomial systems.
+
+Lastly, we suggest the usage of the Rabin Algorithm, since it has a random behaviour, anyone can infer 
 
 \section{Future works}
 For future work, we 
