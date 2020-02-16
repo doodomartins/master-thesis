@@ -1,7 +1,6 @@
-Communications thought electronic devices require privacy. This privacy between two parts is made with key agreements and key encapsulation protocols or public-key algorithms. During a several years, this protocols was designed over the classical cryptography, which was based on number theory problems. Nowadays, the integer factorization and the discrete logarithm are consider secure. However, the quantum algorithm proposed by Shor~\cite{shor1999polynomial} provides an polynomial time algorithm to solve this numerical problems in a quantum computer. Besides, the recent and fast advances on quantum compututing 
+Communications thought electronic devices require privacy. This privacy between two parts is made with key agreements and key encapsulation protocols or public-key algorithms. During a several years, this protocols was designed over the classical cryptography, which was based on number theory problems. Nowadays, the integer factorization and the discrete logarithm are consider secure. However, the quantum algorithm proposed by Shor~\cite{shor1999polynomial} provides an polynomial time algorithm to solve this numerical problems in a quantum computer. Besides, the recent and fast advances on quantum computing makes necessary the study of new cryptography primitives. 
 
-
-In recent years, the area of post-quantum cryptography has received considerable attention, especially because of the call by the National Institute of Standards and Technology (NIST) for  standardization of post-quantum schemes. On this call, NIST did not give restrictions about specific hard problems. However, most schemes for the Key Encapsulation Mechanism (KEM) are lattice- and code-based. The latter type is centered around coding theory and includes one of the oldest unbroken cryptosystems, due to McEliece~\cite{mceliece1978public}.
+Furthermore, in recent years, the area of post-quantum cryptography has received considerable attention, especially because of the call by the National Institute of Standards and Technology (NIST) for  standardization of post-quantum schemes. On this call, NIST did not give restrictions about specific hard problems. However, most schemes for the Key Encapsulation Mechanism (KEM) are lattice- and code-based. The latter type is centered around coding theory and includes one of the oldest unbroken cryptosystems, due to McEliece~\cite{mceliece1978public}.
 
 One of the requirements for those proposals is that they are resistant to all known cryptanalysis methods. However, even if a scheme is immune to such attacks, it may be subject to attacks related to its implementation. In particular, submissions need to avoid side-channel attacks.
 
@@ -18,6 +17,15 @@ The root-finding implementations in~\cite{chou2017mcbits, bernstein2013mcbits} u
 In this work, we propose strategies to make the execution time of the aforementioned algorithms constant. The first and most important strategy is to write the algorithms in an iterative way, eliminating all recursions. We also use permutations and simulated operations to uncouple possible measurements of side effects of the data being measured.
 
 \section{Objectives}
+The main objective of this work is to find alternatives to perform the decoding process of McElice Cryptosystem in a safe way avoiding side-channel attacks using time differences. To achieve this, we are interested in building a constant way to compute roots of error locator polynomial. In summary, we can define the specific objectives as follows:
+
+\begin{enumerate}[label=\roman*., itemsep=1pt]
+    \item Literature review over scientific works that compute roots in polynomials over $\mathbb{F}_2$;
+    \item Time variation measurement of works selected in the previous item;
+    \item Define strategies to achieve a secure way to compute roots;
+    \item Implement these defined strategies;
+    \item Evaluation of the new time variations of the algorithms;
+\end{enumerate}
 
 \subsection{General objectives}
 Our main objective was propose secure techniques for root find methods to be used in decodes on code-based cryptosystems. And something of the attack.
@@ -46,9 +54,7 @@ The analysis
 
 % The context of this work relies on the fact that  Shor's algorithm opens a lack of security in all current cryptosystem. However, there exists a few class of the algorithm that is still secure, against a classical and a quantum computer. One of the most relevant classes of algorithm, called code-based algorithms, are based on the classical work proposed by Robert J. McEliece \cite{mceliece1978public}. 
 
-% This classical algorithm uses an error-correcting code that able to recovery errors added to a message. This is made through the redundancy added to the original message. Using the idea behind the coding theory, and protecting some parts of the code, only who has knowledge of the code was able to recover the original message, we can construct a scheme that is secure in a quantum era.
-
-% Therefore we can construct schemes based on code secure. Their implementation could not be secure. Based on this fact, many cryptosystems are creating ways to blinding their implementations. 
+% This classical algorithm uses an error-correcting code that able to recovery errors added to a message. This is made through the redundancy added to the original message. Using the idea behind the coding theory, and protecting some parts of the code, only who has knowledge of the code was able to recover the original message, we can construct a scheme that is secure in a quantum era. Therefore we can construct schemes based on code secure. Their implementation could not be secure. Based on this fact, many cryptosystems are creating ways to blinding their implementations. 
 
 % In case of schemes based on errors correcting codes, more specific on schemes that uses algebraic decoding, we has some time leakage on the computation of the roots. The main task was, how to compute the roots of an polynomial over finite fields without leak time information. 
 
