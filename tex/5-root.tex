@@ -183,7 +183,7 @@ Fortunately, the authors in \cite{fedorenko2002finding} provide a generic decomp
     F(y) = f_3y^3 + \sum_{i=0}^{\lceil (t-4)/5 \rceil} y^{5i}(f_{5i} + \sum_{j=0}^{3} f_{5i+2^j}y^{2^j}).
 \end{equation}
 
-After that, we can summarize all the steps on Algorithm~\ref{alg:linearized}. The function ``generate($m$)'' refers to the generation of the elements in $\mathbb{F}_{2^m}$ using Gray codes, see \cite{savage1997survey} for more details about Gray codes. The linearized method differ from the exhaustive search on the evaluation process, here, it is much more efficiency compute this evaluation because of the polynomial are in an linearized form. Algorithm~\ref{alg:linearized} presents our countermeasure in the last steps of the algorithm, i.e., we added a dummy operation for blinding if $X[j]$ is a root of polynomial $F(x)$. The analysis of linearized method and its countermeasure are presented in Chapter~\ref{ch:comparison}.
+After that, we can summarize all the steps on Algorithm~\ref{alg:linearized}. The function ``generate($m$)'' refers to the generation of the elements in $\mathbb{F}_{2^m}$ using Gray codes, see \cite{savage1997survey} for more details about Gray codes. The linearized method differs from the exhaustive search on the evaluation process; it is much more efficient to compute this evaluation because the polynomial is in the linearized form. Algorithm~\ref{alg:linearized} presents our countermeasure in the last steps of the algorithm, i.e., we added a dummy operation for blinding if $X[j]$ is a root of polynomial $F(x)$. The analysis of the linearized method and its countermeasure are presented in Chapter~\ref{ch:comparison}.
 
 \begin{figure}
 \begin{algorithm}[H]
@@ -279,39 +279,39 @@ where the $a_i \in \mathbb{F}_{p^n}$ are defined as in Theorem~\ref{lemma_1}. An
 Let $(x_1,x_2,\ldots,x_m)$ be a solution of the equations in Equation~\ref{eq:system_1}. Then $x_1 \in \mathbb{F}_{p^m}$ is a solution of $f$. Conversely, given a solution $x_1 \in \mathbb{F}_{p^m}$ of $f$, we can reconstruct a solution of all equations in Equation~\ref{eq:system_1} by setting $x_2 =x_1^p - a_1x_1$, etc.
 \end{theorem}
 
-In \cite{petit2014finding}, the authors present an algorithm for solving the system in Equation~\ref{eq:system_1} using resultants. The solutions of the system are the roots of polynomial $f(x)$. It is worth remarking that this algorithm is almost constant-time and hence we just need to protect the branches presented on it.
+In \cite{petit2014finding}, the authors present an algorithm for solving the system in Equation~\ref{eq:system_1} using resultants. The solutions of the system are the roots of polynomial $f(x)$. It is worth remarking that this algorithm is almost constant-time, and hence we just need to protect the branches presented on it.
 
 
 
-\begin{figure}[ht]
-\begin{algorithm}[H]
- \KwData{$f(x)$ as an univariate polynomial over $\mathbb{F}_{2^m}$, $t$ as number of expected roots.}
- \KwResult{The set of roots of $p(x)$.}
-    $Factors \gets \{f\};$ \tcp{The set of polynomials to be computed}
-    $k \gets 1$\;
-    $it_{max} \gets 2 \lceil\log{\frac{t^2}{\epsilon}}\rceil$\;
-    \While{$k < it_{max}$}{
-        $h \xleftarrow{\$} \mathbb{F}_{2^m}$ \tcp{choose $h$ with degree $< t$ at random}
-        $g \gets gcd(h, f)$\;
-        \If{$g = 1$}{
-            $g \gets tr(h)$
-        }
-        \For{$fact \in Factors \quad$and$\quad fact.degree > d$}{
-            \If{$gcd(g, fact) \neq 1 \quad$ and $\quad gcd(g, u) \neq u$}{
-                $Factors.remove(u)$\;
-                $Factors.insert(gcd(g,u))$\;
-                $Factors.insert(u/gcd(g,u))$\;
-            }
-        }
-        \If{$p_{1}.degree == 1$}{
-            $R.add($root of $p_{1})$
-        }
-    }
-    \Return{$Factors$}
- \caption{Successive Resultant Algorithm -- $SRA(p(x))$.}
-  \label{alg:sra}
-\end{algorithm}
-\end{figure}
+% \begin{figure}[ht]
+% \begin{algorithm}[H]
+%  \KwData{$f(x)$ as an univariate polynomial over $\mathbb{F}_{2^m}$, $t$ as number of expected roots.}
+%  \KwResult{The set of roots of $p(x)$.}
+%     $Factors \gets \{f\};$ \tcp{The set of polynomials to be computed}
+%     $k \gets 1$\;
+%     $it_{max} \gets 2 \lceil\log{\frac{t^2}{\epsilon}}\rceil$\;
+%     \While{$k < it_{max}$}{
+%         $h \xleftarrow{\$} \mathbb{F}_{2^m}$ \tcp{choose $h$ with degree $< t$ at random}
+%         $g \gets gcd(h, f)$\;
+%         \If{$g = 1$}{
+%             $g \gets tr(h)$
+%         }
+%         \For{$fact \in Factors \quad$and$\quad fact.degree > d$}{
+%             \If{$gcd(g, fact) \neq 1 \quad$ and $\quad gcd(g, u) \neq u$}{
+%                 $Factors.remove(u)$\;
+%                 $Factors.insert(gcd(g,u))$\;
+%                 $Factors.insert(u/gcd(g,u))$\;
+%             }
+%         }
+%         \If{$p_{1}.degree == 1$}{
+%             $R.add($root of $p_{1})$
+%         }
+%     }
+%     \Return{$Factors$}
+%  \caption{Successive Resultant Algorithm -- $SRA(p(x))$.}
+%   \label{alg:sra}
+% \end{algorithm}
+% \end{figure}
 
 
 \section{Rabin Algorithm}
