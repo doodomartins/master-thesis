@@ -1,7 +1,7 @@
-In this chapter we will present an analysis over the five presented method on previous section. The first two analysis has focus on the complexity and performance of the algorithms. However, we are not interested only in efficient methods, our main goal was achieve an method with no information leakage against a timing side-channel attack. Hence, we demonstrate an time-variance analysis for each proposed root-finding method. After that, we present an security analysis over the algorithm. Remarking that $n = 2^m$ are the size fields, and $t$ the degree of polynomial.
+In this chapter, we will present an analysis of the five presented methods in the previous chapter. The first two analyses have a focus on the complexity and performance of the algorithms. However, we are not interested only in efficient techniques, our primary goal was to achieve a method with no information leakage against a timing side-channel attack. Hence, we demonstrate a time-variance analysis for each proposed root-finding method. After that, we present a security analysis of the algorithm. Remarking that $n = 2^m$ are the size fields, and $t$ the degree of the polynomial.
 
 \section{Complexity analysis}
-In order to compare the complexity of the algorithm, we use the Big $\mathcal{O}$ notation. This asymptotic notation permits to us classify the algorithms according to their behaviour when the inputs grows. 
+In order to compare the complexity of the algorithm, we use the Big $\mathcal{O}$ notation. This asymptotic notation permits us to classify the algorithms according to their behaviour when the inputs grow. 
 
 \begin{table}[ht]
 \centering
@@ -21,12 +21,10 @@ Rabin root finding                      & $\mathcal{O}(t^2m)$
 \end{tabular}
 \end{table}
 
-As we can note, the most asymptotic efficient method was the Rabin root finding method. However, this asymptotic could not reflect the execution timing of the algorithm for parameters used in code-based schemes. This happens because the big $\mathcal{O}$ notation does not consider constants and the asymptotic complexity was for all $m$ and $t$ grater then $m_0$ and $t_0$ respectively, and the parameters used on code-based cryptosystems could be smaller then the $m_0$ and $t_0$.
-
-
+As we can note, the most asymptotic efficient method was the Rabin root finding method. However, this asymptotic could not reflect the execution timing of the algorithm for parameters used in code-based schemes. This happens because the big $\mathcal{O}$ notation does not consider constants and the asymptotic complexity was for all $m$ and $t$ grater then $m_0$ and $t_0$ respectively, and the parameters used on code-based cryptosystems could be smaller than the $m_0$ and $t_0$.
 
 \section{Performance analysis}
-To present a more careful analysis, we present a execution time analysis of each presented algorithm. This comparison gives an idea of the real execution cost. All root finding method was performed over and random polynomial of degree $t$ over $\mathbb{F}_2^m$, for $t = 50$ until $t = 300$ and $n = 2^10$ to $n = 2^{18}$. For each polynomial, we take the average time of 10 executions.
+To present a more careful analysis, we present an execution time analysis of each presented algorithm. This comparison gives an idea of the real execution cost. All root finding method was performed over and random polynomial of degree $t$ over $\mathbb{F}_2^m$, for $t = 50$ until $t = 200$ and $n = 2^10$ to $n = 2^{16}$. For each polynomial, we take the average time of 10 executions to minimize the environment noise.
  
 
 \begin{figure}[ht]
@@ -70,12 +68,13 @@ The performance analysis was implemented in Sage~\cite{sage}, since we want to m
 
 For each algorithm presented, we can observe the same behaviour on execution time. Since one of the heavy terms in the complexity was the extension $m$, because they affect the algorithm exponentially, we can note that the algorithms have a different growth for each extension. How higher $m$ is, we observe a higher growth of the runtime. Moreover, we can observe the massive difference between the extension $2^{15}$ to $2^{16}$ on the exhaustive search and in the linearized algorithm. 
 
-On the other hand, the degree of the polynomial affects the execution time of the algorithm linearly. Therefore, the execution time grows more slowly when we are increasing the degree of the polynomial. Additionally, we can note a sharp growth on the Successive Resultant and on the Berlekamp Trace when compared to the Miller Algorithm.
+On the other hand, the degree of the polynomial affects the execution time of the algorithm linearly. Therefore, the execution time grows more slowly when we are increasing the degree of the polynomial. Additionally, we can note a sharp growth on the Successive Resultant and on the Berlekamp Trace when compared to the Rabin's Algorithm.
 
 \section{Time variance analysis}
-The main focus of our works relies on propose alternatives to compute roots of error locator polynomial without leak sensitive information against a timing side-channel attack. As previously presented, a naive implementation of the root finding process allows an attacker to recover the cipher text and compute an session key of a code-based cryptosystem. In order to avoid this attack, we present five algorithms to compute the roots of an polynomial over binary finite fields. For three of these algorithms we propose countermeasures to reduce the time variance on its runtime. On this section we present a time variance analysis of this countermeasures.
+The main focus of our works relies on propose alternatives to compute roots of error locator polynomial without leaking sensitive information against a timing side-channel attack. As previously presented, a naive implementation of the root-finding process allows an attacker to recover the ciphertext and compute a session key of a code-based cryptosystem. In order to avoid this attack, we present five algorithms to compute the roots of a polynomial over binary finite fields. For three of these algorithms, we propose countermeasures to reduce the time variance in its runtime. In this section, we present a time variance analysis of these countermeasures.
 
-In order to measure the time variance, we perform root finding and measure the time variance between different executions. This variance are measure in CPU cycles. Figure \ref{fig:55-60-100} presents the time variance for BTA, Linearized Algorithm and Successive Resultant Algorithm for a polynomial with degree $t = \{55, 60, 100\}$ and $\mathbb{F_2^{16}}$.
+In order to measure the time variance, we perform root finding and measure the time variance between different executions. This variance is measured in CPU cycles. Figure \ref{fig:55-60-100} presents the time variance for BTA, Linearized Algorithm and Successive Resultant Algorithm for a polynomial with degree $t = \{55, 60, 100\}$ and $\mathbb{F_2^{16}}$.
+
 
 \begin{figure}[ht]
 
@@ -105,7 +104,7 @@ In order to measure the time variance, we perform root finding and measure the t
 
 \input{fig/variance12.tex}
 
-In all methods, when we apply our countermeasure, we increase the average execution time. However, we can note that we considerably reduced the time variance of the algorithm. This variance can be observed on the quartiles on Figure~\ref{fig:100_comp_new}. Since the quartiles inside the box represents 50\% of all measured time, and the others quartiles represents the remained 50\%, ignoring the outliers, we can uphold that our countermeasures reduces the time variance of the root finding methods. 
+In all methods, when we apply our countermeasure, we increase the average execution time. However, we can note that we considerably reduced the time variance of the algorithm. This variance can be observed on the quartiles in Figure~\ref{fig:100_comp_new}. Since the quartiles inside the box represents 50\% of all measured time, and the other quartiles represent the remained 50\%, ignoring the outliers, we can uphold that our countermeasures reduce the time variance of the root-finding methods.
 
 \section{Security overview}
 In order to present a security analysis over our countermeasures showed in Chapter~\ref{ch:roots}. Our main hypothesis on the BIGQUAKE attack was the fact that the time variance on the root-finding process leak information about which kind of polynomial was factorized. This approach leads us to recover an cipher message in a few minutes in a normal laptop. Notwithstanding this attack is almost impractical in real cases, we present five countermeasures to avoid this information leakage.
