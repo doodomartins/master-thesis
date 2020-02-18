@@ -76,9 +76,7 @@ As we can see, a direct implementation of Algorithm~\ref{alg:bta} has no constan
 
 In order to avoid the nonconstant number of executions and avoid timing side-channel attacks, here referred as $BTA-it$, we propose an iterative implementation of Algorithm~\ref{alg:bta}. In this way, our proposal iterates in a fixed number of iterations instead of calling itself until the base case. The main idea is not changed; we still divide the task of computing the roots of a polynomial $p(x)$ into two smaller instances. However, we change the approach of the division of the polynomial. Since we want to compute the same number of operations independent of the degree of the polynomial, we perform the gcd with a trace function for all basis in $\beta$, and choose a division that results in two new polynomials with a medium degree.
 
-This new approach allows us to define a fixed number of iterations for our version of BTA. Since we always divide into two small instances, we need $t-1$ iterations to split a polynomial of degree $t$ in $t$ polynomials of degree $1$.
-Then we just need to add a stack to controlling the polynomials to be divided.
-Algorithm~\ref{alg:ibta} presents our new approach of the iterative BTA -- $i-BTA$.
+This new approach allows us to define a fixed number of iterations for our version of BTA. Since we always divide into two small instances, we need $t-1$ iterations to split a polynomial of degree $t$ in $t$ polynomials of degree $1$. Then we just need to add a stack to controlling the polynomials to be divided. Algorithm~\ref{alg:ibta} presents our new approach of the iterative BTA -- $i-BTA$.
 
 \begin{figure}[ht]
 \begin{algorithm}[H]
@@ -106,7 +104,8 @@ Algorithm~\ref{alg:ibta} presents our new approach of the iterative BTA -- $i-BT
   \label{alg:ibta}
 \end{algorithm}
 \end{figure}
-Algorithm~\ref{alg:ibta} extracts a root of the polynomial when the variable $current$ has a polynomial with degree equal to one. If this degree is greater than one, then the algorithm needs to continue dividing the polynomial until it finds a root. The algorithm does that by adding the polynomial in a stack and reusing this polynomial in a future division. The iterative BTA has a higher complexity when compare to the original BTA. Nevertheless, with our new approach, we achieve a more constant time execution on the root finding task, consequently reducing the knowledge obtained by an attacker. On Chapter~\ref{ch:comparison} we analyse and compare our iterative BTA with the others approach.
+
+Algorithm~\ref{alg:ibta} extracts a root of the polynomial when the variable $current$ has a polynomial with degree equals to one. If this degree is higher than one, then the algorithm needs to continue dividing the polynomial until it finds a root. The algorithm does that by adding the polynomial in a stack and reusing this polynomial in a future division. The iterative BTA has a higher complexity when compared to the original approach. Nevertheless, with our new approach, we achieve a more constant time execution on the root-finding task, consequently reducing the knowledge obtained by an attacker. In Chapter~\ref{ch:comparison}, we analyse and compare our iterative BTA with the others approach.
 
 \section{Linearized Polynomials}
 The third countermeasure proposed is based on linearized polynomials. The authors in \cite{fedorenko2002finding} propose a method to compute the roots of a polynomial over $\mathbb{F}_{2^m}$, using a particular class of polynomials, called linearized polynomials. In \cite{strenzke2012fast}, this approach is a recursive algorithm which the author calls ``dcmp-rf''. In our solution, however, we present an iterative algorithm. First, we define linearized polynomials as follows:
