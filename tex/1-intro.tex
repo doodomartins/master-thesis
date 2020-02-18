@@ -33,49 +33,25 @@ The main goal of this work is to find alternatives to perform the decoding proce
 \section{Methodology}
 In order to accomplish the goals of this work, we present the methodology used in this work.
 \begin{enumerate}
-    \item Study over code-based cryptosystems: First, we start to studied the theoretical background over the code-based cryptosystems. Starting from the first proposal by McEliece;
-    \item Literature review over timing side-channel attacks on code-based cryptosystems: The second step was perform an literature review over side-channel attacks against code-based schemes. This literature review was construct though a search over the main journals and conferences;
-    \item Perform a timing side-channel attack against an cryptosystem: to illustrate that a naive implementation are insecure against a timing side-channel attack, we will perform an attack against a code-based scheme;
-    \item Literature review over root-finding methods: the main algorithms applied to compute the roots of polynomial in code-based cryptosystems will be listed and individually studied; 
-    \item Addition of different methods: Since the area of compute roots of a polynomial does not apply only on code-based cryptosystem, a search of methods which are not been used in code-based cryptography will be performed and we will listed together the methods indexed in the previous item;
-    \item Propose countermeasures: Since the listed algorithm was not originally design to blind a side-channel attacker, we will propose countermeasures in order to protect the implementation and avoid to leakage sensitive information;
-    \item Implementation: in order to effective measure the efficacy of our proposal, we will implement the countermeasures presented to analyze the information leakage in our works.
-    \item Analysis: We will use our implementation to measure the time variance of all studied methods, with and without the countermeasures proposed. Additionally, we will present an analysis of the the execution time of each algorithm with different parameters;
-    \item Summarize the obtained results: all results obtained will be summarized and a conclusion will be draw, to define the results obtained and the future works.
+    \item Code-based cryptosystems overview: We first studied the theoretical background over the code-based cryptosystems. Starting from the first proposal by McEliece until the NIST standardization submissions;
+    \item Literature review over timing side-channel attacks on code-based cryptosystems: The second step is to perform a literature review over side-channel attacks against code-based schemes. This literature review will be constructed through a search over the main journals and conferences;
+    \item Perform a timing side-channel attack against a cryptosystem: to illustrate that a naive implementation is insecure against a timing side-channel attack, we will perform an attack against a code-based scheme;
+    \item Literature review over root-finding methods: the main algorithms applied to compute the roots of a polynomial in code-based cryptosystems will be listed and individually studied; 
+    \item Addition of different methods: Since the area of computing roots of a polynomial does not apply only on code-based cryptosystem, a search of methods which are not being used in code-based cryptography will be done, and we will list together with the methods indexed in the previous item;
+    \item Propose countermeasures: Since the listed algorithm was not originally designed to blind a side-channel attacker, we will propose countermeasures in order to protect the implementation and avoid to leakage sensitive information;
+    \item implementation: in order to effectively measure the efficacy of our proposal, we will implement the countermeasures presented to analyze the information leakage in our works.
+    \item Analysis: We will use our implementation to measure the time variance of all studied methods, with and without the countermeasures proposed. Additionally, we will present an analysis of the execution time of each algorithm with different parameters;
+    \item Summarize the obtained results: all results obtained will be summarized, and a conclusion will be drawn, defining the results obtained and the future works.
 \end{enumerate}
 
 \section{Scientific contribution}
 The timing side-channel attack performed in Chapter~\ref{ch:code-based} and the countermeasures proposed in Chapter~\ref{ch:roots} results in the following paper:
 
 \begin{itemize}
-    \item  MARTINS, D.; BANEGAS, G.; CUSTÓDIO, R. Don’t Forget Your Roots: Constant-Time Root Finding over $\mathbb{F}_2^m$. In: International Conference on Cryptology and Information Security in Latin America.  2019. p. 109-129. Available in: \url{https://doi.org/10.1007/978-3-030-30530-7_6}
+    \item  MARTINS, D.; BANEGAS, G.; CUSTÓDIO, R. Don’t Forget Your Roots: Constant-Time Root Finding over $\mathbb{F}_2^m$. In: International Conference on Cryptology and Information Security in Latin America.  2019. p. 109-129. Available in: \url{https://doi.org/10.1007/978-3-030-30530-7_6}.
 \end{itemize}
 
 This dissertation includes direct text from this publication.
 
 \section{Organization}
-The remainder of this thesis is organized as follows. In Chapter~\ref{ch:math}, we give a brief description of the mathematical background to better understanding this works. The McEliece cryptosystem, BIGQUAKE submission and the a timing side-channel attack was presented in Chapter~\ref{ch:code-based}. In Chapter~\ref{ch:roots}, the core of this thesis, we present five methods for finding roots over $\mathbb{F}_{2^m}$. We also include countermeasures for avoiding timing attacks. Chapter~\ref{ch:comparison} provides a comparison of the number of cycles of the original implementation and the implementation with countermeasures, a performance analysis and the security consideration of our proposal. At last, in Chapter~\ref{ch:final}, we conclude and discuss open problems.
-
-
-% % 
-
-
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
-
-
-
-
-
-
-
-
-% Communications thought electronic devices require privacy. This privacy between two parts is made with key agreements and key encapsulation protocols or public-key algorithms. 
-
-% The context of this work relies on the fact that  Shor's algorithm opens a lack of security in all current cryptosystem. However, there exists a few class of the algorithm that is still secure, against a classical and a quantum computer. One of the most relevant classes of algorithm, called code-based algorithms, are based on the classical work proposed by Robert J. McEliece \cite{mceliece1978public}. 
-
-% This classical algorithm uses an error-correcting code that able to recovery errors added to a message. This is made through the redundancy added to the original message. Using the idea behind the coding theory, and protecting some parts of the code, only who has knowledge of the code was able to recover the original message, we can construct a scheme that is secure in a quantum era. Therefore we can construct schemes based on code secure. Their implementation could not be secure. Based on this fact, many cryptosystems are creating ways to blinding their implementations. 
-
-% In case of schemes based on errors correcting codes, more specific on schemes that uses algebraic decoding, we has some time leakage on the computation of the roots. The main task was, how to compute the roots of an polynomial over finite fields without leak time information. 
-
-% We study, propose modifications, compare and analyze five algorithms that compute the roots of a polynomial.
+The remainder of this thesis is organized as follows. In Chapter~\ref{ch:math}, we give a brief description of the mathematical background to better understanding this works. The McEliece cryptosystem, BIGQUAKE submission, and the timing side-channel attack are presented in Chapter~\ref{ch:code-based}. In Chapter~\ref{ch:roots}, the core of this thesis, we present five methods for finding roots over $\mathbb{F}_{2^m}$. We also include countermeasures for avoiding timing attacks. Chapter~\ref{ch:comparison} provides a comparison of the number of cycles of the original implementation and the implementation with countermeasures, a performance analysis, and the security consideration of our proposal. At last, in Chapter~\ref{ch:final}, we conclude this thesis and discuss open problems.
