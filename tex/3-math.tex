@@ -40,10 +40,9 @@ A binary Goppa code can correct a codeword $c \in \mathbb{F}_{2}^n$, obscured by
 \section{Side-channel attacks}
 In summary, a side-channel attack is any type of attack when the attacker acquire sensitive information from the implementation of the cryptosystem. There are a several types of side-channel attacks, of almost all kind of 
 \subsection{Timing side-channel attacks}
+A timing side-channel attack was an attack were an attacker are able to infer information from the time execution of a cryptography algorithm. To better understanding of how a timing side-channel attack works, we presents Example~\ref{example-timing}. 
 
-A timing side-channel attack was an attack were an attacker are able to infer information from the time execution of a cryptography algorithm. To better understanding of how a timing side-channel attack works, we presents the follow example. 
-
-\begin{example}
+\begin{example}\label{example-timing}
 Let us suppose that an attacker has access to the time execution of a password validation (For instance we use an 4 digit password). This validation was made through the naive implementation presented in the Listings~\ref{lst:naive-pass}
 
 \begin{lstlisting}[caption={Naive implementation of password check },label={lst:naive-pass},language=C]
@@ -63,7 +62,7 @@ int passCheck(char * input_pass) {
 So, an attacker with knowledge of the implementation, with access to the time wasted to verify a password could perform a simple attack, first  flipping the first char to all possible chars, and assume that the correct was that with spent more time. After repeat this for the all characters, the attacker recover the secret password.
 \end{example}
 
-We this toy example to give an idea of how an attacker, who knows the implementation details are able to infer information about the execution time of an algorithm. In more complex cryptosystems this inference was not simple. However, it still possible to steel sensitive information measuring the decoding execution time.
+We present this toy example to give an idea of how an attacker, who knows the implementation details are able to infer information about the execution time of an algorithm. In more complex cryptosystems this inference was not simple. However, it still possible to steel sensitive information measuring the decoding execution time.
 
 The authors in~\cite{shoufan2009timing} presents the idea of infer information on the time variance when we flip a bit over a ciphertext. This idea becomes of the fact that if we flip a correct bit (i. e. a position were a error was added) the algorithm will have less errors to correct and will return early. The opposite occurs when we flip a wrong bit. Thus, the algorithm will return lately. This attack was base of the attack presented in Chapter~\ref{ch:code-based}.
 
