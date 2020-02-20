@@ -38,7 +38,9 @@ A binary Goppa code can correct a codeword $c \in \mathbb{F}_{2}^n$, obscured by
 \subsection{Key encapsulation mechanisms}
 
 \section{Side-channel attacks}
-In summary, a side-channel attack is any type of attack when the attacker acquire sensitive information from the implementation of the cryptosystem. There are a several types of side-channel attacks, and almost of then requires a extensive knowledge over the target cryptosystem. Even the standard cryotography primitives, like the RSA and  are succetible to an side-channel attacks.
+In summary, a side-channel attack is any type of attack when the attacker acquire sensitive information from the implementation of the cryptosystem. There are a several types of side-channel attacks, and almost of then requires a extensive knowledge over the target cryptosystem. Even the standard cryptography primitives, like the RSA or DSS~\cite{rsa, dss}, are susceptible to an side-channel attacks~\cite{kocher1996timing}.
+
+
 \subsection{Timing side-channel attacks}
 A timing side-channel attack was an attack were an attacker are able to infer information from the time execution of a cryptography algorithm. To better understanding of how a timing side-channel attack works, we presents Example~\ref{example-timing}. 
 
