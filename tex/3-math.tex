@@ -7,11 +7,18 @@ The goal of this works relies on find a secure way to compute roots of an polyno
 Let $\mathbb{F}_{2^m}[X]$ a binary finite field with size of $n=2^m$, the polynomial $f = \sum_{i=0}^{t}{g_{i}X^{i}}$ is a polynomial of degree $t$
 \end{definition}
 
-We also can define this polynomial as a product of irreducible polynomials like
+
+We also can define this polynomial as a product of $t$ polynomials
 
 \begin{equation*}
-    f = \prod_{i=0}^{t}{p}, p \in \mathbb{F}_{2^m}
+    f = \prod_{i=0}^{t}{p}, p \in \mathbb{F}_{2^m}.
 \end{equation*}
+
+Given this idea of a polynomial it is composed by the multiplication of others polynomials, we can define an irreducible polynomial as follow.
+
+\begin{definition}
+Let $f = \sum_{i=0}^{t}{g_{i}X^{i}}$ be a polynomial of degree $t$, $f$ is a irreducible polynomial if 
+\end{definition}
 
 \section{Coding theory}
 Coding theory is an engineering area that focus on the data transmission. Since many communications channels are susceptible to introduction of error, for example and wireless connection. The error detection and correction techniques able to us to recover the original sent message. The object of study of this works it is and cryptography scheme that made uses of an error correction code to achieve key exchange between two parts. In the following sections we give a briefly introduction of the main concepts of error correction codes and we also present the Goppa code, the linear code used to achieve the key exchange.
