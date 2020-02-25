@@ -5,10 +5,11 @@ The goal of this works relies on find a secure way to compute roots of an polyno
 
 \begin{definition}
 Let $\mathbb{F}_{2}^{m}$ an finite field with size of $2n=^m$
-\end{definition}{}
+\end{definition}
 
 \section{Coding theory}
-Coding theory is an engineering area that focus on the data transmission. Since many communications channels are susceptible to introduction of error, for example and wireless connection. The error detection and correction techniques able to us to recover the original sent message. The object of study of this works it is and cryptography scheme that made uses of an error correction code to achieve an key exchange
+Coding theory is an engineering area that focus on the data transmission. Since many communications channels are susceptible to introduction of error, for example and wireless connection. The error detection and correction techniques able to us to recover the original sent message. The object of study of this works it is and cryptography scheme that made uses of an error correction code to achieve key exchange between two parts. In the following sections we give a briefly introduction of the main concepts of error correction codes and we also present the Goppa code, the linear code used to achieve the key exchange.
+
 
 \subsection{Linear codes}
 \begin{definition}
@@ -50,10 +51,9 @@ where $\sigma(z) = {\displaystyle \prod_{i=1}^{l}(z+\alpha_i)}$ is the product o
 
 A binary Goppa code can correct a codeword $c \in \mathbb{F}_{2}^n$, obscured by an error vector $e \in \mathbb{F}_{2}^n$ with Hamming weight $w_h(e)$ up to $t$, i.e., the numbers of non-zero entries in $e$ is at most $t$. The way to correct errors is using a decoding algorithm. For irreducible binary Goppa codes we have three alternatives for that. The extended Euclidean Algorithm (EEA) and Berlekamp-Massey algorithm are out of the scope of this work, because they needed a parity-check matrix that has twice more rows then columns. The Patterson algorithm~\cite{patterson1975algebraic}, focus of this paper, can correct up to $t$ errors with a smaller structure.
 
-\section{Cryptography primitives}
-Maybe some idea of the public key cryptography and the association of a private key with a person. Relation with the fist elementary paper of Diffie and Hellman.
-\subsection{Public-key cryptography}
-Given the idea of Public Key crypto. The idea of signature with focus on authentication problem. The introduction on of KEM.
+\section{Public-key cryptography}
+Public-key cryptography was first introduced by Diffie and Hellman 
+
 \subsection{Key encapsulation mechanisms}
 Introduces the KEM and the key exchange. Why we use that, since AES it is better than RSA and DSS or something else.
 
