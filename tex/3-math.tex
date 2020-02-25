@@ -93,9 +93,9 @@ The authors in~\cite{shoufan2009timing} presents the idea of infer information o
 
 
 \section{Literature review}
-In this section we present the related works, as results of our literature review.
-
 The decoding process of McEliece cryptosystem is the most sensitive part of the algorithm. The usage of the private key demands that this algorithm does not leak any information about the key, or even, any information about the error added to the message. The authors in \cite{bucerzan2017improved} shows that a time deviation on root finding process in the Patterson's decoding algorithm could open avenues for side-channel attacks. 
+
+In this section we present the related works, as results of our literature review. Our main goal was propose a method to achieve root computation of an polynomial over a binary finite field. The main focus of this root computation are avoid timing side-channel attacks over code-based cryptosystems. Thus, we start our literature review by searching methods that are currently used in code-based schemes.
 
 The direct way to find all roots of a polynomial is called exhaustive search. In summary, it just tests all possible elements and checks if it is a root. The authors in~\cite{strenzke2012fast} show an optimization to this approach. They divide the original polynomial when a root is found. This reduces the size of the polynomial and speeds up the exhaustive search in about ~30\%. Although this algorithm is efficient, it does not prevent side-channel attacks.
 
