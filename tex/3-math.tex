@@ -3,7 +3,7 @@ In this Chapter, we present an overview of the needed concepts to better underst
 \section{Algebraic structures}
 The goal of this works relies on find a secure way to compute roots of an polynomial over a binary finite field. In this section we will define it and present the main characteristics of it.
 \begin{definition}
-Let $\mathbb{F}_{2^m}[X]$ a binary finite field with size of $n=2^m$, the polynomial $f = \sum_{i=0}^{t}{g_{i}X^{i}}$ is a polynomial of degree $t$
+Let $\mathbb{F}_{2^m}[x]$ a binary finite field with size of $n=2^m$, the polynomial $f = \sum_{i=0}^{t}{g_{i}X^{i}}$ is a polynomial of degree $t$
 \end{definition}
 We also can define this polynomial as a product of $t$ polynomials
 \begin{equation*}
@@ -19,9 +19,9 @@ Let $f = \sum_{i=0}^{t}{g_{i}X^{i}}$ be a polynomial of degree $t$, $f$ is a mon
 \end{definition}
 Thus, a monic polynomial of degree $t$ has the form $x^t + g_{t-1}x^{t-1} + \dots + g_0$. Finally, we define the roots of a polynomial.
 \begin{definition}
-Let $f = \sum_{i=0}^{t}{g_{i}X^{i}}$ be a polynomial of degree $t$. Thus$f$ is a monoical polynomial if $f$ 
+Let $f = \sum_{i=0}^{t}{g_{i}X^{i}}$ be a polynomial of degree $t$. The root of $f$ are all elements in $\mathbb{F}_{2^m}$ that the result of evaluation in $f$ is 0.
 \end{definition}
-We can note that a root of a polynomial it is equivalent to an factor of it. Because of X Y and Z
+We can note that a root of a polynomial it is equivalent to an factor of it. Since a polynomial it is composed by a multiplication of their factors, when we evaluate the polynomial with one factor, the corresponding factor on the product will be equals to zero. Consequently, the results of all evaluation are equals to zero.
 
 \section{Coding theory}
 Coding theory is an engineering area that focus on the data transmission. Since many communications channels are susceptible to introduction of error, for example and wireless connection. The error detection and correction techniques able to us to recover the original sent message. The object of study of this works it is and cryptography scheme that made uses of an error correction code to achieve key exchange between two parts. In the following sections we give a briefly introduction of the main concepts of error correction codes and we also present the Goppa code, the linear code used to achieve the key exchange.
