@@ -15,7 +15,16 @@ Coding theory is an engineerian area that focus on the data transmission.
 Let $\mathbb{F}_{q}$ be a finite field with $q$ elements. The linear code $[n, k]\;C$ is a subspace of dimension $k$ of the vector space $\mathbb{F}_{q}^n$.
 \end{definition}
 
-The parameter $k$ is the code dimension, and $n$ represents the length. The code $C$ was able to correct up to $t$ errors. This was done through the redundancy added in a message with size $k$, encoded in a codeword of size $m$. One of the most important metric in codes was the Hamming metric, defined bellow.
+The parameter $k$ is the code dimension, and $n$ represents the length. The code $C$ was able to correct up to $t$ errors. This was done through the redundancy added in a message with size $k$, encoded in a codeword of size $n$. All messages in $\mathbb{F}_{q}^n$ was mapped to a unique codeword. One of the most important metric in codes was the Hamming metric, defined bellow.
+
+\begin{definition}
+Let $a = (a_1, a_2, \dots, a_n)$ and $b = (b_1, b_2, \dots, b_n) \; \in \; C$ be two codewords. The hamming distance  
+\end{definition}
+
+\begin{definition}
+
+\end{definition}
+
 
 \subsection{Goppa codes}
 Let $m, n, t\in \mathbb{N}$. A binary Goppa code $\Gamma(L, g(z))$ is defined by a polynomial $g(z) = \sum_{i=0}^{t}g_iz^i$ over $\mathbb{F}_{2^m}$ with degree $t$ and supported by $L = (\alpha_1, \alpha_2, \dots, \alpha_n) \in \mathbb{F}_{2^m}$ with $\alpha_i \neq \alpha_j$ for $i\neq j$, such that $g(\alpha_i) \neq 0$ for all $\alpha_i \in L$ and $g(z)$ is square free. To a vector  $c = (c_1 \ldots, c_{n}) \in \mathbb{F}^n_{2}$ we associate a syndrome polynomial associate the syndrome polynomial
