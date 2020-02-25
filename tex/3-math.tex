@@ -57,7 +57,7 @@ Public-key cryptography was first introduced by Diffie and Hellman~\cite{diffie1
 \subsection{Key encapsulation mechanisms}
 Most of public-key algorithm are clumsy to use in data transmission. Thus, key encapsulation mechanism could be used to exchange a symmetric key, and the data transmission could be done using an efficiency algorithm, like the AES~\cite{daemen2013design}. Key encapsulation mechanisms are widely used in many protocols, for example the TLS (Transport Layer Security) protocol. It made uses of digital certificates to guarantee the authenticity of the server and provide a private connection between the browsers and servers.
 
-A Key encapsulation mechanisms is defined by a 3-tuple of algorithms \texttt{(KeyGen, Enc, Dec)}. Where \texttt{KeyGen} it is a probabilistic algorithm that given a security parameter and outputs a key pair. The \texttt{Enc} is an encapsulation algorithm, that receives as input a public key and a plain text and returns a ciphertext. The encapsulation process could be a probabilistic algorithm. The \texttt{Dec} are a decapsulation algorithm, which takes as input the chipertext and the private key and returns the plaintext
+A Key encapsulation mechanisms is defined by a 3-tuple of algorithms \texttt{(KeyGen, Enc, Dec)}. Where \texttt{KeyGen} it is a probabilistic algorithm that given a security parameter and outputs a key pair. The \texttt{Enc} is an encapsulation algorithm, that receives as input a public key and a plain text and returns a ciphertext. The encapsulation process could be a probabilistic algorithm. The \texttt{Dec} are a decapsulation algorithm, which takes as input the ciphertext and the private key and returns the plaintext or a failure. In the Chapter~\ref{ch:code-based} we present an implementation of an Key encapsulation mechanism.
 
 \section{Side-channel attacks}
 In summary, a side-channel attack is any type of attack when the attacker acquire sensitive information from the implementation of the cryptosystem. There are a several types of side-channel attacks, and almost of then requires a extensive knowledge over the target cryptosystem. Even the standard cryptography primitives, like the RSA~\cite{rivest1978method}, are susceptible to an side-channel attacks~\cite{kocher1996timing}. 
@@ -93,6 +93,8 @@ The authors in~\cite{shoufan2009timing} presents the idea of infer information o
 
 
 \section{Literature review}
+In this section we present the related works, as results of our literature review.
+
 The decoding process of McEliece cryptosystem is the most sensitive part of the algorithm. The usage of the private key demands that this algorithm does not leak any information about the key, or even, any information about the error added to the message. The authors in \cite{bucerzan2017improved} shows that a time deviation on root finding process in the Patterson's decoding algorithm could open avenues for side-channel attacks. 
 
 The direct way to find all roots of a polynomial is called exhaustive search. In summary, it just tests all possible elements and checks if it is a root. The authors in~\cite{strenzke2012fast} show an optimization to this approach. They divide the original polynomial when a root is found. This reduces the size of the polynomial and speeds up the exhaustive search in about ~30\%. Although this algorithm is efficient, it does not prevent side-channel attacks.
