@@ -1,10 +1,10 @@
 In this Chapter, we present an overview of the needed concepts to better understanding of this thesis. First, we describe the main properties of Polynomials over finite fields. After, we present an overview of the coding theory. Explaining the main structures and the operations. At the end, we present the most important code for this works, which is the Goppa Codes, and we present and Literature reviews which the main works on root finding algorithm in code-based cryptosystems. 
 
 \section{Algebraic structures}
-The goal of this works relies on find a secure way to compute roots of an polynomial over a binary, and in this section we will define it and present the main characteristics of it.
+The goal of this works relies on find a secure way to compute roots of an polynomial over a binary finite field. In this section we will define it and present the main characteristics of it.
 
 \begin{definition}
-Let $\mathbb{F}_{2}^{m}$ an finite field with size of $2n=^m$
+Let $\mathbb{F}_{2}^{m}$ a binary finite field with size of $n=2^m$, 
 \end{definition}
 
 \section{Coding theory}
@@ -99,7 +99,7 @@ In this section we present the related works, as results of our literature revie
 
 The direct way to find all roots of a polynomial is called exhaustive search. In summary, it just tests all possible elements and checks if it is a root. The authors in~\cite{strenzke2012fast} show an optimization to this approach. They divide the original polynomial when a root is found. This reduces the size of the polynomial and speeds up the exhaustive search in about ~30\%. Although this algorithm is efficient, it does not prevent side-channel attacks.
 
-An alternative proposal to find roots was created by Berlekamp in 1970. The classical Berlekamp Trace Algorithm computes the roots of a polynomial in an efficient way~\cite{berlekamp1970factoring}. It was improved in~\cite{strenzke2012fast} by returning the recursion before the original algorithm. Another approach to compute roots was proposed in~\cite{fedorenko2002finding}, and was generalized in~\cite{Skachek2008,biswas2009}. However, all of these approaches do not present constant behavior, and consequently are susceptible to a side-channel attack.
+An alternative proposal to find roots was created by Berlekamp in~\cite{berlekamp1970factoring}. The classical Berlekamp Trace Algorithm computes the roots of a polynomial in an efficient way. It was improved in~\cite{strenzke2012fast} by returning the recursion before the original algorithm. Another approach to compute roots was proposed in~\cite{fedorenko2002finding}, and was generalized in~\cite{Skachek2008, biswas2009}. However, all of these approaches do not present constant behavior, and consequently are susceptible to a side-channel attack.
 
 More recently, the authors in~\cite{petit2014finding} present a different algorithm to compute the roots of a polynomial. Lately generalized in~\cite{petit2016finding}, the Successive Resultants Algorithm (SRA) is a efficient method, with a different approach to find roots in a polynomial over any finite field. Nevertheless, no analysis of execution time deviation was made.
 
