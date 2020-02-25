@@ -3,7 +3,7 @@ In this Chapter, we present an overview of the needed concepts to better underst
 \section{Algebraic structures}
 The goal of this works relies on find a secure way to compute roots of an polynomial over a binary finite field. In this section we will define it and present the main characteristics of it.
 \begin{definition}
-Let $\mathbb{F}_{2^m}[x]$ a binary finite field with size of $n=2^m$, the polynomial $f = \sum_{i=0}^{t}{g_{i}X^{i}}$ is a polynomial of degree $t$
+Let $\mathbb{F}_{2^m}[x]$ a binary finite field with size of $n=2^m$, the polynomial $f = \sum_{i=0}^{t}{g_{i}x^{i}}$ is a polynomial of degree $t$
 \end{definition}
 We also can define this polynomial as a product of $t$ polynomials
 \begin{equation*}
@@ -11,11 +11,11 @@ We also can define this polynomial as a product of $t$ polynomials
 \end{equation*}
 Given this idea of a polynomial it is composed by the multiplication of others polynomials, we can define an irreducible polynomial as follow.
 \begin{definition}
-Let $f = \sum_{i=0}^{t}{g_{i}X^{i}}$ be a polynomial of degree $t$, $f$ is a irreducible polynomial if $f$ can not be factored into the product of two or more non-constant polynomials.
+Let $f = \sum_{i=0}^{t}{g_{i}x^{i}}$ be a polynomial of degree $t$, $f$ is a irreducible polynomial if $f$ can not be factored into the product of two or more non-constant polynomials.
 \end{definition}
 Also, we define an monic polynomial.
 \begin{definition}
-Let $f = \sum_{i=0}^{t}{g_{i}X^{i}}$ be a polynomial of degree $t$, $f$ is a monic polynomial if the leading coefficient is equals to 1. 
+Let $f = \sum_{i=0}^{t}{g_{i}x^{i}}$ be a polynomial of degree $t$, $f$ is a monic polynomial if the leading coefficient is equals to 1. 
 \end{definition}
 Thus, a monic polynomial of degree $t$ has the form $x^t + g_{t-1}x^{t-1} + \dots + g_0$. Finally, we define the roots of a polynomial.
 \begin{definition}
