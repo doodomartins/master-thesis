@@ -14,17 +14,17 @@ The algorithms presented in~\cite{strenzke2012fast} are not designed with consta
 
 The root-finding implementations presented in~\cite{chou2017mcbits, bernstein2013mcbits} use Fast Fourier Transforms (FFT) and, while efficient, they are built and optimized for a specific finite field. We propose a more generic implementation that does not require specific optimizations on the underlying finite field arithmetic. Additionally, our approach takes advantage of a particular computer architecture and uses the fact that can be evaluated multiple points in parallel. We are also interested in approaches that could avoid side-channel attacks in any architecture. 
 
-In this work, to evidence the threat of a timing side-channel attack, we present an implementation of the Strenzke's attack over a NIST Round 1 submission, the BIGQUAKE. And the main focus of this works is to propose countermeasures to make the execution time of the aforementioned algorithms constant. Additionally, we propose the use of probabilistic algorithms to achieve a secure root computation. One of the countermeasures is to write the algorithms iteratively, eliminating all recursions. We also use permutations and simulated operations to uncouple possible measurements of the side effects of the data being measured.
+In this work, to evidence the threat of a timing side-channel attack, we present an implementation of the Strenzke's attack over a NIST Round 1 submission, the BIGQUAKE. And the main focus of this works is to propose countermeasures to make the execution time of the aforementioned algorithms constant. Additionally, we propose the use of probabilistic algorithms to achieve a secure root computation. One of the countermeasures is to write the algorithms iteratively, eliminating all recursions. We also use permutations and simulated operations to mask possible measurements of the side effects of the data being measured.
 
 \section{Objectives}
-The main goal of this work is to find alternatives to perform the decoding process of McEliece Cryptosystem safely, avoiding timing side-channel attacks. To achieve this, we are interested in building a constant way to compute the roots of error locator polynomial or remove the relation between the polynomial to be factorized and the execution time of the algorithm.
+The main goal of this work is to find alternatives to perform the decoding process of McEliece Cryptosystem safely, avoiding timing side-channel attacks. To achieve this, we are interested in building a constant way to compute the roots of Error Locator Polynomial or remove the relation between the polynomial to be factorized and the execution time of the algorithm.
 
 
 \subsection{Specific objectives}
 \begin{enumerate}[label=\roman*., itemsep=1pt]
     \item Perform a timing side-channel attack against a code-based cryptosystem which has non-constant root extraction;
-    \item Selection of main methods applied to compute the roots of a polynomial in code-based cryptosystems;
-    \item Time variation measurement of works selected in the previous item;
+    \item Select methods applied to compute the roots of a polynomial in code-based cryptosystems;
+    \item Measure the time variation of works selected in the previous item;
     \item Propose strategies to achieve a secure way to compute roots;
     \item Evaluation of the new time variations of the algorithms;
 \end{enumerate}
