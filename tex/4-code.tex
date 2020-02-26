@@ -48,7 +48,7 @@ Algorithm~\ref{alg:keygen} shows the key generation of McEliece. First, it start
  Select a random binary Goppa polynomial $g(z)$ of degree $t$ over $\mathbb{F}_{2^{m}}$\;
  Randomly choose $n$ distinct elements of $\mathbb{F}_{2^m}$ that are not roots of $g(z)$ as the support $L$\;
  Compute the $k \times n$ parity check matrix $H'$ according to $L$ and $g(z)$\;
- Bring $H'$ to systematic form: $H_{sys} = [I_{n-k}|H']$\;
+ Bring $H'$ to systematic form: $H_{sys} = [H'|I_{n-k}]$\;
  Compute generator matrix $G$ from $H_{sys}$\;
  \Return $\quad sk = (L, g(z)) \quad pk = (G)$\;
  \caption{McEliece key generation.}
@@ -79,7 +79,7 @@ Algorithm~\ref{alg:3} gives the decryption part of McEliece. This algorithm cons
     \begin{algorithm}[H]
      \KwData{$c$ as ciphertext of length $n$, secret key $sk= (L, g(z))$.}
      \KwResult{Message $m$ of size $k$}
-     Compute the syndrome $S_c(z) = \sum{\frac{c_i}{z+\alpha_i}} \mod g(z)$\;
+     Compute the syndrome $S_c(z) \equiv \sum{\frac{c_i}{z+\alpha_i}} \mod g(z)$\;
      Compute $\tau(z) = \sqrt{S^{-1}_{c}(z)+z}$\;
      Compute $b(z)$ and $a(z)$, so that $b(z)\tau(z) = a(z) \mod g(z)$, such that deg($a$)$\leq \lfloor \frac{t}{2} \rfloor$ and deg($b$)$\leq \lfloor \frac{t-1}{2} \rfloor$\;
      Compute the error locator polynomial $\sigma(z) = a^2(z) + zb^2(z)$ and deg($\sigma$) $\leq t$\;
@@ -91,9 +91,9 @@ Algorithm~\ref{alg:3} gives the decryption part of McEliece. This algorithm cons
 \end{figure}
 
 
-In the decryption algorithm, steps $2$-$5$ are the description of Patterson's algorithm~\cite{patterson1975algebraic}. This same strategy can be used in schemes based on the Niederreiter cryptosystem~\cite{niederreiter}. These schemes differ in their public-key structure, encryption, and decryption step, but both of them, in the decryption steps, decode the message from the syndrome. Other decoding algorithm can applied to decode an message with errors, but the main focus of this work is on the Patterson's algorithm, since it is the most used on McEliece cryptosystem with Goppa codes. 
+In the decryption algorithm, Steps $2$-$5$ are the description of Patterson's decoding algorithm~\cite{patterson1975algebraic}. This same strategy can be used in schemes based on the Niederreiter cryptosystem~\cite{niederreiter}. These schemes differ in their public-key structure, encryption, and decryption step, but both of them, in the decryption steps, decode the message from the syndrome. Other decoding algorithm can applied to decode an message with errors, but the main focus of this work is on the Patterson's algorithm, since it is the most used on McEliece cryptosystem with Goppa codes. 
 
-The roots of the ELP can be acquired with different methods. Although these strategies can be implemented with different forms, it is essential that the implementations do not leak any timing information about their execution. This leakage can lead to a side-channel attack using time differences in the decryption algorithm, as we explore in a scheme in Section~\ref{sec:attack}.
+The roots of the ELP can be acquired with different methods. Although these strategies can be implemented with different forms, it is essential that the implementations do not leak any timing information about their execution. This leakage can lead a side-channel attack using time differences in the decryption algorithm, as we explore in a scheme in Section~\ref{sec:attack}.
 
 \section{BIGQUAKE}
 In this Section we will describe the BIGQUAKE submission, the usage of the McEliece in their protocol and after that, we present an timing side-channel attack against the decapsulation process. The attack was originally proposed in \cite{shoufan2009timing}. We use the fact that BIGQUAKE claims to be IND-CPA to create our attack scenario and perform the attack proposal. Our attack was implemented based on BIGQUAKE implementation available in \url{https://bigquake.inria.fr/files/2018/03/BIGQUAKE-source.tar.gz}.
