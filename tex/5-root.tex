@@ -279,7 +279,7 @@ where the $a_i \in \mathbb{F}_{p^n}$ are defined as in Theorem~\ref{lemma_1}. An
 Let $(x_1,x_2,\ldots,x_m)$ be a solution of the equations in Equation~\ref{eq:system_1}. Then $x_1 \in \mathbb{F}_{p^m}$ is a solution of $f$. Conversely, given a solution $x_1 \in \mathbb{F}_{p^m}$ of $f$, we can reconstruct a solution of all equations in Equation~\ref{eq:system_1} by setting $x_2 =x_1^p - a_1x_1$, etc.
 \end{theorem}
 
-In \cite{petit2014finding}, the authors present an algorithm for solving the system in Equation~\ref{eq:system_1} using resultants. The solutions of the system are the roots of polynomial $f(x)$. It is worth remarking that this algorithm is almost constant-time, and hence we just need to protect the branches presented on it.
+In \cite{petit2014finding}, the author present an algorithm for solving the system in Equation~\ref{eq:system_1} using resultants. The solutions of the system are the roots of polynomial $f(x)$. It is worth remarking that this algorithm is almost constant-time, and hence we just need to protect the branches presented on it.
 
 
 
@@ -317,7 +317,7 @@ In \cite{petit2014finding}, the authors present an algorithm for solving the sys
 \section{Rabin Algorithm}
 Our last proposal for finding the roots of the error locator polynomial was the classical method proposed by Rabin~\cite{rabin1980probabilistic}. This classical method is a probabilistic algorithm and has running time similar to the Cantor-Zassenhaus algorithm~\cite{cantor1981new}. This method is used to factor huge polynomials, with a higher degree and over larger fields. Although the main focus of this works relies on polynomials with no more than 200 roots and fields of size at most $2^{18}$, we consider this algorithm because of its efficiency.
 
-The Cantor-Zassenhaus differ from Rabin's method on the field extension of the polynomial to be factored. Since the Cantor's method is designed only for odd extensions, we do not consider then in this works. However, Rabin made and adaptation to support even fields, introducing a trace computation to finding a nontrivial factorization of the input polynomial, similar to the BTA method. This addition increases the execution time of the algorithm, but its steel is efficient, even when it used in large field extensions. 
+The Cantor-Zassenhaus differ from Rabin's method on the field extension of the polynomial to be factored. Since Cantor's method is designed only for odd extensions, we do not consider them in our works. However, Rabin made an adaptation to support even fields, introducing a trace computation to finding a nontrivial factorization of the input polynomial, similar to the BTA method. This addition increases the execution time of the algorithm, but it is still is efficient, even when it used in large field extensions. 
 
 The main difference between Cantor-Zassenhaus and Rabin's method to the other methods presented in this chapter was the insertion of a randomness choice of an element in the algorithm. The computation of the roots depends on the choice of a random element in $\mathbb{F}_{2^{m}}$. This random selection was used with a trace function and a $gcd$ to find a nontrivial factorization of the original polynomial. This class of algorithm are also called probabilistic algorithms.
 
