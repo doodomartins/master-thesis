@@ -44,11 +44,11 @@ Let $a = (a_1, a_2, \dots, a_n) \; \in \; C$ be a codeword. The Hamming weight o
 
 
 \subsection{Goppa codes}
-Let $m, n, t\in \mathbb{N}$. A binary Goppa code $\Gamma(L, g(z))$ is defined by a polynomial $g(z) = \sum_{i=0}^{t}g_iz^i$ over $\mathbb{F}_{2^m}$ with degree $t$ and supported by $L = (\alpha_1, \alpha_2, \dots, \alpha_n) \in \mathbb{F}_{2^m}$ with $\alpha_i \neq \alpha_j$ for $i\neq j$, such that $g(\alpha_i) \neq 0$ for all $\alpha_i \in L$ and $g(z)$ is square free. To a vector  $c = (c_1 \ldots, c_{n}) \in \mathbb{F}^n_{2}$ we associate a syndrome polynomial associate the syndrome polynomial
+Let $m, n, t\in \mathbb{N}$. A binary Goppa code $\Gamma(L, g(z))$ is defined by a polynomial $g(z) = \sum_{i=0}^{t}g_iz^i$ over $\mathbb{F}_{2^m}$ with degree $t$ and supported by $L = (\alpha_1, \alpha_2, \dots, \alpha_n)$, such that $\alpha_i \in \mathbb{F}_{2^m}$ with $\alpha_i \neq \alpha_j$ for $i\neq j$, such that $g(\alpha_i) \neq 0$ for all $\alpha_i \in L$ and $g(z)$ is squarefree. To a vector  $c = (c_1, \ldots, c_{n}) \in \mathbb{F}^n_{2}$ we associate a syndrome polynomial associate the syndrome polynomial
 \begin{align}
   S_c(z) = \sum_{i=1}^{n} \frac{c_i}{z+\alpha_i},  
 \end{align}
-where ${z+\alpha_i}$ is invertible $\pmod{g(z)}$, i.e., $(z+\alpha_i) \times \frac{1}{z+\alpha_i} \equiv 1 \pmod{g(z)}$.
+where ${z+\alpha_i}$ is invertible $\pmod{g(z)}$.
 \begin{definition}
 The binary Goppa code $\Gamma(L, g(z))$ consists of all vectors $c \in \mathbb{F}_{2}^n$ such that
 \begin{equation}
@@ -113,10 +113,10 @@ The decoding process of the McEliece cryptosystem is the most sensitive part of 
 
 In this section, we present the related works as the results of our literature review. Our main goal was to propose a method to achieve root computation of a polynomial over a binary field. The main focus of this root computation is to avoid timing side-channel attacks over code-based cryptosystems. Thus, we start our literature review by searching for methods that are currently used in code-based schemes.
 
-The direct way to find all roots of a polynomial is called exhaustive search. In summary, it just tests all possible elements and checks if it is a root. The authors in~\cite{strenzke2012fast} show an optimization to this approach. They divide the original polynomial when a root is found. This reduces the size of the polynomial and speeds up the exhaustive search in about ~30\%. Although this algorithm is efficient, it does not prevent side-channel attacks.
+A direct way to find all roots of a polynomial is called exhaustive search. In summary, it just tests all possible elements and checks if it is a root. The authors in~\cite{strenzke2012fast} show an optimization to this approach. They divide the original polynomial when a root is found. This reduces the size of the polynomial and speeds up the exhaustive search in about ~30\%. Although this algorithm is efficient, it does not prevent side-channel attacks.
 
 Berlekamp, in~\cite{berlekamp1970factoring}, proposed an alternative method to finding-roots. The classical Berlekamp Trace Algorithm computes the roots of a polynomial efficiently. The authors in~\cite{strenzke2012fast} present an optimization version by returning the recursion before the original algorithm. Another approach to compute roots was proposed in~\cite{fedorenko2002finding}, and was generalized in~\cite{Skachek2008, biswas2009}. However, all of these approaches do not present constant characteristic, and consequently are susceptible to a side-channel attack.
 
-More recently, the authors in~\cite{petit2014finding} present a different algorithm to compute the roots of a polynomial. Lately, generalized in~\cite{petit2016finding}, the Successive Resultants Algorithm (SRA) is an efficient method, with a different approach to find roots in a polynomial over any finite field. Nevertheless, no analysis of execution time deviation was made.
+More recently, the authors in~\cite{petit2014finding} present a different algorithm to compute the roots of a polynomial. Lately, generalized in~\cite{petit2016finding}, the Successive Resultants Algorithm (SRA) is an efficient method, with a different approach to finding roots in a polynomial over any finite field. Nevertheless, no analysis of execution time deviation was made.
 
 All approaches presented in this section were root-finding techniques currently in use in code-based cryptosystems. Nonetheless, it was well known that Cantor and Zassenhaus proposed one of the most efficient methods for computing roots over a polynomial in 1981~\cite{cantor1981new}. Notwithstanding its efficiency, to the best of our knowledge, it was not used in any code-based cryptosystems. For this works, we will consider the usage of the Rabin approach, which has an adaptation for fields with odd characteristics.
