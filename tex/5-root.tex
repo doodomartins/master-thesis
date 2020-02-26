@@ -105,10 +105,10 @@ This new approach allows us to define a fixed number of iterations for our versi
 \end{algorithm}
 \end{figure}
 
-Algorithm~\ref{alg:ibta} extracts a root of the polynomial when the variable $current$ has a polynomial with degree equals to one. If this degree is higher than one, then the algorithm needs to continue dividing the polynomial until it finds a root. The algorithm does that by adding the polynomial in a stack and reusing this polynomial in a future division. The iterative BTA has a higher complexity when compared to the original approach. Nevertheless, with our new approach, we achieve a more constant time execution on the root-finding task, consequently reducing the knowledge obtained by an attacker. In Chapter~\ref{ch:comparison}, we analyse and compare our iterative BTA with the others approach.
+Algorithm~\ref{alg:ibta} extracts a root of the polynomial when the variable $current$ has a polynomial with degree one. If this degree is higher than one, then the algorithm needs to continue dividing the polynomial until it finds a root. The algorithm does that by adding the polynomial in a stack and reusing this polynomial in a future division. The iterative BTA has a higher complexity when compared to the original approach. Nevertheless, with our new approach, we achieve a more constant time execution on the root-finding task, consequently reducing the knowledge obtained by an attacker. In Chapter~\ref{ch:comparison}, we analyse and compare our iterative BTA with other approaches.
 
 \section{Linearized Polynomials}
-The third countermeasure proposed is based on linearized polynomials. The authors in \cite{fedorenko2002finding} propose a method to compute the roots of a polynomial over $\mathbb{F}_{2^m}$, using a particular class of polynomials, called linearized polynomials. In \cite{strenzke2012fast}, this approach is a recursive algorithm which the author calls ``dcmp-rf''. In our solution, however, we present an iterative algorithm. First, we define linearized polynomials as follows:
+The third countermeasure proposed is based on linearized polynomials. The authors in \cite{fedorenko2002finding} propose a method to compute the roots of a polynomial over $\mathbb{F}_{2^m}$, using a particular class of polynomials, called linearized polynomials. In \cite{strenzke2012fast}, this approach is a recursive algorithm which the author calls ``\texttt{dcmp-rf}''. In our solution, however, we present an iterative algorithm. First, we define linearized polynomials as follows:
 
 \begin{definition}
 A polynomial $\ell(y)$ over $\mathbb{F}_{2^m}$ is a linearized polynomial if
@@ -139,13 +139,13 @@ Let us consider the polynomial $f(y) = y^2 + (\alpha^2+1)y + (\alpha^2 +\alpha +
 \begin{equation}\label{eq:example_1}
     y^2 + (\alpha^2+1)y   = (\alpha^2 +\alpha +1)y^0.
 \end{equation}
-We can point that on the left hand side of Equation~\ref{eq:example_1}, $\ell(y) = y^2 + (\alpha^2+1)y$ is a linearized polynomial over $\mathbb{F}_{2^3}$ and Equation~\ref{eq:example_1} can be expressed just as
+We can point that on the left hand side of Equation~\ref{eq:example_1}, $\ell(y) = y^2 + (\alpha^2+1)y$ is a linearized polynomial over $\mathbb{F}_{2^3}$ and Equation~\ref{eq:example_1} can be expressed as
 \begin{equation}\label{eq:example_1_2}
-    \ell(y) = \alpha^2 +\alpha +1
+    \ell(y) = \alpha^2 +\alpha +1.
 \end{equation}
 If $y = y_2\alpha^2 + y_1\alpha + y_0 \in \mathbb{F}_{2^3}$ then, according to Lemma~\ref{lemma:lin}, Equation~\ref{eq:example_1_2} becomes
 \begin{equation}\label{eq:example_1_3}
-    y_2\ell(\alpha^2) + y_1\ell(\alpha) + y_0\ell(\alpha^0) = \alpha^2 +\alpha +1
+    y_2\ell(\alpha^2) + y_1\ell(\alpha) + y_0\ell(\alpha^0) = \alpha^2 +\alpha +1.
 \end{equation}
 We can compute $\ell(\alpha^0),\ell(\alpha)$ and $\ell(\alpha^2)$ using the left hand side of Equation~\ref{eq:example_1} and we have the following values
 \begin{equation}\label{eq:example_1_4}
@@ -157,7 +157,7 @@ We can compute $\ell(\alpha^0),\ell(\alpha)$ and $\ell(\alpha^2)$ using the left
 \end{equation}
 A substitution of Equation~\ref{eq:example_1_4} into Equation~\ref{eq:example_1_3} gives us
 \begin{equation}\label{eq:example_1_5}
-     (y_2+y_0)\alpha^2 + (y_1)\alpha + (y_1)\alpha^0 = \alpha^2 +\alpha +1
+     (y_2+y_0)\alpha^2 + (y_1)\alpha + (y_1)\alpha^0 = \alpha^2 +\alpha +1.
 \end{equation}
 Equation~\ref{eq:example_1_5} can be expressed as a matrix in the form
 \begin{equation}\label{eq:example_1_6}
@@ -170,7 +170,7 @@ Equation~\ref{eq:example_1_5} can be expressed as a matrix in the form
     =
     \begin{bmatrix} 1 & 1 & 1 \end{bmatrix}.
 \end{equation}
-If one solves simultaneously the linear system in Equation~\ref{eq:example_1_6} then the results are the roots of the original polynomial given in Equation~\ref{eq:example_1}. From Equation~\ref{eq:example_1_5}, one observes that the solutions are $y=110$ and $y=011$. Furthermore, we can translate $110$ and $011$ to $\alpha + 1$ and $\alpha^2 + \alpha$. After all this steps, is easy to check if we found the factors of $f(y)$, we just need to multiply $y - \alpha + 1$ and $y- \alpha^2 + \alpha$, thus we get
+If one solves simultaneously the linear system in Equation~\ref{eq:example_1_6} then the results are the roots of the original polynomial given in Equation~\ref{eq:example_1}. From Equation~\ref{eq:example_1_5}, one observes that the solutions are $y=110$ and $y=011$. Furthermore, we can translate $110$ and $011$ to $\alpha + 1$ and $\alpha^2 + \alpha$. After all this steps, it is easy to check if we found the factors of $f(y)$. We just need to multiply $y - \alpha + 1$ and $y- \alpha^2 + \alpha$, thus we get
 
 \begin{equation*}\label{eq:example_1_7}
     (y - \alpha + 1) (y - \alpha^2 + \alpha) = y^2 + (\alpha^2+1)y + (\alpha^2 +\alpha +1) = f(y).
@@ -183,7 +183,7 @@ Fortunately, the authors in \cite{fedorenko2002finding} provide a generic decomp
     F(y) = f_3y^3 + \sum_{i=0}^{\lceil (t-4)/5 \rceil} y^{5i}(f_{5i} + \sum_{j=0}^{3} f_{5i+2^j}y^{2^j}).
 \end{equation}
 
-After that, we can summarize all the steps on Algorithm~\ref{alg:linearized}. The function ``generate($m$)'' refers to the generation of the elements in $\mathbb{F}_{2^m}$ using Gray codes, see \cite{savage1997survey} for more details about Gray codes. The linearized method differs from the exhaustive search on the evaluation process; it is much more efficient to compute this evaluation because the polynomial is in the linearized form. Algorithm~\ref{alg:linearized} presents our countermeasure in the last steps of the algorithm, i.e., we added a dummy operation for blinding if $X[j]$ is a root of polynomial $F(x)$. The analysis of the linearized method and its countermeasure are presented in Chapter~\ref{ch:comparison}.
+After that, we can summarize all the steps on Algorithm~\ref{alg:linearized}. The function ``\texttt{generate($m$)}'' refers to the generation of the elements in $\mathbb{F}_{2^m}$ using Gray codes, see \cite{savage1997survey} for more details about Gray codes. The linearized method differs from the exhaustive search on the evaluation process; it is much more efficient to compute this evaluation because the polynomial is in the linearized form. Algorithm~\ref{alg:linearized} presents our countermeasure in the last steps of the algorithm, i.e., we added a dummy operation for blinding if $X[j]$ is a root of polynomial $F(x)$. The analysis of the linearized method and its countermeasure are presented in Chapter~\ref{ch:comparison}.
 
 \begin{figure}
 \begin{algorithm}[H]
