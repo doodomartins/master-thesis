@@ -105,7 +105,7 @@ So, an attacker with knowledge of the implementation, with access to the time wa
 
 We present this toy example to give an idea of how an attacker, who knows the implementation details can infer information about the execution time of an algorithm. In more complex cryptosystems, this inference was not simple. However, it still possible to steal sensitive information measuring the decoding execution time.
 
-The authors in~\cite{shoufan2009timing} present the idea of inferring information on the time variance when we flip a bit over a ciphertext. This idea becomes of the fact that if we flip a correct bit (i. e. a position were an error was added), the algorithm will have fewer errors to correct and will return early. The opposite occurs when we flip the wrong bit. Thus, the algorithm will return lately. This attack was base of the attack presented in Chapter~\ref{ch:code-based}.
+The authors in~\cite{shoufan2009timing} present the idea of inferring information on the time variance when we flip a bit over a ciphertext. This idea becomes of the fact that if we flip a correct bit (i. e. a position where an error was added), the algorithm will have fewer errors to correct and will return early. The opposite occurs when we flip the wrong bit. Thus, the algorithm will return lately. This attack was base of the attack presented in Chapter~\ref{ch:code-based}.
 
 
 \section{Literature review}
