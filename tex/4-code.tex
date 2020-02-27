@@ -23,7 +23,7 @@ Robert J. McEliece proposes in 1978 the first cryptosystem based on coding theor
     \label{fig:code-idea}
 \end{figure}
 
-Based on two well know problems, the security of the McEliece cryptosystem has remained stable. The first assumption is the hardness of generic decoding, and it is NP-complete and is also considered hard on average~\cite{berlekamp1978inherent}. The second assumption that regards the security of the McEliece scheme is the indistinguishability of the code. It is not as old as the first one, but it relates to old problems of algebraic coding theory and it is considered valid for Goppa Codes, as the original proposal~\cite{faugere2013distinguisher}. 
+Based on two well know problems, the security of the McEliece cryptosystem has remained stable. The first assumption is the hardness of generic decoding, and it is NP-complete and is also considered hard on average~\cite{berlekamp1978inherent}. The second assumption that regards the security of the McEliece scheme is the indistinguishability of the code. It is not as old as the first one, but it relates to old problems of algebraic coding theory, and it is considered valid for Goppa Codes, as the original proposal~\cite{faugere2013distinguisher}. 
 
 The original parameters were designed for ${64}$ security bits, but it easily scales up to provide an ample security margin against attackers~\cite{canteaut1998cryptanalysis}. Furthermore, the McEliece cryptosystem has been subjected to many structural attacks, and until today the original proposal is considered secure~\cite{bernstein2008attacking}. It is important to note that many of these attacks are based on the same strategy, the information set-decoding. This kind of attack does not affect schemes based on Goppa codes. However, many other families of codes suffer several drawbacks with this attack. 
 
@@ -32,9 +32,9 @@ As proposed in \cite{bernstein2017classic, bardet2017big} on the NIST standardiz
 
 \subsection{Definitions}
 \label{sub:mc-def}
-In this section we describe the three main algorithms of the McEliece cryptosystem based on irreducible binary Goppa codes. These algorithms are related with the generation of a Goppa code, the encoding process and the decoding process, as presented in Chapter~\ref{ch:math}.
+In this section, we describe the three main algorithms of the McEliece cryptosystem based on irreducible binary Goppa codes. These algorithms are related to the generation of a Goppa code, the encoding process, and the decoding process, as presented in Chapter~\ref{ch:math}.
 
-Algorithm~\ref{alg:keygen} shows the key generation of McEliece. First, it starts by generating a binary irreducible Goppa polynomial $g(z)$ of degree $t$. This random selection is made by generating a random polynomial and testing if it is a irreducible polynomial or not. Second, it generates the support $L$ as an ordered subset of $\mathbb{F}_{2^m}$ satisfying the root condition. Third, it is the computation of the systematic form of $\hat{H}$ using the Gauss-Jordan elimination algorithm. Steps four, five, and six compute the generator matrix from the previous systematic matrix and return secret and public key.
+Algorithm~\ref{alg:keygen} shows the key generation of McEliece. First, it starts by generating a binary irreducible Goppa polynomial $g(z)$ of degree $t$. This random selection is made by generating a random polynomial and testing if it is an irreducible polynomial or not. Second, it generates the support $L$ as an ordered subset of $\mathbb{F}_{2^m}$ satisfying the root condition. Third, it is the computation of the systematic form of $\hat{H}$ using the Gauss-Jordan elimination algorithm. Steps four, five, and six compute the generator matrix from the previous systematic matrix and return secret and public key.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -72,7 +72,7 @@ Compute $c = (m\cdot G) \oplus e$\;
 
 \subsection{Decryption}
 \label{sub:mc-dec}
-Algorithm~\ref{alg:3} gives the decryption part of McEliece. This algorithm consists of the removal of the applied errors using a decoding algorithm. First, we compute the syndrome polynomial $S_c(z)$. Second, we recover the error vector $e$ from the syndrome polynomial. Finally, we can recover the plaintext $m$ computing $c \oplus e$, i.e. the exclusive-or of the ciphertext and the error vector. Note that in modern KEM versions of McEliece, $m\in \mathbb{F}^n_{2}$ is a random bit string used to compute a session key using a hash function. Hence, there is no intelligible information in the first $k$ positions of $m$, then the amount of error it is moderated.
+Algorithm~\ref{alg:3} gives the decryption part of McEliece. This algorithm consists of the removal of the applied errors using a decoding algorithm. First, we compute the syndrome polynomial $S_c(z)$. Second, we recover the error vector $e$ from the syndrome polynomial. Finally, we can recover the plaintext $m$ computing $c \oplus e$, i.e., the exclusive-or of the ciphertext and the error vector. Note that in modern KEM versions of McEliece, $m\in \mathbb{F}^n_{2}$ is a random bit string used to compute a session key using a hash function. Hence, there is no intelligible information in the first $k$ positions of $m$, then the amount of error it is moderated.
 
 \begin{figure}[ht]
 \centering
@@ -91,7 +91,7 @@ Algorithm~\ref{alg:3} gives the decryption part of McEliece. This algorithm cons
 \end{figure}
 
 
-In the decryption algorithm, Steps $2$-$5$ are the description of Patterson's decoding algorithm~\cite{patterson1975algebraic}. This same strategy can be used in schemes based on the Niederreiter cryptosystem~\cite{niederreiter}. These schemes differ in their public-key structure, encryption, and decryption step, but both of them, in the decryption steps, decode the message from the syndrome. Other decoding algorithm can applied to decode an message with errors, but the main focus of this work is on the Patterson's algorithm, since it is the most used on McEliece cryptosystem with Goppa codes. 
+In the decryption algorithm, Steps $2$-$5$ are the description of Patterson's decoding algorithm~\cite{patterson1975algebraic}. This same strategy can be used in schemes based on the Niederreiter cryptosystem~\cite{niederreiter}. These schemes differ in their public-key structure, encryption, and decryption step, but both of them, in the decryption steps, decode the message from the syndrome. Another decoding algorithm can be applied to decode a message with errors. Still, the main focus of this work is on Patterson's algorithm, since it is the most used on McEliece cryptosystem with Goppa codes. 
 
 The roots of the ELP can be acquired with different methods. Although these strategies can be implemented with different forms, it is essential that the implementations do not leak any timing information about their execution. This leakage can lead a side-channel attack using time differences in the decryption algorithm, as we explore in a scheme in Section~\ref{sec:attack}.
 
