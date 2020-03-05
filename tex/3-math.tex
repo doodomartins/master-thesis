@@ -100,7 +100,7 @@ int passCheck(char * input_pass) {
     return 0;
 }
 \end{lstlisting}
-So, an attacker with knowledge of the implementation, with access to the time wasted to verify a password, could perform a simple attack. First, flipping the first char to all possible chars, and assume that the correct was that with spent more time. This assumption works because, in the execution of the correct chat, the password verification will check the correct and on more char. After repeating this for all remaining characters, the attacker recovers the secret password.
+So, an attacker with knowledge of the implementation and with access to the time wasted to verify a password, could perform a simple side-channel attack. First, setting a password attempt to "AAAA", after that, flip the first character to all possible characters, and assume that the correct was that with spent more time. This assumption works because, in the first character it was correct, the password verification will check at least on more position. After repeating this for all remaining characters, the attacker recovers the secret password.
 \end{example}
 
 We present this toy example to give an idea of how an attacker, who knows the implementation details can infer information about the execution time of an algorithm. In more complex cryptosystems, this inference was not simple. However, it still possible to steal sensitive information measuring the decoding execution time.
